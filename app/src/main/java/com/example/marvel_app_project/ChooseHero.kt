@@ -17,6 +17,9 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -30,11 +33,12 @@ import com.example.marvel_app_project.ui.theme.interFamily
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun ChooseHeroScreen() {
+fun ChooseHeroScreen(onHeroImageTaped:() -> Unit) {
 
     val heroValues = SampleData.heroesSample
     val lazyListState = rememberLazyListState()
     val snapBehavior = rememberSnapFlingBehavior(lazyListState = lazyListState)
+
 
     Column (
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -65,7 +69,7 @@ fun ChooseHeroScreen() {
             flingBehavior = snapBehavior
         ){
             items(heroValues){ hero ->
-                HeroCard(hero)
+                HeroCard(hero, onHeroImageTaped)
             }
         }
 
@@ -76,6 +80,6 @@ fun ChooseHeroScreen() {
 @Composable
 fun GreetingPreview() {
     Marvel_app_projectTheme {
-        ChooseHeroScreen()
+        ChooseHeroScreen(onHeroImageTaped = {})
     }
 }

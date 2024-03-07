@@ -1,5 +1,6 @@
 package com.example.marvel_app_project
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -7,6 +8,11 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -23,8 +29,10 @@ import com.example.marvel_app_project.data.Heroes
 import com.example.marvel_app_project.ui.theme.interFamily
 
 @Composable
-fun HeroCard(hero: Heroes){
-    Box{
+fun HeroCard(hero: Heroes, onHeroImageTaped:() -> Unit){
+    var isExpanded by remember { mutableStateOf(false) }
+    //if(isExpanded) onHeroImageTaped
+    Box(modifier = Modifier.clickable { onHeroImageTaped() }){
         AsyncImage(
             model = ImageRequest
                 .Builder(LocalContext.current)
@@ -38,8 +46,8 @@ fun HeroCard(hero: Heroes){
                 .shadow(
                     elevation = 20.dp,
                     shape = RoundedCornerShape(12.dp),
-                    ambientColor = Color(0,0,0, 25),
-                    spotColor = Color(0,0,0, 25)
+                    ambientColor = Color(0, 0, 0, 25),
+                    spotColor = Color(0, 0, 0, 25)
                 )
         )
         Text(
@@ -50,7 +58,7 @@ fun HeroCard(hero: Heroes){
             color = MaterialTheme.colorScheme.onSecondary,
             modifier = Modifier
                 .align(Alignment.BottomStart)
-                .padding(start= 30.dp, bottom =  45.dp)
+                .padding(start = 30.dp, bottom = 45.dp)
         )
     }
 }
