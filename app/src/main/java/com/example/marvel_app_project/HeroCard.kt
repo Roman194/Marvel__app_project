@@ -10,9 +10,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -29,16 +28,15 @@ import com.example.marvel_app_project.data.Heroes
 import com.example.marvel_app_project.ui.theme.interFamily
 
 @Composable
-fun HeroCard(hero: Heroes, onHeroImageTaped:() -> Unit){
-    var isExpanded by remember { mutableStateOf(false) }
-    //if(isExpanded) onHeroImageTaped
-    Box(modifier = Modifier.clickable { onHeroImageTaped() }){
+fun HeroCard(hero: Heroes, onHeroImageTaped:(Heroes) -> Unit){
+
+    Box(modifier = Modifier.clickable { onHeroImageTaped(hero) }){
         AsyncImage(
             model = ImageRequest
                 .Builder(LocalContext.current)
                 .data(hero.image)
                 .build(),
-            contentDescription = "Deadpool",
+            contentDescription = hero.name,
             contentScale = ContentScale.Crop,
             modifier = Modifier
                 .size(300.dp, 550.dp)

@@ -17,9 +17,6 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -28,12 +25,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.marvel_app_project.assets.SampleData
+import com.example.marvel_app_project.data.Heroes
 import com.example.marvel_app_project.ui.theme.Marvel_app_projectTheme
 import com.example.marvel_app_project.ui.theme.interFamily
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun ChooseHeroScreen(onHeroImageTaped:() -> Unit) {
+fun ChooseHeroScreen(onHeroImageTaped:(Heroes) -> Unit) {
 
     val heroValues = SampleData.heroesSample
     val lazyListState = rememberLazyListState()
@@ -44,14 +42,14 @@ fun ChooseHeroScreen(onHeroImageTaped:() -> Unit) {
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
             .fillMaxSize()
-            .padding(top = 25.dp)
+            .padding(top = 50.dp)
     ){
         Image(
             painter = painterResource(id = R.drawable.marvel_logo),
             contentDescription = "Marvel studios",
             modifier = Modifier.size(width = 192.dp, height = 41.dp)
         )
-        Spacer(modifier = Modifier.size(1.dp, 25.dp))
+        Spacer(modifier = Modifier.size(width = 1.dp, height = 25.dp))
         Text(
             text = "Choose your hero",
             fontFamily = interFamily,
@@ -63,7 +61,7 @@ fun ChooseHeroScreen(onHeroImageTaped:() -> Unit) {
 
         LazyRow(
             modifier = Modifier.fillMaxWidth(),
-            contentPadding = PaddingValues(horizontal = 48.dp),
+            contentPadding = PaddingValues(horizontal = 30.dp),
             horizontalArrangement = Arrangement.spacedBy(48.dp),
             state = lazyListState,
             flingBehavior = snapBehavior
