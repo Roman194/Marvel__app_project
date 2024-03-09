@@ -8,6 +8,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.marvel_app_project.data.Heroes
+import com.example.marvel_app_project.ui.ChooseHeroScreen
+import com.example.marvel_app_project.ui.SingleHeroScreen
 
 enum class HeroesScreen {
     Start,
@@ -18,7 +20,9 @@ enum class HeroesScreen {
 fun HeroesApp(navController: NavHostController = rememberNavController()){
 
     val heroesState = remember {
-        mutableStateOf(Heroes("Info","Info description",""))
+        mutableStateOf(
+            Heroes("Info","Info description","", R.color.white)
+        )
     }
 
     NavHost(
@@ -34,7 +38,10 @@ fun HeroesApp(navController: NavHostController = rememberNavController()){
             )
         }
         composable(route = HeroesScreen.SingleHero.name){
-            SingleHeroScreen(hero = heroesState.value, navigateUp = {navController.navigateUp()})
+            SingleHeroScreen(
+                hero = heroesState.value,
+                navigateUp = {navController.navigateUp()}
+            )
         }
     }
 }

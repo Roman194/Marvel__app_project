@@ -1,4 +1,4 @@
-package com.example.marvel_app_project
+package com.example.marvel_app_project.ui
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
@@ -27,21 +27,23 @@ import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
 import androidx.compose.ui.input.nestedscroll.NestedScrollSource
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import com.example.marvel_app_project.R
 import com.example.marvel_app_project.assets.SampleData
 import com.example.marvel_app_project.data.Heroes
 import com.example.marvel_app_project.ui.theme.Marvel_app_projectTheme
 import com.example.marvel_app_project.ui.theme.interFamily
+import com.example.marvel_app_project.ui.theme.Sizes
+import com.example.marvel_app_project.ui.theme.Spaces
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun ChooseHeroScreen(onHeroImageTaped:(Heroes) -> Unit) {
 
     val heroValues = SampleData.heroesSample
-    val rectangleValues = SampleData.rectanglesSample
     val lazyListState = rememberLazyListState()
     val snapBehavior = rememberSnapFlingBehavior(lazyListState = lazyListState)
     val rectangleColorState = remember {
@@ -59,9 +61,9 @@ fun ChooseHeroScreen(onHeroImageTaped:(Heroes) -> Unit) {
 
                 if(firstVisibleIndex != -1){
                     if(firstVisibleIndex == 0 && lastVisibleIndex == 1){
-                        rectangleColorState.value = rectangleValues[firstVisibleIndex]
+                        rectangleColorState.value = heroValues[firstVisibleIndex].backgroundColor
                     }else{
-                        rectangleColorState.value = rectangleValues[firstVisibleIndex + 1]
+                        rectangleColorState.value = heroValues[firstVisibleIndex + 1].backgroundColor
                     }
                 }
 
@@ -71,7 +73,6 @@ fun ChooseHeroScreen(onHeroImageTaped:(Heroes) -> Unit) {
     }
 
     Box (modifier = Modifier.fillMaxSize()){
-
         Column (
             modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.Bottom,
@@ -80,8 +81,10 @@ fun ChooseHeroScreen(onHeroImageTaped:(Heroes) -> Unit) {
             Image(
                 painter = painterResource(id = rectangleColorState.value),
                 contentDescription = "",
-                modifier = Modifier.size(width = 450.dp, height = 540.dp)
-                //modifier = Modifier.fillMaxSize() не работает почему-то
+                modifier = Modifier.size(
+                    width = Sizes.rectanglesSizes.width,
+                    height = Sizes.rectanglesSizes.height
+                )
             )
         }
 
@@ -89,34 +92,58 @@ fun ChooseHeroScreen(onHeroImageTaped:(Heroes) -> Unit) {
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
                 .fillMaxSize()
-                .padding(top = 50.dp)
+                .padding(
+                    top = Spaces.chooseHeroColumn
+                )
         ){
             Image(
                 painter = painterResource(id = R.drawable.marvel_logo),
-                contentDescription = "Marvel studios",
-                modifier = Modifier.size(width = 192.dp, height = 41.dp)
+                contentDescription = stringResource(id = R.string.marvel),
+                modifier = Modifier.size(
+                    width = Sizes.marvelLogo.width,
+                    height = Sizes.marvelLogo.height
+                )
             )
-            Spacer(modifier = Modifier.size(width = 1.dp, height = 25.dp))
+            Spacer(
+                modifier = Modifier.size(
+                    width = Spaces.spacer.standartWidth,
+                    height = Spaces.spacer.extendedHeight
+                )
+            )
             Text(
-                text = "Choose your hero",
+                text = stringResource(id = R.string.choose_hero),
                 fontFamily = interFamily,
                 fontWeight = FontWeight.ExtraBold,
-                fontSize = 28.sp,
+                fontSize = Sizes.fontSizes.underLogoText,
                 color = MaterialTheme.colorScheme.onSecondary
             )
-            Spacer(modifier = Modifier.size(1.dp, 40.dp))
+            Spacer(
+                modifier = Modifier.size(
+                    width = Spaces.spacer.standartWidth,
+                    height = Spaces.spacer.theMostExtendedHeight
+                )
+            )
 
             LazyRow(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .nestedScroll(connection = nestedScrollConnection),
-                contentPadding = PaddingValues(horizontal = 52.dp),//30
-                horizontalArrangement = Arrangement.spacedBy(48.dp),
+                    .nestedScroll(
+                        connection = nestedScrollConnection
+                    ),
+                contentPadding = PaddingValues(
+                    horizontal = Spaces.chooseHeroLazyRow.horizontalPadding
+                ),
+                horizontalArrangement = Arrangement.spacedBy(
+                    space = Spaces.chooseHeroLazyRow.horizontalArrangement
+                ),
                 state = lazyListState,
                 flingBehavior = snapBehavior
             ){
                 items(heroValues){ hero ->
-                    HeroCard(hero, onHeroImageTaped)
+                    HeroCard(
+                        hero,
+                        onHeroImageTaped
+                    )
                 }
             }
 

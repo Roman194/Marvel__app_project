@@ -11,6 +11,7 @@ import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.core.view.WindowCompat
+import com.example.marvel_app_project.ui.theme.ApplySystemBarColors
 import com.example.marvel_app_project.ui.theme.Marvel_app_projectTheme
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
@@ -22,7 +23,7 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             Marvel_app_projectTheme {
-                // A surface container using the 'background' color from the theme
+
                 ApplySystemBarColors()
 
                 Surface(
@@ -30,19 +31,9 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     HeroesApp()
-                    //ChooseHeroScreen()
                 }
             }
         }
     }
 }
 
-@Composable
-private fun ApplySystemBarColors(){
-    val systemUiContrller = rememberSystemUiController()
-
-    SideEffect {
-        systemUiContrller.setStatusBarColor(color = Color.Transparent)
-        systemUiContrller.setNavigationBarColor(color = Color.Transparent)
-    }
-}

@@ -1,4 +1,4 @@
-package com.example.marvel_app_project
+package com.example.marvel_app_project.ui
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -18,13 +18,16 @@ import androidx.compose.ui.AbsoluteAlignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
+import com.example.marvel_app_project.R
 import com.example.marvel_app_project.data.Heroes
+import com.example.marvel_app_project.ui.theme.Spaces
 import com.example.marvel_app_project.ui.theme.interFamily
+import com.example.marvel_app_project.ui.theme.Sizes
 
 
 @Composable
@@ -39,37 +42,55 @@ fun SingleHeroScreen(hero: Heroes, navigateUp: () -> Unit){
             contentScale = ContentScale.Crop,
             modifier = Modifier.fillMaxSize()
         )
-        Column(modifier = Modifier.fillMaxSize().padding(top = 25.dp)) {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(
+                    top = Spaces.singleHeroColumn
+                )
+        ) {
             IconButton(onClick = navigateUp) {
                 Icon(
                     imageVector = Icons.Filled.ArrowBack,
                     tint = MaterialTheme.colorScheme.onSecondary,
-                    modifier = Modifier.size(width = 28.dp, height = 32.dp),
-                    contentDescription = "Back"//stringResource(R.string.back_button)
+                    modifier = Modifier.size(
+                        width = Sizes.backIcon.width,
+                        height = Sizes.backIcon.height
+                    ),
+                    contentDescription = stringResource(R.string.back_button)
                 )
             }
             Column(
                 horizontalAlignment = AbsoluteAlignment.Left,
                 verticalArrangement = Arrangement.Bottom,
-                modifier = Modifier.fillMaxSize()
-                    .padding(start = 15.dp, bottom = 35.dp, end = 15.dp)
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(
+                        start = Spaces.singleHeroTextColumn.start,
+                        bottom = Spaces.singleHeroTextColumn.bottom,
+                        end = Spaces.singleHeroTextColumn.end
+                    )
             ) {
                 Text(
                     text = hero.name,
                     fontFamily = interFamily,
                     fontWeight = FontWeight.ExtraBold,
-                    fontSize = 34.sp,
+                    fontSize = Sizes.fontSizes.heroNameInSingleScreen,
                     color = MaterialTheme.colorScheme.onSecondary
                 )
-                Spacer(modifier = Modifier.size(width = 1.dp, height = 15.dp))
+                Spacer(
+                    modifier = Modifier.size(
+                        width = Spaces.spacer.standartWidth,
+                        height = Spaces.spacer.standartHeight
+                    )
+                )
                 Text(
                     text = hero.description,
                     fontFamily = interFamily,
                     fontWeight = FontWeight.Bold,
-                    fontSize = 24.sp,
+                    fontSize = Sizes.fontSizes.heroDescription,
                     color = MaterialTheme.colorScheme.onSecondary
                 )
-
             }
 
         }
