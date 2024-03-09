@@ -17,7 +17,7 @@ enum class HeroesScreen {
 @Composable
 fun HeroesApp(navController: NavHostController = rememberNavController()){
 
-    var heroesState = remember {
+    val heroesState = remember {
         mutableStateOf(Heroes("Info","Info description",""))
     }
 

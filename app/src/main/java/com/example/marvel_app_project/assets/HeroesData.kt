@@ -1,5 +1,6 @@
 package com.example.marvel_app_project.assets
 
+import com.example.marvel_app_project.R
 import com.example.marvel_app_project.data.Heroes
 
 object SampleData{
@@ -39,5 +40,14 @@ object SampleData{
             "Fun isn't something when balancing the universe",
             "https://i.pinimg.com/736x/9e/9a/00/9e9a00ae817ceaccd08cd36d24b03c2d.jpg"
         ),
+    )
+    val rectanglesSample = listOf(
+        R.drawable.rectangle_vinous,
+        R.drawable.rectangle_red,
+        R.drawable.rectangle_blue,
+        R.drawable.rectangle_green,
+        R.drawable.rectangle_lightblue,
+        R.drawable.rectangle_lightgreen,
+        R.drawable.rectangle_purple
     )
 }

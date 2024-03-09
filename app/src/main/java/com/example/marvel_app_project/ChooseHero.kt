@@ -4,6 +4,7 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.gestures.snapping.rememberSnapFlingBehavior
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
@@ -17,8 +18,14 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
+import androidx.compose.ui.input.nestedscroll.NestedScrollSource
+import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -34,43 +41,86 @@ import com.example.marvel_app_project.ui.theme.interFamily
 fun ChooseHeroScreen(onHeroImageTaped:(Heroes) -> Unit) {
 
     val heroValues = SampleData.heroesSample
+    val rectangleValues = SampleData.rectanglesSample
     val lazyListState = rememberLazyListState()
     val snapBehavior = rememberSnapFlingBehavior(lazyListState = lazyListState)
+    val rectangleColorState = remember {
+        mutableStateOf(R.drawable.rectangle_vinous)
+    }
+    val nestedScrollConnection = remember {
+        object : NestedScrollConnection{
+            override fun onPreScroll(
+                available: Offset,
+                source: NestedScrollSource
+            ): Offset {
 
+                val firstVisibleIndex = lazyListState.layoutInfo.visibleItemsInfo.firstOrNull()?.index ?: -1
+                val lastVisibleIndex = lazyListState.layoutInfo.visibleItemsInfo.lastOrNull()?.index ?: -1
 
-    Column (
-        horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(top = 50.dp)
-    ){
-        Image(
-            painter = painterResource(id = R.drawable.marvel_logo),
-            contentDescription = "Marvel studios",
-            modifier = Modifier.size(width = 192.dp, height = 41.dp)
-        )
-        Spacer(modifier = Modifier.size(width = 1.dp, height = 25.dp))
-        Text(
-            text = "Choose your hero",
-            fontFamily = interFamily,
-            fontWeight = FontWeight.ExtraBold,
-            fontSize = 28.sp,
-            color = MaterialTheme.colorScheme.onSecondary
-        )
-        Spacer(modifier = Modifier.size(1.dp, 40.dp))
+                if(firstVisibleIndex != -1){
+                    if(firstVisibleIndex == 0 && lastVisibleIndex == 1){
+                        rectangleColorState.value = rectangleValues[firstVisibleIndex]
+                    }else{
+                        rectangleColorState.value = rectangleValues[firstVisibleIndex + 1]
+                    }
+                }
 
-        LazyRow(
-            modifier = Modifier.fillMaxWidth(),
-            contentPadding = PaddingValues(horizontal = 30.dp),
-            horizontalArrangement = Arrangement.spacedBy(48.dp),
-            state = lazyListState,
-            flingBehavior = snapBehavior
-        ){
-            items(heroValues){ hero ->
-                HeroCard(hero, onHeroImageTaped)
+                return super.onPreScroll(available, source)
             }
         }
+    }
 
+    Box (modifier = Modifier.fillMaxSize()){
+
+        Column (
+            modifier = Modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.Bottom,
+            horizontalAlignment = Alignment.End
+        ){
+            Image(
+                painter = painterResource(id = rectangleColorState.value),
+                contentDescription = "",
+                modifier = Modifier.size(width = 450.dp, height = 540.dp)
+                //modifier = Modifier.fillMaxSize() не работает почему-то
+            )
+        }
+
+        Column (
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(top = 50.dp)
+        ){
+            Image(
+                painter = painterResource(id = R.drawable.marvel_logo),
+                contentDescription = "Marvel studios",
+                modifier = Modifier.size(width = 192.dp, height = 41.dp)
+            )
+            Spacer(modifier = Modifier.size(width = 1.dp, height = 25.dp))
+            Text(
+                text = "Choose your hero",
+                fontFamily = interFamily,
+                fontWeight = FontWeight.ExtraBold,
+                fontSize = 28.sp,
+                color = MaterialTheme.colorScheme.onSecondary
+            )
+            Spacer(modifier = Modifier.size(1.dp, 40.dp))
+
+            LazyRow(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .nestedScroll(connection = nestedScrollConnection),
+                contentPadding = PaddingValues(horizontal = 52.dp),//30
+                horizontalArrangement = Arrangement.spacedBy(48.dp),
+                state = lazyListState,
+                flingBehavior = snapBehavior
+            ){
+                items(heroValues){ hero ->
+                    HeroCard(hero, onHeroImageTaped)
+                }
+            }
+
+        }
     }
 }
 
