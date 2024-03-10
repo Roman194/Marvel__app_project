@@ -1,4 +1,4 @@
-package com.example.marvel_app_project.ui
+package com.example.marvel_app_project.ui.pages
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -20,14 +20,14 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.marvel_app_project.R
 import com.example.marvel_app_project.data.Heroes
+import com.example.marvel_app_project.ui.components.SingleHeroTextField
+import com.example.marvel_app_project.ui.theme.Sizes
 import com.example.marvel_app_project.ui.theme.Spaces
 import com.example.marvel_app_project.ui.theme.interFamily
-import com.example.marvel_app_project.ui.theme.Sizes
 
 
 @Composable
@@ -60,38 +60,7 @@ fun SingleHeroScreen(hero: Heroes, navigateUp: () -> Unit){
                     contentDescription = stringResource(R.string.back_button)
                 )
             }
-            Column(
-                horizontalAlignment = AbsoluteAlignment.Left,
-                verticalArrangement = Arrangement.Bottom,
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(
-                        start = Spaces.singleHeroTextColumn.start,
-                        bottom = Spaces.singleHeroTextColumn.bottom,
-                        end = Spaces.singleHeroTextColumn.end
-                    )
-            ) {
-                Text(
-                    text = hero.name,
-                    fontFamily = interFamily,
-                    fontWeight = FontWeight.ExtraBold,
-                    fontSize = Sizes.fontSizes.heroNameInSingleScreen,
-                    color = MaterialTheme.colorScheme.onSecondary
-                )
-                Spacer(
-                    modifier = Modifier.size(
-                        width = Spaces.spacer.standartWidth,
-                        height = Spaces.spacer.standartHeight
-                    )
-                )
-                Text(
-                    text = hero.description,
-                    fontFamily = interFamily,
-                    fontWeight = FontWeight.Bold,
-                    fontSize = Sizes.fontSizes.heroDescription,
-                    color = MaterialTheme.colorScheme.onSecondary
-                )
-            }
+            SingleHeroTextField(hero = hero)
 
         }
     }

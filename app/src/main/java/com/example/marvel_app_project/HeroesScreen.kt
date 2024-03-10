@@ -8,8 +8,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.marvel_app_project.data.Heroes
-import com.example.marvel_app_project.ui.ChooseHeroScreen
-import com.example.marvel_app_project.ui.SingleHeroScreen
+import com.example.marvel_app_project.ui.pages.ChooseHeroScreen
+import com.example.marvel_app_project.ui.pages.SingleHeroScreen
 
 enum class HeroesScreen {
     Start,

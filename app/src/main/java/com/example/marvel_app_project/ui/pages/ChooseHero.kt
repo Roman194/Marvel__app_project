@@ -1,4 +1,4 @@
-package com.example.marvel_app_project.ui
+package com.example.marvel_app_project.ui.pages
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
@@ -30,14 +30,15 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.example.marvel_app_project.R
 import com.example.marvel_app_project.assets.SampleData
 import com.example.marvel_app_project.data.Heroes
+import com.example.marvel_app_project.ui.components.ChooseHeroHeader
+import com.example.marvel_app_project.ui.components.HeroCard
 import com.example.marvel_app_project.ui.theme.Marvel_app_projectTheme
-import com.example.marvel_app_project.ui.theme.interFamily
 import com.example.marvel_app_project.ui.theme.Sizes
 import com.example.marvel_app_project.ui.theme.Spaces
+import com.example.marvel_app_project.ui.theme.interFamily
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
@@ -96,33 +97,7 @@ fun ChooseHeroScreen(onHeroImageTaped:(Heroes) -> Unit) {
                     top = Spaces.chooseHeroColumn
                 )
         ){
-            Image(
-                painter = painterResource(id = R.drawable.marvel_logo),
-                contentDescription = stringResource(id = R.string.marvel),
-                modifier = Modifier.size(
-                    width = Sizes.marvelLogo.width,
-                    height = Sizes.marvelLogo.height
-                )
-            )
-            Spacer(
-                modifier = Modifier.size(
-                    width = Spaces.spacer.standartWidth,
-                    height = Spaces.spacer.extendedHeight
-                )
-            )
-            Text(
-                text = stringResource(id = R.string.choose_hero),
-                fontFamily = interFamily,
-                fontWeight = FontWeight.ExtraBold,
-                fontSize = Sizes.fontSizes.underLogoText,
-                color = MaterialTheme.colorScheme.onSecondary
-            )
-            Spacer(
-                modifier = Modifier.size(
-                    width = Spaces.spacer.standartWidth,
-                    height = Spaces.spacer.theMostExtendedHeight
-                )
-            )
+            ChooseHeroHeader()
 
             LazyRow(
                 modifier = Modifier
@@ -150,7 +125,6 @@ fun ChooseHeroScreen(onHeroImageTaped:(Heroes) -> Unit) {
         }
     }
 }
-
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {

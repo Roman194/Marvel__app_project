@@ -1,4 +1,4 @@
-package com.example.marvel_app_project.ui
+package com.example.marvel_app_project.ui.components
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -15,20 +15,17 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
-
 import coil.request.ImageRequest
 import com.example.marvel_app_project.R
 import com.example.marvel_app_project.data.Heroes
 import com.example.marvel_app_project.ui.theme.Shapes
-import com.example.marvel_app_project.ui.theme.interFamily
 import com.example.marvel_app_project.ui.theme.Sizes
 import com.example.marvel_app_project.ui.theme.Spaces
+import com.example.marvel_app_project.ui.theme.interFamily
 
 @Composable
 fun HeroCard(hero: Heroes, onHeroImageTaped:(Heroes) -> Unit){
-
     Box(
         modifier = Modifier.clickable{ onHeroImageTaped(hero)}
     ){
