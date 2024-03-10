@@ -1,4 +1,4 @@
-package com.example.marvel_app_project.data
+package com.example.marvel_app_project.models
 
 data class Heroes(
     val name: String,

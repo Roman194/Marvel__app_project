@@ -7,7 +7,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.marvel_app_project.data.Heroes
+import com.example.marvel_app_project.models.Heroes
 import com.example.marvel_app_project.ui.pages.ChooseHeroScreen
 import com.example.marvel_app_project.ui.pages.SingleHeroScreen
 
@@ -17,7 +17,7 @@ enum class HeroesScreen {
 }
 
 @Composable
-fun HeroesApp(navController: NavHostController = rememberNavController()){
+fun AppNavGraph(navController: NavHostController = rememberNavController()){
 
     val heroesState = remember {
         mutableStateOf(
