@@ -8,7 +8,6 @@ gen/
 Thumbs.db
 *.iml
 .gradle
-gradle
 /local.properties
 /.idea
 .DS_Store

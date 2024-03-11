@@ -7,6 +7,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.marvel_app_project.assets.SampleData
 import com.example.marvel_app_project.models.Heroes
 import com.example.marvel_app_project.ui.pages.ChooseHeroScreen
 import com.example.marvel_app_project.ui.pages.SingleHeroScreen
@@ -21,7 +22,7 @@ fun AppNavGraph(navController: NavHostController = rememberNavController()){
 
     val heroesState = remember {
         mutableStateOf(
-            Heroes("Info","Info description","", R.color.white)
+            SampleData.heroesSample[0]
         )
     }
 
@@ -31,8 +32,8 @@ fun AppNavGraph(navController: NavHostController = rememberNavController()){
     ) {
         composable(route = HeroesScreen.Start.name){
             ChooseHeroScreen(
-                onHeroImageTaped = {hero ->
-                    heroesState.value = hero
+                onHeroImageTaped = {heroName ->
+                    heroesState.value = findHeroObject(name = heroName)
                     navController.navigate(HeroesScreen.SingleHero.name)
                 }
             )

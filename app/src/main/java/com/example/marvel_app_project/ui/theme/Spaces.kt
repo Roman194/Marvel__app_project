@@ -4,7 +4,7 @@ import androidx.compose.ui.unit.dp
 
 object Spaces {
     val singleHeroColumn = 45.dp
-    val shadowElevation = 20.dp
+    val shadowElevation = 6.dp
     val chooseHeroColumn = 50.dp
     object singleHeroTextColumn{
         val start = 15.dp
@@ -18,7 +18,7 @@ object Spaces {
     }
     object chooseHeroLazyRow{
         val horizontalPadding = 52.dp
-        val horizontalArrangement = 48.dp
+        val horizontalArrangement = 38.dp
     }
     object spacer{
         val standartWidth = 1.dp

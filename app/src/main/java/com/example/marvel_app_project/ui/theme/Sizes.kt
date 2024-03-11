@@ -5,7 +5,7 @@ import androidx.compose.ui.unit.sp
 
 object Sizes{
     object heroCard{
-        val width = 300.dp
+        val width = 310.dp
         val height = 550.dp
     }
     object rectanglesSizes{

@@ -25,9 +25,16 @@ import com.example.marvel_app_project.ui.theme.Spaces
 import com.example.marvel_app_project.ui.theme.interFamily
 
 @Composable
-fun HeroCard(hero: Heroes, onHeroImageTaped:(Heroes) -> Unit){
+fun HeroCard(hero: Heroes, onHeroImageTaped:(String) -> Unit){
     Box(
-        modifier = Modifier.clickable{ onHeroImageTaped(hero)}
+        modifier = Modifier
+            .clickable{ onHeroImageTaped(hero.name)}
+            .shadow(
+                elevation = Spaces.shadowElevation,
+                shape = Shapes.medium,
+                ambientColor = MaterialTheme.colorScheme.onBackground,
+                spotColor = MaterialTheme.colorScheme.onBackground
+            )
     ){
         AsyncImage(
             model = ImageRequest
@@ -44,12 +51,6 @@ fun HeroCard(hero: Heroes, onHeroImageTaped:(Heroes) -> Unit){
                     height = Sizes.heroCard.height
                     )
                 .clip(Shapes.medium)
-                .shadow(//why shadow doesn't work at all?
-                    elevation = Spaces.shadowElevation,
-                    shape = Shapes.medium,
-                    ambientColor = MaterialTheme.colorScheme.onBackground,
-                    spotColor = MaterialTheme.colorScheme.onBackground
-                )
         )
         Text(
             text = hero.name,

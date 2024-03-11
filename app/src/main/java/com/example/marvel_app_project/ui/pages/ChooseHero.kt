@@ -36,7 +36,7 @@ import com.example.marvel_app_project.ui.theme.Spaces
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun ChooseHeroScreen(onHeroImageTaped:(Heroes) -> Unit) {
+fun ChooseHeroScreen(onHeroImageTaped:(String) -> Unit) {
 
     val heroValues = SampleData.heroesSample
     val lazyListState = rememberLazyListState()
