@@ -27,7 +27,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.marvel_app_project.R
 import com.example.marvel_app_project.assets.SampleData
-import com.example.marvel_app_project.models.Heroes
 import com.example.marvel_app_project.ui.components.ChooseHeroHeader
 import com.example.marvel_app_project.ui.components.HeroCard
 import com.example.marvel_app_project.ui.theme.Marvel_app_projectTheme

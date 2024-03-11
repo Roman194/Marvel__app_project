@@ -8,7 +8,6 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.marvel_app_project.assets.SampleData
-import com.example.marvel_app_project.models.Heroes
 import com.example.marvel_app_project.ui.pages.ChooseHeroScreen
 import com.example.marvel_app_project.ui.pages.SingleHeroScreen
 
