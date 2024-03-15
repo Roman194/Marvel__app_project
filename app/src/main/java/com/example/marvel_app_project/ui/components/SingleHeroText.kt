@@ -12,13 +12,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.AbsoluteAlignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
-import com.example.marvel_app_project.models.Heroes
+import com.example.marvel_app_project.models.HeroUI
 import com.example.marvel_app_project.ui.theme.Sizes
 import com.example.marvel_app_project.ui.theme.Spaces
 import com.example.marvel_app_project.ui.theme.interFamily
 
 @Composable
-fun SingleHeroTextField(hero: Heroes){
+fun SingleHeroTextField(hero: HeroUI){
     Column(
         horizontalAlignment = AbsoluteAlignment.Left,
         verticalArrangement = Arrangement.Bottom,

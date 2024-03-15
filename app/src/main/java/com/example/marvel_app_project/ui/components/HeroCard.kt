@@ -18,14 +18,14 @@ import androidx.compose.ui.text.font.FontWeight
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.marvel_app_project.R
-import com.example.marvel_app_project.models.Heroes
+import com.example.marvel_app_project.models.HeroUI
 import com.example.marvel_app_project.ui.theme.Shapes
 import com.example.marvel_app_project.ui.theme.Sizes
 import com.example.marvel_app_project.ui.theme.Spaces
 import com.example.marvel_app_project.ui.theme.interFamily
 
 @Composable
-fun HeroCard(hero: Heroes, onHeroImageTaped:(String) -> Unit){
+fun HeroCard(hero: HeroUI, onHeroImageTaped:(String) -> Unit){
     Box(
         modifier = Modifier
             .clickable{ onHeroImageTaped(hero.name)}

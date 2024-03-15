@@ -21,9 +21,10 @@ fun AppNavGraph(navController: NavHostController = rememberNavController()){
 
     val heroesState = remember {
         mutableStateOf(
-            SampleData.heroesSample[0]
+            SampleData.heroUISamples[0]
         )
     }
+    val heroValues = SampleData.heroUISamples
 
     NavHost(
         navController = navController,
@@ -32,7 +33,8 @@ fun AppNavGraph(navController: NavHostController = rememberNavController()){
         composable(route = HeroesScreen.Start.name){
             ChooseHeroScreen(
                 onHeroImageTaped = {heroName ->
-                    heroesState.value = findHeroObject(name = heroName)
+                    heroesState.value =
+                        heroValues.find { it.name == heroName }!!
                     navController.navigate(HeroesScreen.SingleHero.name)
                 }
             )
