@@ -1,7 +1,6 @@
 package com.example.marvel_app_project.assets
 
 import androidx.compose.ui.graphics.Color
-import com.example.marvel_app_project.R
 import com.example.marvel_app_project.models.HeroUI
 
 object SampleData{
