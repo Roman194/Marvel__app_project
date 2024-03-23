@@ -1,13 +1,13 @@
-package com.example.marvel_app_project
+package com.example.marvel_app_project.ui
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.marvel_app_project.assets.SampleData
 import com.example.marvel_app_project.ui.pages.ChooseHeroScreen
 import com.example.marvel_app_project.ui.pages.SingleHeroScreen
 
@@ -19,12 +19,8 @@ enum class HeroesScreen {
 @Composable
 fun AppNavGraph(navController: NavHostController = rememberNavController()){
 
-    val heroesState = remember {
-        mutableStateOf(
-            SampleData.heroUISamples[0]
-        )
-    }
-    val heroValues = SampleData.heroUISamples
+    val heroViewModel: HeroViewModel = viewModel()
+    val singleHeroValue by heroViewModel.singleHeroUiState.collectAsState()
 
     NavHost(
         navController = navController,
@@ -33,15 +29,14 @@ fun AppNavGraph(navController: NavHostController = rememberNavController()){
         composable(route = HeroesScreen.Start.name){
             ChooseHeroScreen(
                 onHeroImageTaped = {heroName ->
-                    heroesState.value =
-                        heroValues.find { it.name == heroName }!!
+                    heroViewModel.updateHeroForSingleHero(heroName = heroName)
                     navController.navigate(HeroesScreen.SingleHero.name)
                 }
             )
         }
         composable(route = HeroesScreen.SingleHero.name){
             SingleHeroScreen(
-                hero = heroesState.value,
+                hero = singleHeroValue,
                 navigateUp = {navController.navigateUp()}
             )
         }

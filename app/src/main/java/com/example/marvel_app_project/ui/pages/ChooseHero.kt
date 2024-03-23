@@ -15,6 +15,8 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -22,7 +24,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.marvel_app_project.assets.SampleData
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.marvel_app_project.ui.HeroViewModel
 import com.example.marvel_app_project.ui.components.ChooseHeroHeader
 import com.example.marvel_app_project.ui.components.HeroCard
 import com.example.marvel_app_project.ui.theme.Marvel_app_projectTheme
@@ -31,9 +34,11 @@ import com.example.marvel_app_project.ui.theme.Spaces
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun ChooseHeroScreen(onHeroImageTaped:(String) -> Unit) {
+fun ChooseHeroScreen(
+    heroViewModel: HeroViewModel = viewModel(),
+    onHeroImageTaped:(String) -> Unit) {
 
-    val heroValues = SampleData.heroUISamples
+    val heroValues by heroViewModel.heroUIState.collectAsState()
     val lazyListState = rememberLazyListState()
     val snapBehavior = rememberSnapFlingBehavior(lazyListState = lazyListState)
     val rectangleColorState = remember {
