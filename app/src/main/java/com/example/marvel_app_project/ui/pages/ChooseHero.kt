@@ -14,6 +14,8 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -26,17 +28,33 @@ import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.marvel_app_project.ui.HeroViewModel
+import com.example.marvel_app_project.ui.HeroesUiState
 import com.example.marvel_app_project.ui.components.ChooseHeroHeader
 import com.example.marvel_app_project.ui.components.HeroCard
 import com.example.marvel_app_project.ui.theme.Marvel_app_projectTheme
 import com.example.marvel_app_project.ui.theme.Sizes
 import com.example.marvel_app_project.ui.theme.Spaces
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun ChooseHeroScreen(
-    heroViewModel: HeroViewModel = viewModel(),
+    heroesUiState: HeroesUiState,
     onHeroImageTaped:(String) -> Unit) {
+
+
+    when(heroesUiState){
+        is HeroesUiState.Loading -> ChooseHeroLoading()
+        is HeroesUiState.Error -> ChooseHeroError()
+        is HeroesUiState.Success -> ChooseHeroResult(listResult = heroesUiState.listResult, onHeroImageTaped = onHeroImageTaped)
+    }
+
+
+}
+@OptIn(ExperimentalFoundationApi::class)
+@Composable
+fun ChooseHeroResult(
+    heroViewModel: HeroViewModel = viewModel(),
+    listResult: String,
+    onHeroImageTaped:(String) -> Unit){
 
     val heroValues by heroViewModel.heroUIState.collectAsState()
     val lazyListState = rememberLazyListState()
@@ -61,6 +79,8 @@ fun ChooseHeroScreen(
             }
         }
     }
+
+    Text(text=listResult, color = MaterialTheme.colorScheme.onSecondary)
 
     Box (modifier = Modifier.fillMaxSize()){
         Column (
@@ -118,10 +138,21 @@ fun ChooseHeroScreen(
         }
     }
 }
+
+@Composable
+fun ChooseHeroLoading(){
+    Text(text = "loading...")
+}
+
+@Composable
+fun ChooseHeroError(){
+    Text(text = "Error: can't reach data from server")
+}
+
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
     Marvel_app_projectTheme {
-        ChooseHeroScreen(onHeroImageTaped = {})
+        ChooseHeroResult(listResult = "ttty", onHeroImageTaped = {})
     }
 }
