@@ -27,6 +27,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.marvel_app_project.assets.SampleData
+import com.example.marvel_app_project.models.HeroUI
 import com.example.marvel_app_project.ui.HeroViewModel
 import com.example.marvel_app_project.ui.HeroesUiState
 import com.example.marvel_app_project.ui.components.ChooseHeroHeader
@@ -43,8 +45,8 @@ fun ChooseHeroScreen(
 
     when(heroesUiState){
         is HeroesUiState.Loading -> ChooseHeroLoading()
-        is HeroesUiState.Error -> ChooseHeroError()
-        is HeroesUiState.Success -> ChooseHeroResult(listResult = heroesUiState.listResult, onHeroImageTaped = onHeroImageTaped)
+        is HeroesUiState.Error -> ChooseHeroError(heroValues = heroesUiState.reserveHeroUiValues, onHeroImageTaped = onHeroImageTaped)
+        is HeroesUiState.Success -> ChooseHeroResult(heroValues = heroesUiState.heroUIValues, onHeroImageTaped = onHeroImageTaped)
     }
 
 
@@ -52,11 +54,11 @@ fun ChooseHeroScreen(
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun ChooseHeroResult(
-    heroViewModel: HeroViewModel = viewModel(),
-    listResult: String,
+    //heroViewModel: HeroViewModel = viewModel(),
+    heroValues: List<HeroUI>,
     onHeroImageTaped:(String) -> Unit){
 
-    val heroValues by heroViewModel.heroUIState.collectAsState()
+    //val heroValues by heroViewModel.heroUIState.collectAsState()
     val lazyListState = rememberLazyListState()
     val snapBehavior = rememberSnapFlingBehavior(lazyListState = lazyListState)
     val rectangleColorState = remember {
@@ -80,7 +82,7 @@ fun ChooseHeroResult(
         }
     }
 
-    Text(text=listResult, color = MaterialTheme.colorScheme.onSecondary)
+    //Text(text=listResult, color = MaterialTheme.colorScheme.onSecondary)
 
     Box (modifier = Modifier.fillMaxSize()){
         Column (
@@ -145,14 +147,19 @@ fun ChooseHeroLoading(){
 }
 
 @Composable
-fun ChooseHeroError(){
+fun ChooseHeroError(heroValues: List<HeroUI>, onHeroImageTaped:(String) -> Unit){
+
+
+
     Text(text = "Error: can't reach data from server")
+
+    ChooseHeroResult(heroValues = heroValues, onHeroImageTaped = {onHeroImageTaped})
 }
 
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
     Marvel_app_projectTheme {
-        ChooseHeroResult(listResult = "ttty", onHeroImageTaped = {})
+        ChooseHeroResult(heroValues = SampleData.heroUISamples, onHeroImageTaped = {})
     }
 }

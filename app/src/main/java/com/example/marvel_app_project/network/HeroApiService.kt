@@ -1,7 +1,10 @@
 package com.example.marvel_app_project.network
 
 import com.example.marvel_app_project.BuildConfig
+import com.example.marvel_app_project.models.MoshiResponse
+import com.squareup.moshi.Moshi
 import retrofit2.Retrofit
+import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -16,7 +19,7 @@ private const val BASE_URL = "http://gateway.marvel.com/v1/public/"
 class ParceConstants{
     companion object{
         val ts = Timestamp(System.currentTimeMillis()).time.toString()
-        const val limit = "100"
+        const val limit = "10"
 
         const val API_KEY = BuildConfig.API_KEY
         const val PRIVATE_API_KEY = BuildConfig.PRIVATE_API_KEY
@@ -29,9 +32,14 @@ class ParceConstants{
     }
 }
 
+val moshi = Moshi.Builder()
+    .add(com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory())
+    .build()
 
 private val retrofit = Retrofit.Builder()
     .addConverterFactory(ScalarsConverterFactory.create())
+    .addConverterFactory(
+        MoshiConverterFactory.create(moshi))
     .baseUrl(BASE_URL)
     .build()
 
@@ -42,7 +50,7 @@ interface HeroApiService{
         @Query("ts") ts: String = ParceConstants.ts,
         @Query("hash") hash: String = ParceConstants.hash(),
         @Query("limit") limit: String = ParceConstants.limit
-    ):String
+    ):MoshiResponse
 
 }
 
