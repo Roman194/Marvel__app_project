@@ -58,7 +58,7 @@ fun ChooseHeroResult(
     heroValues: List<HeroUI>,
     onHeroImageTaped:(String) -> Unit){
 
-    //val heroValues by heroViewModel.heroUIState.collectAsState()
+    //val heroValues by heroViewModel.reserveHeroUIState.collectAsState()
     val lazyListState = rememberLazyListState()
     val snapBehavior = rememberSnapFlingBehavior(lazyListState = lazyListState)
     val rectangleColorState = remember {
@@ -82,7 +82,7 @@ fun ChooseHeroResult(
         }
     }
 
-    //Text(text=listResult, color = MaterialTheme.colorScheme.onSecondary)
+    //Text(text=heroesValues, color = MaterialTheme.colorScheme.onSecondary)
 
     Box (modifier = Modifier.fillMaxSize()){
         Column (
@@ -148,8 +148,6 @@ fun ChooseHeroLoading(){
 
 @Composable
 fun ChooseHeroError(heroValues: List<HeroUI>, onHeroImageTaped:(String) -> Unit){
-
-
 
     Text(text = "Error: can't reach data from server")
 

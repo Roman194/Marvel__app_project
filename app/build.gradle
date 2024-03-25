@@ -20,27 +20,6 @@ android {
             useSupportLibrary true
         }
 
-//        val keystoreFile = project.rootProject.file("local.properties")
-//        val properties = Properties()
-//        properties.load(keystoreFile.inputStream())
-//
-//        val apiKey = properties.getProperty("MY_API_KEY") ?: ""
-//        val privateApiKey = properties.getProperty("PRIVATE_API_KEY") ?: ""
-//
-//        buildConfigField(
-//                type = "String",
-//                name = "MY_API_KEY",
-//                value = "\"jhgg\""
-//        )
-//
-//        buildConfigField(
-//                type = "String",
-//                name = "PRIVATE_API_KEY",
-//                value = privateApiKey
-//        )
-
-
-
 
     }
 
@@ -83,6 +62,10 @@ dependencies {
     // Retrofit
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-scalars:2.9.0")
+
+    //OkHTTP
+    implementation("com.squareup.okhttp3:okhttp:4.11.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
 
     //moshi
     implementation ("com.squareup.moshi:moshi:1.15.0")

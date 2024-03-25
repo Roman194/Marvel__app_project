@@ -3,6 +3,9 @@ package com.example.marvel_app_project.network
 import com.example.marvel_app_project.BuildConfig
 import com.example.marvel_app_project.models.MoshiResponse
 import com.squareup.moshi.Moshi
+import okhttp3.Interceptor
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
@@ -32,11 +35,40 @@ class ParceConstants{
     }
 }
 
+val authInterceptor = Interceptor{chain ->
+    val originalRequest = chain.request()
+
+    val newHttpUrl = originalRequest.url.newBuilder()
+        .addQueryParameter("apikey", ParceConstants.API_KEY)
+        .addQueryParameter("ts", ParceConstants.ts)
+        .addQueryParameter("hash", ParceConstants.hash())
+        .addQueryParameter("limit", ParceConstants.limit)
+        .build()
+
+    val newRequest = originalRequest.newBuilder()
+        .url(newHttpUrl)
+        .build()
+
+    chain.proceed(newRequest)
+}
+
+val loggingInterceptor = HttpLoggingInterceptor()
+    .apply {
+        setLevel(HttpLoggingInterceptor.Level.BASIC)
+    }
+
+val client = OkHttpClient.Builder()
+    .addNetworkInterceptor(loggingInterceptor)
+    .addNetworkInterceptor(authInterceptor)
+    .build()
+
+
 val moshi = Moshi.Builder()
     .add(com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory())
     .build()
 
 private val retrofit = Retrofit.Builder()
+    .client(client)
     .addConverterFactory(ScalarsConverterFactory.create())
     .addConverterFactory(
         MoshiConverterFactory.create(moshi))
@@ -46,10 +78,6 @@ private val retrofit = Retrofit.Builder()
 interface HeroApiService{
     @GET("characters")
     suspend fun getMarvelCharacters(
-        @Query("apikey") apiKey: String = ParceConstants.API_KEY,
-        @Query("ts") ts: String = ParceConstants.ts,
-        @Query("hash") hash: String = ParceConstants.hash(),
-        @Query("limit") limit: String = ParceConstants.limit
     ):MoshiResponse
 
 }
