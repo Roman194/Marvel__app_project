@@ -1,4 +1,4 @@
-package com.example.marvel_app_project.ui.pages
+package com.example.marvel_app_project.ui.pages.SingleHero
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -10,6 +10,7 @@ import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
@@ -25,7 +26,20 @@ import com.example.marvel_app_project.ui.theme.Spaces
 
 
 @Composable
-fun SingleHeroScreen(hero: HeroUI, navigateUp: () -> Unit){
+fun SingleHeroScreen(singleHeroUiState: SingleHeroUiState, navigateUp: () -> Unit){
+
+    when(singleHeroUiState){
+        is SingleHeroUiState.Loading -> SingleHeroLoading()
+        is SingleHeroUiState.Success -> SingleHeroResult(hero = singleHeroUiState.singleHeroUIValue, navigateUp = navigateUp)
+        is SingleHeroUiState.Error -> SingleHeroError(hero = singleHeroUiState.reserveSingleHeroUiValue, navigateUp = navigateUp)
+    }
+
+
+
+}
+
+@Composable
+fun SingleHeroResult(hero: HeroUI, navigateUp: () -> Unit){
     Box (modifier = Modifier.fillMaxSize()){
         AsyncImage(
             model = ImageRequest
@@ -58,4 +72,17 @@ fun SingleHeroScreen(hero: HeroUI, navigateUp: () -> Unit){
 
         }
     }
+}
+
+@Composable
+fun SingleHeroError(hero: HeroUI, navigateUp: () -> Unit){
+    Column {
+        Text(text = "Can't reach a single hero", color = MaterialTheme.colorScheme.onSecondary)
+        SingleHeroResult(hero = hero, navigateUp = navigateUp)
+    }
+}
+
+@Composable
+fun SingleHeroLoading(){
+    Text(text = "Loading...", color = MaterialTheme.colorScheme.onSecondary)
 }

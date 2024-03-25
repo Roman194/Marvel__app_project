@@ -1,4 +1,4 @@
-package com.example.marvel_app_project.ui
+package com.example.marvel_app_project.ui.pages.ChooseHero
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -17,20 +17,17 @@ import kotlinx.coroutines.launch
 import retrofit2.HttpException
 import java.io.IOException
 
-sealed interface HeroesUiState{
-    data class Success(val heroUIValues: List<HeroUI>): HeroesUiState
-    data class Error(val reserveHeroUiValues: List<HeroUI>): HeroesUiState
-    object Loading: HeroesUiState
+sealed interface ChooseHeroesUiState{
+    data class Success(val heroUIValues: List<HeroUI>): ChooseHeroesUiState
+    data class Error(val reserveHeroUiValues: List<HeroUI>): ChooseHeroesUiState
+    object Loading: ChooseHeroesUiState
 }
-class HeroViewModel: ViewModel() {
+class ChooseHeroViewModel: ViewModel() {
 
     private var _reserveHeroUIState = MutableStateFlow(listOf( HeroUI()))
     val reserveHeroUIState: StateFlow<List<HeroUI>> = _reserveHeroUIState.asStateFlow()
 
-    private var _singleHeroUiState = MutableStateFlow(HeroUI())
-    val singleHeroUiState: StateFlow<HeroUI> = _singleHeroUiState.asStateFlow()
-
-    var heroesUiState: HeroesUiState by mutableStateOf(HeroesUiState.Loading)
+    var heroesUiState: ChooseHeroesUiState by mutableStateOf(ChooseHeroesUiState.Loading)
 
     init {
         getHeroesInfo()
@@ -42,8 +39,8 @@ class HeroViewModel: ViewModel() {
         viewModelScope.launch {
             heroesUiState = try{
                 val response = HeroApi.heroesRetrofitService.getMarvelCharacters()
-                HeroesUiState.Success(
-                    response.data.result.mapIndexed{index, heroMoshi ->
+                ChooseHeroesUiState.Success(
+                    response.data.result.mapIndexed { index, heroMoshi ->
                         heroMoshi.toUI(
                             toDetermineHeroNameVisiblePart(heroMoshi.name),
                             toDetermineBackgroundColor(index)
@@ -51,9 +48,9 @@ class HeroViewModel: ViewModel() {
                     }
                 )
             }catch (e: IOException){
-                HeroesUiState.Error(_reserveHeroUIState.value)
+                ChooseHeroesUiState.Error(_reserveHeroUIState.value)
             }catch (e: HttpException){
-                HeroesUiState.Error(_reserveHeroUIState.value)
+                ChooseHeroesUiState.Error(_reserveHeroUIState.value)
             }
         }
 
@@ -89,10 +86,5 @@ class HeroViewModel: ViewModel() {
         return inputHeroName
     }
 
-    fun updateHeroForSingleHero(heroName: String){
-        val currentHeroValues = _reserveHeroUIState.value
-        _singleHeroUiState.value = currentHeroValues.find { it.name == heroName }!!
-
-    }
 
 }

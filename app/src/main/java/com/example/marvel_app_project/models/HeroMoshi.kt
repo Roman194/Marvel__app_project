@@ -11,10 +11,21 @@ data class HeroMoshi(
 )
 
 
-fun HeroMoshi.toUI(heroName: String, backgroundColor: Color) =
+fun HeroMoshi.toUI(
+    heroName: String,
+    backgroundColor: Color
+) =
     HeroUI(
-        name = heroName,
-        description = description,
+        id = id.toInt(),
+        name = if(id.toInt() < 100) name else heroName,
         image = thumbnail.path + "." +  thumbnail.extension,
         backgroundColor = backgroundColor
+    )
+
+fun HeroMoshi.toSingleUI() =
+    HeroUI(
+        id = id.toInt(),
+        name = name,
+        description = description,
+        image = thumbnail.path + "." +  thumbnail.extension
     )

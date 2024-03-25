@@ -28,10 +28,10 @@ import com.example.marvel_app_project.ui.theme.Spaces
 import com.example.marvel_app_project.ui.theme.interFamily
 
 @Composable
-fun HeroCard(hero: HeroUI, onHeroImageTaped:(String) -> Unit){
+fun HeroCard(hero: HeroUI, onHeroImageTaped:(Int, String) -> Unit){
     Box(
         modifier = Modifier
-            .clickable{ onHeroImageTaped(hero.name)}
+            .clickable{ onHeroImageTaped(hero.id, hero.name)}
             .shadow(
                 elevation = Spaces.shadowElevation,
                 shape = Shapes.medium,

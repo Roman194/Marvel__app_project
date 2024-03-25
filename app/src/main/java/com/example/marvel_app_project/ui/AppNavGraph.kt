@@ -1,15 +1,15 @@
 package com.example.marvel_app_project.ui
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.marvel_app_project.ui.pages.ChooseHeroScreen
-import com.example.marvel_app_project.ui.pages.SingleHeroScreen
+import com.example.marvel_app_project.ui.pages.ChooseHero.ChooseHeroScreen
+import com.example.marvel_app_project.ui.pages.ChooseHero.ChooseHeroViewModel
+import com.example.marvel_app_project.ui.pages.SingleHero.SingleHeroScreen
+import com.example.marvel_app_project.ui.pages.SingleHero.SingleHeroViewModel
 
 enum class HeroesScreen {
     Start,
@@ -19,8 +19,10 @@ enum class HeroesScreen {
 @Composable
 fun AppNavGraph(navController: NavHostController = rememberNavController()){
 
-    val heroViewModel: HeroViewModel = viewModel()
-    val singleHeroValue by heroViewModel.singleHeroUiState.collectAsState()
+    val heroViewModel: ChooseHeroViewModel = viewModel()
+    val singleHeroViewModel: SingleHeroViewModel = viewModel()
+
+    //val singleHeroValue by singleHeroViewModel.singleHeroUiState.collectAsState()
 
     NavHost(
         navController = navController,
@@ -29,15 +31,15 @@ fun AppNavGraph(navController: NavHostController = rememberNavController()){
         composable(route = HeroesScreen.Start.name){
             ChooseHeroScreen(
                 heroesUiState = heroViewModel.heroesUiState,
-                onHeroImageTaped = {heroName ->
-                    heroViewModel.updateHeroForSingleHero(heroName = heroName)
+                onHeroImageTaped = {id, heroName ->
+                    singleHeroViewModel.updateHeroForSingleHero(id = id, heroName = heroName)
                     navController.navigate(HeroesScreen.SingleHero.name)
                 }
             )
         }
         composable(route = HeroesScreen.SingleHero.name){
             SingleHeroScreen(
-                hero = singleHeroValue,
+                singleHeroUiState = singleHeroViewModel.singleHeroUIState,
                 navigateUp = {navController.navigateUp()}
             )
         }

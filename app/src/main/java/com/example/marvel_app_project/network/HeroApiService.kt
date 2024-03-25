@@ -2,6 +2,7 @@ package com.example.marvel_app_project.network
 
 import com.example.marvel_app_project.BuildConfig
 import com.example.marvel_app_project.models.MoshiResponse
+import com.example.marvel_app_project.models.MoshiResponseData
 import com.squareup.moshi.Moshi
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -10,7 +11,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
 import retrofit2.http.GET
-import retrofit2.http.Query
+import retrofit2.http.Path
 import java.math.BigInteger
 import java.security.MessageDigest
 import java.sql.Timestamp
@@ -78,6 +79,11 @@ private val retrofit = Retrofit.Builder()
 interface HeroApiService{
     @GET("characters")
     suspend fun getMarvelCharacters(
+    ):MoshiResponse
+
+    @GET("characters/{characterId}")
+    suspend fun getSingleMarvelCharacter(
+        @Path("characterId") id: Int
     ):MoshiResponse
 
 }
