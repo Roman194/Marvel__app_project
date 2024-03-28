@@ -30,8 +30,15 @@ fun SingleHeroScreen(singleHeroUiState: SingleHeroUiState, navigateUp: () -> Uni
 
     when(singleHeroUiState){
         is SingleHeroUiState.Loading -> SingleHeroLoading()
-        is SingleHeroUiState.Success -> SingleHeroResult(hero = singleHeroUiState.singleHeroUIValue, navigateUp = navigateUp)
-        is SingleHeroUiState.Error -> SingleHeroError(hero = singleHeroUiState.reserveSingleHeroUiValue, navigateUp = navigateUp)
+        is SingleHeroUiState.Success -> SingleHeroResult(
+            hero = singleHeroUiState.singleHeroUIValue,
+            navigateUp = navigateUp
+        )
+        is SingleHeroUiState.Error -> SingleHeroError(
+            errorMessage = singleHeroUiState.errorMessage,
+            hero = singleHeroUiState.reserveSingleHeroUiValue,
+            navigateUp = navigateUp
+        )
     }
 
 
@@ -75,9 +82,9 @@ fun SingleHeroResult(hero: HeroUI, navigateUp: () -> Unit){
 }
 
 @Composable
-fun SingleHeroError(hero: HeroUI, navigateUp: () -> Unit){
+fun SingleHeroError(errorMessage: String, hero: HeroUI, navigateUp: () -> Unit){
     Column {
-        Text(text = "Can't reach a single hero", color = MaterialTheme.colorScheme.onSecondary)
+        Text(text = "$errorMessage Can't reach a single hero", color = MaterialTheme.colorScheme.onSecondary)
         SingleHeroResult(hero = hero, navigateUp = navigateUp)
     }
 }

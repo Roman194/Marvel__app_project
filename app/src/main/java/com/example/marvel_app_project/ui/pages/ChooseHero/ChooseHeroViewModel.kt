@@ -7,8 +7,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.marvel_app_project.assets.SampleData
+import com.example.marvel_app_project.models.ErrorResponse
 import com.example.marvel_app_project.models.HeroUI
+import com.example.marvel_app_project.models.toStringType
 import com.example.marvel_app_project.models.toUI
+import com.example.marvel_app_project.network.Either
 import com.example.marvel_app_project.network.HeroApi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -19,7 +22,7 @@ import java.io.IOException
 
 sealed interface ChooseHeroesUiState{
     data class Success(val heroUIValues: List<HeroUI>): ChooseHeroesUiState
-    data class Error(val reserveHeroUiValues: List<HeroUI>): ChooseHeroesUiState
+    data class Error(val errorMessage: String, val reserveHeroUiValues: List<HeroUI>): ChooseHeroesUiState
     object Loading: ChooseHeroesUiState
 }
 class ChooseHeroViewModel: ViewModel() {
@@ -33,27 +36,28 @@ class ChooseHeroViewModel: ViewModel() {
         getHeroesInfo()
     }
 
-    fun getHeroesInfo(){
+    fun getHeroesInfo() {
         _reserveHeroUIState.value = SampleData.heroUISamples
 
         viewModelScope.launch {
-            heroesUiState = try{
-                val response = HeroApi.heroesRetrofitService.getMarvelCharacters()
-                ChooseHeroesUiState.Success(
-                    response.data.result.mapIndexed { index, heroMoshi ->
-                        heroMoshi.toUI(
-                            toDetermineHeroNameVisiblePart(heroMoshi.name),
-                            toDetermineBackgroundColor(index)
-                        )
-                    }
-                )
-            }catch (e: IOException){
-                ChooseHeroesUiState.Error(_reserveHeroUIState.value)
-            }catch (e: HttpException){
-                ChooseHeroesUiState.Error(_reserveHeroUIState.value)
-            }
-        }
+            val response = HeroApi.heroesRetrofitService.getMarvelCharacters()
+            heroesUiState =
+                when (response) {
+                    is Either.Fail -> ChooseHeroesUiState.Error(
+                        errorMessage = response.value.toStringType(),
+                        reserveHeroUiValues = _reserveHeroUIState.value
+                    )
+                    is Either.Success -> ChooseHeroesUiState.Success(
+                        heroUIValues = response.value.data.result.mapIndexed { index, heroMoshi ->
+                            heroMoshi.toUI(
+                                toDetermineHeroNameVisiblePart(heroMoshi.name),
+                                toDetermineBackgroundColor(index)
+                            )
+                        }
+                    )
+                }
 
+        }
     }
 
     fun toDetermineBackgroundColor(index: Int): Color{
@@ -88,3 +92,4 @@ class ChooseHeroViewModel: ViewModel() {
 
 
 }
+

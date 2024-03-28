@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -36,8 +37,15 @@ fun ChooseHeroScreen(
 
     when(heroesUiState){
         is ChooseHeroesUiState.Loading -> ChooseHeroLoading()
-        is ChooseHeroesUiState.Error -> ChooseHeroError(heroValues = heroesUiState.reserveHeroUiValues, onHeroImageTaped = onHeroImageTaped)
-        is ChooseHeroesUiState.Success -> ChooseHeroResult(heroValues = heroesUiState.heroUIValues, onHeroImageTaped = onHeroImageTaped)
+        is ChooseHeroesUiState.Error -> ChooseHeroError(
+            errorMessage = heroesUiState.errorMessage,
+            heroValues = heroesUiState.reserveHeroUiValues,
+            onHeroImageTaped = onHeroImageTaped
+        )
+        is ChooseHeroesUiState.Success -> ChooseHeroResult(
+            heroValues = heroesUiState.heroUIValues,
+            onHeroImageTaped = onHeroImageTaped
+        )
     }
 
 
@@ -138,9 +146,9 @@ fun ChooseHeroLoading(){
 }
 
 @Composable
-fun ChooseHeroError(heroValues: List<HeroUI>, onHeroImageTaped:(Int, String) -> Unit){
+fun ChooseHeroError(errorMessage: String, heroValues: List<HeroUI>, onHeroImageTaped:(Int, String) -> Unit){
 
-    Text(text = "Error: can't reach data from server")
+    Text(text = "$errorMessage Can't reach data from server", color = MaterialTheme.colorScheme.onSecondary)
 
     ChooseHeroResult(heroValues = heroValues, onHeroImageTaped = onHeroImageTaped)
 }

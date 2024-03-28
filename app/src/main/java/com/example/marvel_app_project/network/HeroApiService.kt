@@ -1,6 +1,9 @@
 package com.example.marvel_app_project.network
 
+
+
 import com.example.marvel_app_project.BuildConfig
+import com.example.marvel_app_project.models.ErrorResponse
 import com.example.marvel_app_project.models.MoshiResponse
 import com.example.marvel_app_project.models.MoshiResponseData
 import com.squareup.moshi.Moshi
@@ -73,18 +76,20 @@ private val retrofit = Retrofit.Builder()
     .addConverterFactory(ScalarsConverterFactory.create())
     .addConverterFactory(
         MoshiConverterFactory.create(moshi))
+    .addCallAdapterFactory(EitherCallAdapterFactory())
     .baseUrl(BASE_URL)
     .build()
+
 
 interface HeroApiService{
     @GET("characters")
     suspend fun getMarvelCharacters(
-    ):MoshiResponse
+    ):Either<ErrorResponse, MoshiResponse>
 
     @GET("characters/{characterId}")
     suspend fun getSingleMarvelCharacter(
         @Path("characterId") id: Int
-    ):MoshiResponse
+    ):Either<ErrorResponse, MoshiResponse>
 
 }
 
