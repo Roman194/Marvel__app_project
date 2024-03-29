@@ -1,10 +1,10 @@
-package com.example.marvel_app_project.models
+package com.example.marvel_app_project.models.DataLayer
 
 data class ErrorResponse(
     val errorNumber: Int
 ){
     companion object{
-        fun getValue(code: Int): ErrorResponse{
+        fun getValue(code: Int): ErrorResponse {
             return ErrorResponse(code)
         }
     }

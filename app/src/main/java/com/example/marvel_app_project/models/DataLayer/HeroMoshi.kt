@@ -1,7 +1,7 @@
-package com.example.marvel_app_project.models
+package com.example.marvel_app_project.models.DataLayer
 
 import androidx.compose.ui.graphics.Color
-import com.squareup.moshi.Json
+import com.example.marvel_app_project.models.UiLayer.HeroUI
 
 data class HeroMoshi(
     val id: String,

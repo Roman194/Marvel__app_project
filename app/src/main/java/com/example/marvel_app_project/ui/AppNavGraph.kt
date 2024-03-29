@@ -6,10 +6,10 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.marvel_app_project.ui.pages.ChooseHero.ChooseHeroScreen
-import com.example.marvel_app_project.ui.pages.ChooseHero.ChooseHeroViewModel
-import com.example.marvel_app_project.ui.pages.SingleHero.SingleHeroScreen
-import com.example.marvel_app_project.ui.pages.SingleHero.SingleHeroViewModel
+import com.example.marvel_app_project.ui.pages.choosehero.ChooseHeroScreen
+import com.example.marvel_app_project.ui.pages.choosehero.ChooseHeroViewModel
+import com.example.marvel_app_project.ui.pages.singlehero.SingleHeroScreen
+import com.example.marvel_app_project.ui.pages.singlehero.SingleHeroViewModel
 
 enum class HeroesScreen {
     Start,
@@ -21,8 +21,6 @@ fun AppNavGraph(navController: NavHostController = rememberNavController()){
 
     val heroViewModel: ChooseHeroViewModel = viewModel()
     val singleHeroViewModel: SingleHeroViewModel = viewModel()
-
-    //val singleHeroValue by singleHeroViewModel.singleHeroUiState.collectAsState()
 
     NavHost(
         navController = navController,

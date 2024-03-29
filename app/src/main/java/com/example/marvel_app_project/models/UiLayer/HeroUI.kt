@@ -1,4 +1,4 @@
-package com.example.marvel_app_project.models
+package com.example.marvel_app_project.models.UiLayer
 
 import androidx.compose.ui.graphics.Color
 

@@ -1,4 +1,4 @@
-package com.example.marvel_app_project.ui.pages.ChooseHero
+package com.example.marvel_app_project.ui.pages.choosehero
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -7,24 +7,16 @@ import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.marvel_app_project.assets.SampleData
-import com.example.marvel_app_project.models.ErrorResponse
-import com.example.marvel_app_project.models.HeroUI
-import com.example.marvel_app_project.models.toStringType
-import com.example.marvel_app_project.models.toUI
-import com.example.marvel_app_project.network.Either
+import com.example.marvel_app_project.models.UiLayer.HeroUI
+import com.example.marvel_app_project.models.DataLayer.toStringType
+import com.example.marvel_app_project.models.DataLayer.toUI
+import com.example.marvel_app_project.network.Either.Either
 import com.example.marvel_app_project.network.HeroApi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import retrofit2.HttpException
-import java.io.IOException
 
-sealed interface ChooseHeroesUiState{
-    data class Success(val heroUIValues: List<HeroUI>): ChooseHeroesUiState
-    data class Error(val errorMessage: String, val reserveHeroUiValues: List<HeroUI>): ChooseHeroesUiState
-    object Loading: ChooseHeroesUiState
-}
 class ChooseHeroViewModel: ViewModel() {
 
     private var _reserveHeroUIState = MutableStateFlow(listOf( HeroUI()))
@@ -56,7 +48,6 @@ class ChooseHeroViewModel: ViewModel() {
                         }
                     )
                 }
-
         }
     }
 
@@ -89,7 +80,5 @@ class ChooseHeroViewModel: ViewModel() {
         }
         return inputHeroName
     }
-
-
 }
 
