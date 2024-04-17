@@ -11,9 +11,9 @@ interface HeroDao {
     @Upsert
     suspend fun upsertHero(hero: HeroEntity)
 
-    @Query("SELECT * FROM heroentity WHERE heroentity.id == :heroID")
-    suspend fun getSingleHero(heroID: Int): Flow<HeroEntity>
+    @Query("SELECT * FROM HeroEntity WHERE HeroEntity.id == :heroID")
+    suspend fun getSingleHero(heroID: Int): HeroEntity
 
-    @Query("SELECT * FROM heroentity")
-    suspend fun getAllHeroes(): Flow<List<HeroEntity>>
+    @Query("SELECT * FROM HeroEntity")
+    suspend fun getAllHeroes(): List<HeroEntity>
 }

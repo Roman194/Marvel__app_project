@@ -11,7 +11,8 @@ import kotlinx.coroutines.launch
 
 @Database(
     entities = [HeroEntity::class],
-    version = 1
+    version = 1,
+    exportSchema = false
 )
 abstract class HeroDatabase: RoomDatabase() {
     abstract fun heroDao(): HeroDao
@@ -29,6 +30,14 @@ abstract class HeroDatabase: RoomDatabase() {
                     heroSamples.forEach { heroEntity ->
                         heroDao.upsertHero(heroEntity)
                     }
+
+//                    val heroEntity = HeroEntity(
+//                        name = "Deadpool",
+//                        description = "Please don’t make the super suit green...or animated!",
+//                        image = "https://kartinki.pics/uploads/posts/2022-03/1646974026_3-kartinkin-net-p-kartinki-dedpula-3.jpg"
+//                    )
+//
+//                    heroDao.upsertHero(heroEntity)
                 }
             }
         }
@@ -45,7 +54,7 @@ abstract class HeroDatabase: RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     HeroDatabase::class.java,
-                    "word_database"
+                    "hero_attempt.db"
                 )
                     .addCallback(HeroDatabaseCallback(scope))
                     .build()

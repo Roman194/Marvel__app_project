@@ -6,10 +6,10 @@ import kotlinx.coroutines.flow.Flow
 
 class HeroRepository(private val heroDao: HeroDao) {
 
-    suspend fun allHeroes(): Flow<List<HeroEntity>> {
+    suspend fun allHeroes(): List<HeroEntity> {
         return heroDao.getAllHeroes()
     }
-    suspend fun singleHero(heroID: Int): Flow<HeroEntity> {
+    suspend fun singleHero(heroID: Int): HeroEntity {
         return heroDao.getSingleHero(heroID)
     }
     suspend fun upsertHero(heroEntity: HeroEntity){
