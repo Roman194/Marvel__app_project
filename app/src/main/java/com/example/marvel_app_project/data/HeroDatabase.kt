@@ -54,7 +54,7 @@ abstract class HeroDatabase: RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     HeroDatabase::class.java,
-                    "hero_attempt.db"
+                    "hero_attempt_2.db"
                 )
                     .addCallback(HeroDatabaseCallback(scope))
                     .build()

@@ -1,6 +1,7 @@
 package com.example.marvel_app_project.models.DataLayer
 
 import androidx.compose.ui.graphics.Color
+import com.example.marvel_app_project.data.HeroEntity
 import com.example.marvel_app_project.models.UiLayer.HeroUI
 
 data class HeroMoshi(
@@ -10,6 +11,14 @@ data class HeroMoshi(
     val thumbnail: Thumbnail
 )
 
+
+fun HeroMoshi.toEntity() =
+    HeroEntity(
+        serverId = id,
+        name = name,
+        description = description,
+        image = thumbnail.path + "." +  thumbnail.extension
+    )
 
 fun HeroMoshi.toUI(
     heroName: String,

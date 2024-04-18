@@ -1,25 +1,18 @@
 package com.example.marvel_app_project.ui.pages.choosehero
 
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.marvel_app_project.assets.SampleData
 import com.example.marvel_app_project.data.toUI
+import com.example.marvel_app_project.domain.ChooseHeroesDomainState
 import com.example.marvel_app_project.domain.HeroRepository
 import com.example.marvel_app_project.models.UiLayer.HeroUI
-import com.example.marvel_app_project.models.DataLayer.toStringType
-import com.example.marvel_app_project.models.DataLayer.toUI
-import com.example.marvel_app_project.network.Either.Either
-import com.example.marvel_app_project.network.HeroApi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.launch
 
 class ChooseHeroViewModel(val repository: HeroRepository): ViewModel() {
@@ -38,26 +31,28 @@ class ChooseHeroViewModel(val repository: HeroRepository): ViewModel() {
 
         viewModelScope.launch {
 
-            val response = HeroApi.heroesRetrofitService.getMarvelCharacters()
+            val chooseHeroesDomainState = repository.allHeroes()
 
             heroesUiState =
-                when (response) {
-                    is Either.Fail -> ChooseHeroesUiState.Error(
-                        errorMessage = response.value.toStringType(),
-                        reserveHeroUiValues = repository.allHeroes().mapIndexed { index, heroEntity ->
+                when (chooseHeroesDomainState) {
+                    is ChooseHeroesDomainState.Error -> ChooseHeroesUiState.Error( //state вызывать здесь
+                        errorMessage = chooseHeroesDomainState.errorMessage,
+                        reserveHeroUiValues = chooseHeroesDomainState.heroValues.mapIndexed { index, heroEntity ->
                             heroEntity.toUI(
+                                toDetermineHeroNameVisiblePart(heroEntity.name),
                                 toDetermineBackgroundColor(index)
                             )
                         } //_reserveHeroUIState.value
                     )
-                    is Either.Success -> ChooseHeroesUiState.Success(
-                        heroUIValues = response.value.data.result.mapIndexed { index, heroMoshi ->
-                            heroMoshi.toUI(
-                                toDetermineHeroNameVisiblePart(heroMoshi.name),
+                    is ChooseHeroesDomainState.Success -> ChooseHeroesUiState.Success(
+                        heroUIValues = chooseHeroesDomainState.heroValues.mapIndexed { index, heroEntity ->
+                            heroEntity.toUI(
+                                toDetermineHeroNameVisiblePart(heroEntity.name),
                                 toDetermineBackgroundColor(index)
                             )
                         }
                     )
+                    is ChooseHeroesDomainState.Loading -> ChooseHeroesUiState.Loading
                 }
         }
     }

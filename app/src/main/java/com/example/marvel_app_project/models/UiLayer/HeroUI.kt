@@ -4,6 +4,7 @@ import androidx.compose.ui.graphics.Color
 
 data class HeroUI(
     val id: Int = 99,
+    val serverId: String = "1010",
     val name: String = "hero",
     val description: String = "heroDescription",
     val image: String ="https://kartinki.pics/uploads/posts/2022-03/1646974026_3-kartinkin-net-p-kartinki-dedpula-3.jpg",

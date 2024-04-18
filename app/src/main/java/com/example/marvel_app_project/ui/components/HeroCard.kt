@@ -28,7 +28,7 @@ import com.example.marvel_app_project.ui.theme.interFamily
 fun HeroCard(hero: HeroUI, onHeroImageTaped:(Int, String) -> Unit){
     Box(
         modifier = Modifier
-            .clickable{ onHeroImageTaped(hero.id, hero.name)}
+            .clickable{ onHeroImageTaped(hero.id, hero.serverId)}
             .shadow(
                 elevation = Spaces.shadowElevation,
                 shape = Shapes.medium,

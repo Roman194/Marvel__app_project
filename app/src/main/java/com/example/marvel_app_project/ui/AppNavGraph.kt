@@ -49,8 +49,8 @@ fun AppNavGraph(navController: NavHostController = rememberNavController()){
         composable(route = HeroesScreen.Start.name){
             ChooseHeroScreen(
                 heroesUiState = heroViewModel.heroesUiState,
-                onHeroImageTaped = {id, heroName ->
-                    singleHeroViewModel.updateHeroForSingleHero(id = id, heroName = heroName)
+                onHeroImageTaped = {id, serverId ->
+                    singleHeroViewModel.updateHeroForSingleHero(id = id, serverId = serverId)
                     navController.navigate(HeroesScreen.SingleHero.name)
                 }
             )
