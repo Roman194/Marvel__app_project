@@ -1,4 +1,4 @@
-# Data layer of the Marvell app
+# Local storage of the Marvell app
 ## Note
 This branch is showing the result of 3кв lab of 2nd term at the "Digital Department" of OmSTU (with IT-firm "Effective" directly involve). <br/>
 There are 6 labs in 2nd term. Each one is a part of making the Marvel app. <br/>
