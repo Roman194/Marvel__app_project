@@ -2,8 +2,8 @@ package com.example.marvel_app_project.network
 
 import com.example.marvel_app_project.models.data.network.ErrorResponse
 import com.example.marvel_app_project.models.data.network.HeroDTOResponse
-import com.example.marvel_app_project.network.either.Either
-import com.example.marvel_app_project.network.either.EitherCallAdapterFactory
+import com.example.marvel_app_project.network.Either.Either
+import com.example.marvel_app_project.network.Either.EitherCallAdapterFactory
 import com.squareup.moshi.Moshi
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory

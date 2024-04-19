@@ -1,4 +1,4 @@
-package com.example.marvel_app_project.network.either
+package com.example.marvel_app_project.network.Either
 
 import com.example.marvel_app_project.models.data.network.ErrorResponse
 import okhttp3.Request

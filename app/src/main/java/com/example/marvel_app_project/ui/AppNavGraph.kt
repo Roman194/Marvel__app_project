@@ -13,8 +13,6 @@ import com.example.marvel_app_project.ui.pages.choosehero.ChooseHeroViewModel
 import com.example.marvel_app_project.ui.pages.singlehero.SingleHeroScreen
 import com.example.marvel_app_project.ui.pages.singlehero.SingleHeroUiState
 import com.example.marvel_app_project.ui.pages.singlehero.SingleHeroViewModel
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.SupervisorJob
 
 enum class HeroesScreen {
     Start,
@@ -24,13 +22,9 @@ enum class HeroesScreen {
 @Composable
 fun AppNavGraph(navController: NavHostController = rememberNavController()){
 
-    val applicationScope = CoroutineScope(SupervisorJob())
     val context = LocalContext.current
     val database by lazy {
-        HeroDatabase.getDatabase(
-            context = context,
-            scope = applicationScope
-        )
+        HeroDatabase.getDatabase(context = context)
     }
     val repository by lazy {
         HeroRepository(database.heroDao())

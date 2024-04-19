@@ -8,8 +8,8 @@ import com.example.marvel_app_project.data.HeroDao
 import com.example.marvel_app_project.models.data.HeroEntity
 import com.example.marvel_app_project.models.data.network.toEntity
 import com.example.marvel_app_project.models.data.network.toStringType
-import com.example.marvel_app_project.network.either.Either
 import com.example.marvel_app_project.network.HeroApi
+import com.example.marvel_app_project.network.Either.Either
 
 class HeroRepository(private val heroDao: HeroDao) {
 

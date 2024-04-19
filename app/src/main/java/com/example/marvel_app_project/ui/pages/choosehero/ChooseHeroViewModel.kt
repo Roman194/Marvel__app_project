@@ -6,19 +6,15 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.marvel_app_project.models.data.toUI
 import com.example.marvel_app_project.domain.ChooseHeroesDomainState
 import com.example.marvel_app_project.domain.HeroRepository
-import com.example.marvel_app_project.models.ui.HeroUI
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
+import com.example.marvel_app_project.models.data.toUI
 import kotlinx.coroutines.launch
 
 class ChooseHeroViewModel(val repository: HeroRepository): ViewModel() {
 
-    private var _reserveHeroUIState = MutableStateFlow(listOf( HeroUI()))
-    val reserveHeroUIState: StateFlow<List<HeroUI>> = _reserveHeroUIState.asStateFlow()
+//    private var _reserveHeroUIState = MutableStateFlow(listOf( HeroUI()))
+//    val reserveHeroUIState: StateFlow<List<HeroUI>> = _reserveHeroUIState.asStateFlow()
 
     var heroesUiState: ChooseHeroesUiState by mutableStateOf(ChooseHeroesUiState.Loading)
 
