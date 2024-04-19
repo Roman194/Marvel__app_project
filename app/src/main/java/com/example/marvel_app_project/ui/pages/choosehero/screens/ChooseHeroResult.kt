@@ -21,7 +21,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
-import com.example.marvel_app_project.models.UiLayer.HeroUI
+import com.example.marvel_app_project.models.ui.HeroUI
 import com.example.marvel_app_project.ui.components.ChooseHeroHeader
 import com.example.marvel_app_project.ui.components.HeroCard
 import com.example.marvel_app_project.ui.theme.Sizes

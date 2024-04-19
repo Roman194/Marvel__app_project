@@ -1,6 +1,6 @@
 package com.example.marvel_app_project.ui.pages.choosehero
 
-import com.example.marvel_app_project.models.UiLayer.HeroUI
+import com.example.marvel_app_project.models.ui.HeroUI
 
 sealed interface ChooseHeroesUiState{
     data class Success(val heroUIValues: List<HeroUI>): ChooseHeroesUiState

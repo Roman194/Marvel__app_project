@@ -12,7 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.AbsoluteAlignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
-import com.example.marvel_app_project.models.UiLayer.HeroUI
+import com.example.marvel_app_project.models.ui.HeroUI
 import com.example.marvel_app_project.ui.theme.Sizes
 import com.example.marvel_app_project.ui.theme.Spaces
 import com.example.marvel_app_project.ui.theme.interFamily

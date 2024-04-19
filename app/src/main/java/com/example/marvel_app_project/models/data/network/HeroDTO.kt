@@ -1,8 +1,8 @@
-package com.example.marvel_app_project.models.DataLayer
+package com.example.marvel_app_project.models.data.network
 
 import androidx.compose.ui.graphics.Color
-import com.example.marvel_app_project.data.HeroEntity
-import com.example.marvel_app_project.models.UiLayer.HeroUI
+import com.example.marvel_app_project.models.data.HeroEntity
+import com.example.marvel_app_project.models.ui.HeroUI
 
 data class HeroMoshi(
     val id: String,

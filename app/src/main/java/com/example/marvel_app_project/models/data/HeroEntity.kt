@@ -1,9 +1,9 @@
-package com.example.marvel_app_project.data
+package com.example.marvel_app_project.models.data
 
 import androidx.compose.ui.graphics.Color
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.marvel_app_project.models.UiLayer.HeroUI
+import com.example.marvel_app_project.models.ui.HeroUI
 
 @Entity
 data class HeroEntity(

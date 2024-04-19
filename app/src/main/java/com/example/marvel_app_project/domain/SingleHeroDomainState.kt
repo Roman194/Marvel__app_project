@@ -1,6 +1,6 @@
 package com.example.marvel_app_project.domain
 
-import com.example.marvel_app_project.data.HeroEntity
+import com.example.marvel_app_project.models.data.HeroEntity
 
 sealed interface SingleHeroDomainState {
     data class Success(val singleHeroValue: HeroEntity): SingleHeroDomainState

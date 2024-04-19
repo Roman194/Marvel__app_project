@@ -6,6 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.marvel_app_project.assets.SampleData
+import com.example.marvel_app_project.models.data.HeroEntity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
@@ -31,13 +32,6 @@ abstract class HeroDatabase: RoomDatabase() {
                         heroDao.upsertHero(heroEntity)
                     }
 
-//                    val heroEntity = HeroEntity(
-//                        name = "Deadpool",
-//                        description = "Please don’t make the super suit green...or animated!",
-//                        image = "https://kartinki.pics/uploads/posts/2022-03/1646974026_3-kartinkin-net-p-kartinki-dedpula-3.jpg"
-//                    )
-//
-//                    heroDao.upsertHero(heroEntity)
                 }
             }
         }
@@ -54,12 +48,11 @@ abstract class HeroDatabase: RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     HeroDatabase::class.java,
-                    "hero_attempt_2.db"
+                    "hero_attempt_4.db"
                 )
-                    .addCallback(HeroDatabaseCallback(scope))
+                    //.addCallback(HeroDatabaseCallback(scope))
                     .build()
                 INSTANCE = instance
-                // return instance
                 instance
             }
 

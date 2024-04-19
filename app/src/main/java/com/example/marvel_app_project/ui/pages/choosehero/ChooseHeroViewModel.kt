@@ -6,10 +6,10 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.marvel_app_project.data.toUI
+import com.example.marvel_app_project.models.data.toUI
 import com.example.marvel_app_project.domain.ChooseHeroesDomainState
 import com.example.marvel_app_project.domain.HeroRepository
-import com.example.marvel_app_project.models.UiLayer.HeroUI
+import com.example.marvel_app_project.models.ui.HeroUI
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -27,10 +27,8 @@ class ChooseHeroViewModel(val repository: HeroRepository): ViewModel() {
     }
 
     fun getHeroesInfo() {
-        //_reserveHeroUIState.value = SampleData.heroUISamples
 
         viewModelScope.launch {
-
             val chooseHeroesDomainState = repository.allHeroes()
 
             heroesUiState =
@@ -42,7 +40,7 @@ class ChooseHeroViewModel(val repository: HeroRepository): ViewModel() {
                                 toDetermineHeroNameVisiblePart(heroEntity.name),
                                 toDetermineBackgroundColor(index)
                             )
-                        } //_reserveHeroUIState.value
+                        }
                     )
                     is ChooseHeroesDomainState.Success -> ChooseHeroesUiState.Success(
                         heroUIValues = chooseHeroesDomainState.heroValues.mapIndexed { index, heroEntity ->

@@ -2,7 +2,6 @@ package com.example.marvel_app_project.ui
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -12,6 +11,7 @@ import com.example.marvel_app_project.domain.HeroRepository
 import com.example.marvel_app_project.ui.pages.choosehero.ChooseHeroScreen
 import com.example.marvel_app_project.ui.pages.choosehero.ChooseHeroViewModel
 import com.example.marvel_app_project.ui.pages.singlehero.SingleHeroScreen
+import com.example.marvel_app_project.ui.pages.singlehero.SingleHeroUiState
 import com.example.marvel_app_project.ui.pages.singlehero.SingleHeroViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
@@ -39,9 +39,6 @@ fun AppNavGraph(navController: NavHostController = rememberNavController()){
     val heroViewModel = ChooseHeroViewModel(repository = repository)
     val singleHeroViewModel = SingleHeroViewModel(repository = repository)
 
-//    val heroViewModel: ChooseHeroViewModel = viewModel()
-//    val singleHeroViewModel: SingleHeroViewModel = viewModel()
-
     NavHost(
         navController = navController,
         startDestination = HeroesScreen.Start.name
@@ -58,7 +55,10 @@ fun AppNavGraph(navController: NavHostController = rememberNavController()){
         composable(route = HeroesScreen.SingleHero.name){
             SingleHeroScreen(
                 singleHeroUiState = singleHeroViewModel.singleHeroUIState,
-                navigateUp = {navController.navigateUp()}
+                navigateUp = {
+                    navController.navigateUp()
+                    singleHeroViewModel.singleHeroUIState = SingleHeroUiState.Loading
+                }
             )
         }
     }

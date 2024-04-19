@@ -18,7 +18,7 @@ import androidx.compose.ui.text.font.FontWeight
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.marvel_app_project.R
-import com.example.marvel_app_project.models.UiLayer.HeroUI
+import com.example.marvel_app_project.models.ui.HeroUI
 import com.example.marvel_app_project.ui.theme.Shapes
 import com.example.marvel_app_project.ui.theme.Sizes
 import com.example.marvel_app_project.ui.theme.Spaces

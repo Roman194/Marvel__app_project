@@ -1,4 +1,4 @@
-package com.example.marvel_app_project.models.DataLayer
+package com.example.marvel_app_project.models.data.network
 
 data class ErrorResponse(
     val errorNumber: Int

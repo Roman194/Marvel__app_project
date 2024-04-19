@@ -3,24 +3,19 @@ package com.example.marvel_app_project.domain
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import com.example.marvel_app_project.assets.SampleData
 import com.example.marvel_app_project.data.HeroDao
-import com.example.marvel_app_project.data.HeroEntity
-import com.example.marvel_app_project.models.DataLayer.toEntity
-import com.example.marvel_app_project.models.DataLayer.toStringType
-import com.example.marvel_app_project.network.Either.Either
+import com.example.marvel_app_project.models.data.HeroEntity
+import com.example.marvel_app_project.models.data.network.toEntity
+import com.example.marvel_app_project.models.data.network.toStringType
+import com.example.marvel_app_project.network.either.Either
 import com.example.marvel_app_project.network.HeroApi
 
 class HeroRepository(private val heroDao: HeroDao) {
 
-    var heroesDomainState: ChooseHeroesDomainState by mutableStateOf(ChooseHeroesDomainState.Loading)
-    var singleHeroDomainState: SingleHeroDomainState by mutableStateOf(SingleHeroDomainState.Loading)
+    private var heroesDomainState: ChooseHeroesDomainState by mutableStateOf(ChooseHeroesDomainState.Loading)
+    private var singleHeroDomainState: SingleHeroDomainState by mutableStateOf(SingleHeroDomainState.Loading)
 
-//    suspend fun allHeroes(): List<HeroEntity> {
-//        return heroDao.getAllHeroes() //Optimize???
-//    }
-//    suspend fun singleHero(heroID: Int): HeroEntity {
-//        return heroDao.getSingleHero(heroID)
-//    }
     suspend fun upsertHero(heroEntity: HeroEntity){
         heroDao.upsertHero(heroEntity)
     }
@@ -34,10 +29,18 @@ class HeroRepository(private val heroDao: HeroDao) {
 
         val response = HeroApi.heroesRetrofitService.getMarvelCharacters()
         heroesDomainState = when(response){
-            is Either.Fail -> ChooseHeroesDomainState.Error(
-                errorMessage = response.value.toStringType(),
-                heroValues = databaseHeroValues
-            )
+            is Either.Fail -> {
+                if(databaseHeroValues.isEmpty()){
+                    SampleData.heroEntitySamples.map { heroEntity ->
+                        upsertHero(heroEntity)
+                    }
+                }
+
+                ChooseHeroesDomainState.Error(
+                    errorMessage = response.value.toStringType(),
+                    heroValues = heroDao.getAllHeroes()
+                )
+            }
             is Either.Success -> {
 
                 response.value.data.result.map { heroMoshi ->
@@ -51,7 +54,7 @@ class HeroRepository(private val heroDao: HeroDao) {
         return heroesDomainState
     }
 
-    suspend fun getSingleHero(heroID: Int, heroServerID: String): SingleHeroDomainState{
+    suspend fun singleHero(heroID: Int, heroServerID: String): SingleHeroDomainState{
         val databaseHeroValue = heroDao.getSingleHero(heroID)
         singleHeroDomainState =
             if(databaseHeroValue.description == ""){
@@ -73,7 +76,6 @@ class HeroRepository(private val heroDao: HeroDao) {
                 singleHeroValue = databaseHeroValue
             )
         }
-
         return singleHeroDomainState
     }
 }

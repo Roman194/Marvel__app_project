@@ -1,8 +1,6 @@
 package com.example.marvel_app_project.assets
 
-import androidx.compose.ui.graphics.Color
-import com.example.marvel_app_project.data.HeroEntity
-import com.example.marvel_app_project.models.UiLayer.HeroUI
+import com.example.marvel_app_project.models.data.HeroEntity
 
 object SampleData{
     val heroEntitySamples = listOf(
