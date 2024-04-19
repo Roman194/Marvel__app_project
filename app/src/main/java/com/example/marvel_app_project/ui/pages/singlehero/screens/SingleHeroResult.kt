@@ -1,4 +1,4 @@
-package com.example.marvel_app_project.ui.pages
+package com.example.marvel_app_project.ui.pages.singlehero.screens
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -18,14 +18,13 @@ import androidx.compose.ui.res.stringResource
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.marvel_app_project.R
-import com.example.marvel_app_project.models.HeroUI
+import com.example.marvel_app_project.models.UiLayer.HeroUI
 import com.example.marvel_app_project.ui.components.SingleHeroTextField
 import com.example.marvel_app_project.ui.theme.Sizes
 import com.example.marvel_app_project.ui.theme.Spaces
 
-
 @Composable
-fun SingleHeroScreen(hero: HeroUI, navigateUp: () -> Unit){
+fun SingleHeroResult(hero: HeroUI, navigateUp: () -> Unit){
     Box (modifier = Modifier.fillMaxSize()){
         AsyncImage(
             model = ImageRequest

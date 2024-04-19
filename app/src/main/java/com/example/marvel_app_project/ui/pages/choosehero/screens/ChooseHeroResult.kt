@@ -1,4 +1,4 @@
-package com.example.marvel_app_project.ui.pages
+package com.example.marvel_app_project.ui.pages.choosehero.screens
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.ExperimentalFoundationApi
@@ -21,23 +21,22 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.marvel_app_project.assets.SampleData
+import com.example.marvel_app_project.models.UiLayer.HeroUI
 import com.example.marvel_app_project.ui.components.ChooseHeroHeader
 import com.example.marvel_app_project.ui.components.HeroCard
-import com.example.marvel_app_project.ui.theme.Marvel_app_projectTheme
 import com.example.marvel_app_project.ui.theme.Sizes
 import com.example.marvel_app_project.ui.theme.Spaces
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun ChooseHeroScreen(onHeroImageTaped:(String) -> Unit) {
+fun ChooseHeroResult(
+    heroValues: List<HeroUI>,
+    onHeroImageTaped:(Int, String) -> Unit){
 
-    val heroValues = SampleData.heroUISamples
     val lazyListState = rememberLazyListState()
     val snapBehavior = rememberSnapFlingBehavior(lazyListState = lazyListState)
     val rectangleColorState = remember {
-        mutableStateOf(Color(119, 3,8))
+        mutableStateOf(Color(0xFF770308))
     }
     val latestIndex = remember {
         mutableStateOf(lazyListState.layoutInfo.visibleItemsInfo.lastOrNull()?.index)
@@ -111,12 +110,5 @@ fun ChooseHeroScreen(onHeroImageTaped:(String) -> Unit) {
             }
 
         }
-    }
-}
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    Marvel_app_projectTheme {
-        ChooseHeroScreen(onHeroImageTaped = {})
     }
 }

@@ -25,5 +25,12 @@ object Sizes{
         val heroNameInSingleScreen = 34.sp
         val heroDescription = 24.sp
         val underLogoText = 28.sp
+        val responseError = 18.sp
+    }
+    object loadingLogo{
+        val size = 200.dp
+    }
+    object noInternetLogo{
+        val size = 50.dp
     }
 }
