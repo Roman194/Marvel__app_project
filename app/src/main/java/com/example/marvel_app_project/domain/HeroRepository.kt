@@ -1,5 +1,6 @@
 package com.example.marvel_app_project.domain
 
+import android.annotation.SuppressLint
 import com.example.marvel_app_project.assets.SampleData
 import com.example.marvel_app_project.data.HeroDao
 import com.example.marvel_app_project.mappers.toEntity
@@ -54,6 +55,7 @@ class HeroRepository(private val heroDao: HeroDao) {
         }
     }
 
+    @SuppressLint("SuspiciousIndentation")
     suspend fun singleHero(heroID: Int, heroServerID: String): Either<SingleHeroReserve, HeroEntity>{
         val databaseHeroValue = heroDao.getSingleHero(heroID)
             if(databaseHeroValue.description == ""){
