@@ -4,5 +4,5 @@ import com.squareup.moshi.Json
 
 data class HeroDTOResponseData(
     @Json(name = "results")
-    val result: List<HeroMoshi>
+    val result: List<HeroDTO>
 )

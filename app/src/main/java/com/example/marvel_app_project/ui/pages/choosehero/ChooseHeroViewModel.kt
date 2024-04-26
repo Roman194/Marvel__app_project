@@ -6,9 +6,9 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.marvel_app_project.domain.ChooseHeroesDomainState
 import com.example.marvel_app_project.domain.HeroRepository
-import com.example.marvel_app_project.models.data.toUI
+import com.example.marvel_app_project.mappers.toUI
+import com.example.marvel_app_project.network.Either.Either
 import kotlinx.coroutines.launch
 
 class ChooseHeroViewModel(val repository: HeroRepository): ViewModel() {
@@ -25,28 +25,27 @@ class ChooseHeroViewModel(val repository: HeroRepository): ViewModel() {
     fun getHeroesInfo() {
 
         viewModelScope.launch {
-            val chooseHeroesDomainState = repository.allHeroes()
+            val responseFromRepo = repository.allHeroes()
 
             heroesUiState =
-                when (chooseHeroesDomainState) {
-                    is ChooseHeroesDomainState.Error -> ChooseHeroesUiState.Error( //state вызывать здесь
-                        errorMessage = chooseHeroesDomainState.errorMessage,
-                        reserveHeroUiValues = chooseHeroesDomainState.heroValues.mapIndexed { index, heroEntity ->
+                when (responseFromRepo) {
+                    is Either.Fail -> ChooseHeroesUiState.Error(
+                        errorMessage = responseFromRepo.value.errorMessage,
+                        reserveHeroUiValues = responseFromRepo.value.reserveHeroValues.mapIndexed { index, heroEntity ->
                             heroEntity.toUI(
                                 toDetermineHeroNameVisiblePart(heroEntity.name),
                                 toDetermineBackgroundColor(index)
                             )
                         }
                     )
-                    is ChooseHeroesDomainState.Success -> ChooseHeroesUiState.Success(
-                        heroUIValues = chooseHeroesDomainState.heroValues.mapIndexed { index, heroEntity ->
+                    is Either.Success -> ChooseHeroesUiState.Success(
+                        heroUIValues = responseFromRepo.value.mapIndexed { index, heroEntity ->
                             heroEntity.toUI(
                                 toDetermineHeroNameVisiblePart(heroEntity.name),
                                 toDetermineBackgroundColor(index)
                             )
                         }
                     )
-                    is ChooseHeroesDomainState.Loading -> ChooseHeroesUiState.Loading
                 }
         }
     }
