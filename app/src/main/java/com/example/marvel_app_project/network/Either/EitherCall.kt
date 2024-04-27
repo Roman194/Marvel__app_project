@@ -1,6 +1,6 @@
 package com.example.marvel_app_project.network.Either
 
-import com.example.marvel_app_project.models.DataLayer.ErrorResponse
+import com.example.marvel_app_project.models.data.network.ErrorResponse
 import okhttp3.Request
 import okio.Timeout
 import retrofit2.Call

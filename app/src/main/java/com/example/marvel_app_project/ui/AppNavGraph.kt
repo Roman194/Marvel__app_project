@@ -1,14 +1,17 @@
 package com.example.marvel_app_project.ui
 
 import androidx.compose.runtime.Composable
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.marvel_app_project.data.HeroDatabase
+import com.example.marvel_app_project.domain.HeroRepository
 import com.example.marvel_app_project.ui.pages.choosehero.ChooseHeroScreen
 import com.example.marvel_app_project.ui.pages.choosehero.ChooseHeroViewModel
 import com.example.marvel_app_project.ui.pages.singlehero.SingleHeroScreen
+import com.example.marvel_app_project.ui.pages.singlehero.SingleHeroUiState
 import com.example.marvel_app_project.ui.pages.singlehero.SingleHeroViewModel
 
 enum class HeroesScreen {
@@ -19,8 +22,16 @@ enum class HeroesScreen {
 @Composable
 fun AppNavGraph(navController: NavHostController = rememberNavController()){
 
-    val heroViewModel: ChooseHeroViewModel = viewModel()
-    val singleHeroViewModel: SingleHeroViewModel = viewModel()
+    val context = LocalContext.current
+    val database by lazy {
+        HeroDatabase.getDatabase(context = context)
+    }
+    val repository by lazy {
+        HeroRepository(database.heroDao())
+    }
+
+    val heroViewModel = ChooseHeroViewModel(repository = repository)
+    val singleHeroViewModel = SingleHeroViewModel(repository = repository)
 
     NavHost(
         navController = navController,
@@ -29,8 +40,8 @@ fun AppNavGraph(navController: NavHostController = rememberNavController()){
         composable(route = HeroesScreen.Start.name){
             ChooseHeroScreen(
                 heroesUiState = heroViewModel.heroesUiState,
-                onHeroImageTaped = {id, heroName ->
-                    singleHeroViewModel.updateHeroForSingleHero(id = id, heroName = heroName)
+                onHeroImageTaped = {id, serverId ->
+                    singleHeroViewModel.updateHeroForSingleHero(id = id, serverId = serverId)
                     navController.navigate(HeroesScreen.SingleHero.name)
                 }
             )
@@ -38,7 +49,10 @@ fun AppNavGraph(navController: NavHostController = rememberNavController()){
         composable(route = HeroesScreen.SingleHero.name){
             SingleHeroScreen(
                 singleHeroUiState = singleHeroViewModel.singleHeroUIState,
-                navigateUp = {navController.navigateUp()}
+                navigateUp = {
+                    navController.navigateUp()
+                    singleHeroViewModel.singleHeroUIState = SingleHeroUiState.Loading
+                }
             )
         }
     }

@@ -6,21 +6,15 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.marvel_app_project.assets.SampleData
-import com.example.marvel_app_project.models.UiLayer.HeroUI
-import com.example.marvel_app_project.models.DataLayer.toStringType
-import com.example.marvel_app_project.models.DataLayer.toUI
+import com.example.marvel_app_project.domain.HeroRepository
+import com.example.marvel_app_project.mappers.toUI
 import com.example.marvel_app_project.network.Either.Either
-import com.example.marvel_app_project.network.HeroApi
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
-class ChooseHeroViewModel: ViewModel() {
+class ChooseHeroViewModel(val repository: HeroRepository): ViewModel() {
 
-    private var _reserveHeroUIState = MutableStateFlow(listOf( HeroUI()))
-    val reserveHeroUIState: StateFlow<List<HeroUI>> = _reserveHeroUIState.asStateFlow()
+//    private var _reserveHeroUIState = MutableStateFlow(listOf( HeroUI()))
+//    val reserveHeroUIState: StateFlow<List<HeroUI>> = _reserveHeroUIState.asStateFlow()
 
     var heroesUiState: ChooseHeroesUiState by mutableStateOf(ChooseHeroesUiState.Loading)
 
@@ -29,20 +23,25 @@ class ChooseHeroViewModel: ViewModel() {
     }
 
     fun getHeroesInfo() {
-        _reserveHeroUIState.value = SampleData.heroUISamples
 
         viewModelScope.launch {
-            val response = HeroApi.heroesRetrofitService.getMarvelCharacters()
+            val responseFromRepo = repository.allHeroes()
+
             heroesUiState =
-                when (response) {
+                when (responseFromRepo) {
                     is Either.Fail -> ChooseHeroesUiState.Error(
-                        errorMessage = response.value.toStringType(),
-                        reserveHeroUiValues = _reserveHeroUIState.value
+                        errorMessage = responseFromRepo.value.errorMessage,
+                        reserveHeroUiValues = responseFromRepo.value.reserveHeroValues.mapIndexed { index, heroEntity ->
+                            heroEntity.toUI(
+                                toDetermineHeroNameVisiblePart(heroEntity.name),
+                                toDetermineBackgroundColor(index)
+                            )
+                        }
                     )
                     is Either.Success -> ChooseHeroesUiState.Success(
-                        heroUIValues = response.value.data.result.mapIndexed { index, heroMoshi ->
-                            heroMoshi.toUI(
-                                toDetermineHeroNameVisiblePart(heroMoshi.name),
+                        heroUIValues = responseFromRepo.value.mapIndexed { index, heroEntity ->
+                            heroEntity.toUI(
+                                toDetermineHeroNameVisiblePart(heroEntity.name),
                                 toDetermineBackgroundColor(index)
                             )
                         }
@@ -51,7 +50,7 @@ class ChooseHeroViewModel: ViewModel() {
         }
     }
 
-    fun toDetermineBackgroundColor(index: Int): Color{
+    private fun toDetermineBackgroundColor(index: Int): Color{
         val determinedColor =
             when(index % 7){
                 0 -> Color(119, 3,8)
@@ -65,7 +64,7 @@ class ChooseHeroViewModel: ViewModel() {
         return determinedColor
     }
 
-    fun toDetermineHeroNameVisiblePart(inputHeroName: String): String{
+    private fun toDetermineHeroNameVisiblePart(inputHeroName: String): String{
         if(inputHeroName.length > 15){
             var outputHeroName = ""
             val heroNameArray = inputHeroName.split(" ")

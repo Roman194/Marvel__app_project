@@ -1,14 +1,6 @@
-package com.example.marvel_app_project.models.DataLayer
+package com.example.marvel_app_project.mappers
 
-data class ErrorResponse(
-    val errorNumber: Int
-){
-    companion object{
-        fun getValue(code: Int): ErrorResponse {
-            return ErrorResponse(code)
-        }
-    }
-}
+import com.example.marvel_app_project.models.data.network.ErrorResponse
 
 fun ErrorResponse.toStringType()=
     when(errorNumber){
@@ -19,4 +11,3 @@ fun ErrorResponse.toStringType()=
         in 500..599 -> "5XX: Unknown server error."
         else -> "Unknown error."
     }
-

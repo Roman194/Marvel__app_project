@@ -1,6 +1,6 @@
 package com.example.marvel_app_project.network.Either
 
-import com.example.marvel_app_project.models.DataLayer.ErrorResponse
+import com.example.marvel_app_project.models.data.network.ErrorResponse
 import retrofit2.Call
 import retrofit2.CallAdapter
 import retrofit2.Retrofit

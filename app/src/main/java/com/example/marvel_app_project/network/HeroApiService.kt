@@ -1,7 +1,7 @@
 package com.example.marvel_app_project.network
 
-import com.example.marvel_app_project.models.DataLayer.ErrorResponse
-import com.example.marvel_app_project.models.DataLayer.MoshiResponse
+import com.example.marvel_app_project.models.data.network.ErrorResponse
+import com.example.marvel_app_project.models.data.network.HeroDTOResponse
 import com.example.marvel_app_project.network.Either.Either
 import com.example.marvel_app_project.network.Either.EitherCallAdapterFactory
 import com.squareup.moshi.Moshi
@@ -29,12 +29,12 @@ private val retrofit = Retrofit.Builder()
 interface HeroApiService{
     @GET("characters")
     suspend fun getMarvelCharacters(
-    ): Either<ErrorResponse, MoshiResponse>
+    ): Either<ErrorResponse, HeroDTOResponse>
 
     @GET("characters/{characterId}")
     suspend fun getSingleMarvelCharacter(
         @Path("characterId") id: Int
-    ): Either<ErrorResponse, MoshiResponse>
+    ): Either<ErrorResponse, HeroDTOResponse>
 
 }
 
