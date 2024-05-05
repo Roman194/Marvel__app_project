@@ -8,9 +8,14 @@ import androidx.lifecycle.viewModelScope
 import com.example.marvel_app_project.domain.HeroRepository
 import com.example.marvel_app_project.mappers.toSingleUI
 import com.example.marvel_app_project.network.Either.Either
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class SingleHeroViewModel(val repository: HeroRepository): ViewModel() {
+@HiltViewModel
+class SingleHeroViewModel @Inject constructor(
+    val repository: HeroRepository
+): ViewModel() {
 
     var singleHeroUIState: SingleHeroUiState by mutableStateOf(SingleHeroUiState.Loading)
 

@@ -11,7 +11,9 @@ import androidx.core.view.WindowCompat
 import com.example.marvel_app_project.ui.AppNavGraph
 import com.example.marvel_app_project.ui.theme.ApplySystemBarColors
 import com.example.marvel_app_project.ui.theme.Marvel_app_projectTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

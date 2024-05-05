@@ -1,13 +1,11 @@
 package com.example.marvel_app_project.ui
 
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.platform.LocalContext
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.marvel_app_project.data.HeroDatabase
-import com.example.marvel_app_project.domain.HeroRepository
 import com.example.marvel_app_project.ui.pages.choosehero.ChooseHeroScreen
 import com.example.marvel_app_project.ui.pages.choosehero.ChooseHeroViewModel
 import com.example.marvel_app_project.ui.pages.singlehero.SingleHeroScreen
@@ -19,19 +17,23 @@ enum class HeroesScreen {
     SingleHero
 }
 
+
 @Composable
 fun AppNavGraph(navController: NavHostController = rememberNavController()){
 
-    val context = LocalContext.current
-    val database by lazy {
-        HeroDatabase.getDatabase(context = context)
-    }
-    val repository by lazy {
-        HeroRepository(database.heroDao())
-    }
+//    val context = LocalContext.current
+//    val database by lazy {
+//        HeroDatabase.getDatabase(context = context)
+//    }
+//    val repository by lazy {
+//        HeroRepositoryImpl(database.heroDao())
+//    }
+//
+//    val heroViewModel = ChooseHeroViewModel(repository = repository)
+//    val singleHeroViewModel = SingleHeroViewModel(repository = repository)
 
-    val heroViewModel = ChooseHeroViewModel(repository = repository)
-    val singleHeroViewModel = SingleHeroViewModel(repository = repository)
+    val heroViewModel = hiltViewModel<ChooseHeroViewModel>()
+    val singleHeroViewModel = hiltViewModel<SingleHeroViewModel>()
 
     NavHost(
         navController = navController,
