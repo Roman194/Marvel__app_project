@@ -13,7 +13,8 @@ import com.example.marvel_app_project.network.HeroApi
 import javax.inject.Inject
 
 class HeroRepositoryImpl @Inject constructor(
-    private val heroDao: HeroDao
+    private val heroDao: HeroDao,
+    private val heroApi: HeroApi
 ): HeroRepository {
 
     override suspend fun upsertHero(heroEntity: HeroEntity){
@@ -27,7 +28,7 @@ class HeroRepositoryImpl @Inject constructor(
     override suspend fun allHeroes(): Either<HeroReserve, List<HeroEntity>>{
         val databaseHeroValues = heroDao.getAllHeroes()
 
-        val response = HeroApi.heroesRetrofitService.getMarvelCharacters()
+        val response = heroApi.getMarvelCharacters()
         when(response){
             is Either.Fail -> {
                 if(databaseHeroValues.isEmpty()){
@@ -62,7 +63,7 @@ class HeroRepositoryImpl @Inject constructor(
     override suspend fun singleHero(heroID: Int, heroServerID: String): Either<SingleHeroReserve, HeroEntity>{
         val databaseHeroValue = heroDao.getSingleHero(heroID)
             if(databaseHeroValue.description == ""){
-                val response = HeroApi.heroesRetrofitService.getSingleMarvelCharacter(id = heroServerID.toInt())
+                val response = heroApi.getSingleMarvelCharacter(id = heroServerID.toInt())
                 when(response){
                     is Either.Fail ->
                         return Either.Fail(

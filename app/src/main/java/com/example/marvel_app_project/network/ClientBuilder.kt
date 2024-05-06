@@ -1,14 +1,13 @@
 package com.example.marvel_app_project.network
 
 import com.example.marvel_app_project.BuildConfig
-import okhttp3.OkHttpClient
 import okhttp3.Interceptor
 import okhttp3.logging.HttpLoggingInterceptor
 import java.math.BigInteger
 import java.security.MessageDigest
 import java.sql.Timestamp
 
-class ParceConstants{
+class ParseConstants{
     companion object{
         val ts = Timestamp(System.currentTimeMillis()).time.toString()
         const val limit = "10"
@@ -28,10 +27,10 @@ val authInterceptor = Interceptor{chain ->
     val originalRequest = chain.request()
 
     val newHttpUrl = originalRequest.url.newBuilder()
-        .addQueryParameter("apikey", ParceConstants.API_KEY)
-        .addQueryParameter("ts", ParceConstants.ts)
-        .addQueryParameter("hash", ParceConstants.hash())
-        .addQueryParameter("limit", ParceConstants.limit)
+        .addQueryParameter("apikey", ParseConstants.API_KEY)
+        .addQueryParameter("ts", ParseConstants.ts)
+        .addQueryParameter("hash", ParseConstants.hash())
+        .addQueryParameter("limit", ParseConstants.limit)
         .build()
 
     val newRequest = originalRequest.newBuilder()
@@ -46,7 +45,7 @@ val loggingInterceptor = HttpLoggingInterceptor()
         setLevel(HttpLoggingInterceptor.Level.BASIC)
     }
 
-val client = OkHttpClient.Builder()
-    .addNetworkInterceptor(loggingInterceptor)
-    .addNetworkInterceptor(authInterceptor)
-    .build()
+//val client = OkHttpClient.Builder()
+//    .addNetworkInterceptor(loggingInterceptor)
+//    .addNetworkInterceptor(authInterceptor)
+//    .build()
