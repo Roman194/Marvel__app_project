@@ -1,4 +1,4 @@
-package com.example.marvel_app_project.ui.pages.singlehero.screens
+package com.example.marvel_app_project.ui.pages.singlehero.screens.subscreens
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -19,7 +19,7 @@ import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.marvel_app_project.R
 import com.example.marvel_app_project.models.ui.HeroUI
-import com.example.marvel_app_project.ui.HeroAction
+import com.example.marvel_app_project.ui.pages.HeroAction
 import com.example.marvel_app_project.ui.components.SingleHeroTextField
 import com.example.marvel_app_project.ui.theme.Sizes
 import com.example.marvel_app_project.ui.theme.Spaces
@@ -58,7 +58,9 @@ fun SingleHeroResult(hero: HeroUI, onAction: (HeroAction) -> Unit){
                     contentDescription = stringResource(R.string.back_button)
                 )
             }
-            SingleHeroTextField(hero = hero)
+            SingleHeroTextField(
+                hero = hero
+            )
 
         }
     }

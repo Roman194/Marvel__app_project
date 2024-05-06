@@ -1,10 +1,11 @@
-package com.example.marvel_app_project.ui.pages.choosehero
+package com.example.marvel_app_project.ui.pages.choosehero.screens
 
 import androidx.compose.runtime.Composable
-import com.example.marvel_app_project.ui.HeroAction
+import com.example.marvel_app_project.ui.pages.HeroAction
 import com.example.marvel_app_project.ui.components.HeroLoading
-import com.example.marvel_app_project.ui.pages.choosehero.screens.ChooseHeroError
-import com.example.marvel_app_project.ui.pages.choosehero.screens.ChooseHeroResult
+import com.example.marvel_app_project.ui.pages.choosehero.ChooseHeroesUiState
+import com.example.marvel_app_project.ui.pages.choosehero.screens.subscreens.ChooseHeroError
+import com.example.marvel_app_project.ui.pages.choosehero.screens.subscreens.ChooseHeroResult
 
 @Composable
 fun ChooseHeroScreen(

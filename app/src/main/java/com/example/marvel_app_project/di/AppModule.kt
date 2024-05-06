@@ -2,13 +2,13 @@ package com.example.marvel_app_project.di
 
 import android.app.Application
 import androidx.room.Room
-import com.example.marvel_app_project.data.HeroDao
-import com.example.marvel_app_project.data.HeroDatabase
-import com.example.marvel_app_project.network.Either.EitherCallAdapterFactory
-import com.example.marvel_app_project.network.HeroApi
-import com.example.marvel_app_project.network.HeroApi.Companion.BASE_URL
-import com.example.marvel_app_project.network.authInterceptor
-import com.example.marvel_app_project.network.loggingInterceptor
+import com.example.marvel_app_project.data.database.HeroDao
+import com.example.marvel_app_project.data.database.HeroDatabase
+import com.example.marvel_app_project.data.network.Either.EitherCallAdapterFactory
+import com.example.marvel_app_project.data.network.HeroApi
+import com.example.marvel_app_project.data.network.HeroApi.Companion.BASE_URL
+import com.example.marvel_app_project.data.network.interceptors.AuthInterceptor.Companion.authInterceptor
+import com.example.marvel_app_project.data.network.interceptors.LogInterceptor.Companion.loggingInterceptor
 import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
@@ -26,7 +26,7 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideHeroDatabase(app: Application): HeroDatabase{
+    fun provideHeroDatabase(app: Application): HeroDatabase {
         return Room.databaseBuilder(
             app,
             HeroDatabase::class.java,
@@ -36,7 +36,7 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideHeroDao(database: HeroDatabase): HeroDao{
+    fun provideHeroDao(database: HeroDatabase): HeroDao {
         return database.heroDao()
     }
 
@@ -69,9 +69,5 @@ object AppModule {
             .build()
             .create(HeroApi::class.java)
     }
-//    @Provides
-//    @Singleton
-//    fun provideHeroRepository(heroDao: HeroDao): HeroRepository {
-//        return HeroRepositoryImpl(heroDao)
-//    }
+
 }

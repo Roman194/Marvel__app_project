@@ -1,10 +1,11 @@
-package com.example.marvel_app_project.ui.pages.singlehero
+package com.example.marvel_app_project.ui.pages.singlehero.screens
 
 import androidx.compose.runtime.Composable
-import com.example.marvel_app_project.ui.HeroAction
+import com.example.marvel_app_project.ui.pages.HeroAction
 import com.example.marvel_app_project.ui.components.HeroLoading
-import com.example.marvel_app_project.ui.pages.singlehero.screens.SingleHeroError
-import com.example.marvel_app_project.ui.pages.singlehero.screens.SingleHeroResult
+import com.example.marvel_app_project.ui.pages.singlehero.SingleHeroUiState
+import com.example.marvel_app_project.ui.pages.singlehero.screens.subscreens.SingleHeroError
+import com.example.marvel_app_project.ui.pages.singlehero.screens.subscreens.SingleHeroResult
 
 
 @Composable

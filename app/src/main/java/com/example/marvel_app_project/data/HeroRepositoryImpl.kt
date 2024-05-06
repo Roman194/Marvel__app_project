@@ -1,15 +1,15 @@
-package com.example.marvel_app_project.domain
+package com.example.marvel_app_project.data
 
 import android.annotation.SuppressLint
 import com.example.marvel_app_project.assets.SampleData
-import com.example.marvel_app_project.data.HeroDao
+import com.example.marvel_app_project.data.database.HeroDao
+import com.example.marvel_app_project.data.network.Either.Either
+import com.example.marvel_app_project.data.network.HeroApi
 import com.example.marvel_app_project.mappers.toEntity
 import com.example.marvel_app_project.mappers.toStringType
 import com.example.marvel_app_project.models.data.HeroEntity
 import com.example.marvel_app_project.models.data.HeroReserve
 import com.example.marvel_app_project.models.data.SingleHeroReserve
-import com.example.marvel_app_project.network.Either.Either
-import com.example.marvel_app_project.network.HeroApi
 import javax.inject.Inject
 
 class HeroRepositoryImpl @Inject constructor(
@@ -25,7 +25,7 @@ class HeroRepositoryImpl @Inject constructor(
         heroDao.updateHero(heroEntity)
     }
 
-    override suspend fun allHeroes(): Either<HeroReserve, List<HeroEntity>>{
+    override suspend fun allHeroes(): Either<HeroReserve, List<HeroEntity>> {
         val databaseHeroValues = heroDao.getAllHeroes()
 
         val response = heroApi.getMarvelCharacters()
@@ -60,7 +60,7 @@ class HeroRepositoryImpl @Inject constructor(
     }
 
     @SuppressLint("SuspiciousIndentation")
-    override suspend fun singleHero(heroID: Int, heroServerID: String): Either<SingleHeroReserve, HeroEntity>{
+    override suspend fun singleHero(heroID: Int, heroServerID: String): Either<SingleHeroReserve, HeroEntity> {
         val databaseHeroValue = heroDao.getSingleHero(heroID)
             if(databaseHeroValue.description == ""){
                 val response = heroApi.getSingleMarvelCharacter(id = heroServerID.toInt())

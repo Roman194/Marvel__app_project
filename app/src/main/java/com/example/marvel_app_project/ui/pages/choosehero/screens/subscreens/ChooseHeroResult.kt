@@ -1,4 +1,4 @@
-package com.example.marvel_app_project.ui.pages.choosehero.screens
+package com.example.marvel_app_project.ui.pages.choosehero.screens.subscreens
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.ExperimentalFoundationApi
@@ -24,7 +24,7 @@ import androidx.compose.ui.graphics.Path
 import com.example.marvel_app_project.models.ui.HeroUI
 import com.example.marvel_app_project.ui.components.ChooseHeroHeader
 import com.example.marvel_app_project.ui.components.HeroCard
-import com.example.marvel_app_project.ui.HeroAction
+import com.example.marvel_app_project.ui.pages.HeroAction
 import com.example.marvel_app_project.ui.theme.Sizes
 import com.example.marvel_app_project.ui.theme.Spaces
 

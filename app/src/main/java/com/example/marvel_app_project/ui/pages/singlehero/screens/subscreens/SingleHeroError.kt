@@ -1,4 +1,4 @@
-package com.example.marvel_app_project.ui.pages.singlehero.screens
+package com.example.marvel_app_project.ui.pages.singlehero.screens.subscreens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -18,7 +18,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import com.example.marvel_app_project.R
 import com.example.marvel_app_project.models.ui.HeroUI
-import com.example.marvel_app_project.ui.HeroAction
+import com.example.marvel_app_project.ui.pages.HeroAction
 import com.example.marvel_app_project.ui.theme.Shapes
 import com.example.marvel_app_project.ui.theme.Sizes
 import com.example.marvel_app_project.ui.theme.Spaces
@@ -58,6 +58,9 @@ fun SingleHeroError(
                 color = MaterialTheme.colorScheme.onSecondary
             )
         }
-        SingleHeroResult(hero = hero, onAction = onAction)
+        SingleHeroResult(
+            hero = hero,
+            onAction = onAction
+        )
     }
 }

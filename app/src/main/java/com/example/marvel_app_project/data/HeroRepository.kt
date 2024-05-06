@@ -1,9 +1,9 @@
-package com.example.marvel_app_project.domain
+package com.example.marvel_app_project.data
 
+import com.example.marvel_app_project.data.network.Either.Either
 import com.example.marvel_app_project.models.data.HeroEntity
 import com.example.marvel_app_project.models.data.HeroReserve
 import com.example.marvel_app_project.models.data.SingleHeroReserve
-import com.example.marvel_app_project.network.Either.Either
 
 interface HeroRepository {
 

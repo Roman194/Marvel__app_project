@@ -1,7 +1,7 @@
 package com.example.marvel_app_project.di
 
-import com.example.marvel_app_project.domain.HeroRepository
-import com.example.marvel_app_project.domain.HeroRepositoryImpl
+import com.example.marvel_app_project.data.HeroRepository
+import com.example.marvel_app_project.data.HeroRepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
