@@ -19,12 +19,13 @@ import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.marvel_app_project.R
 import com.example.marvel_app_project.models.ui.HeroUI
+import com.example.marvel_app_project.ui.HeroAction
 import com.example.marvel_app_project.ui.components.SingleHeroTextField
 import com.example.marvel_app_project.ui.theme.Sizes
 import com.example.marvel_app_project.ui.theme.Spaces
 
 @Composable
-fun SingleHeroResult(hero: HeroUI, navigateUp: () -> Unit){
+fun SingleHeroResult(hero: HeroUI, onAction: (HeroAction) -> Unit){
     Box (modifier = Modifier.fillMaxSize()){
         AsyncImage(
             model = ImageRequest
@@ -42,7 +43,11 @@ fun SingleHeroResult(hero: HeroUI, navigateUp: () -> Unit){
                     top = Spaces.singleHeroColumn
                 )
         ) {
-            IconButton(onClick = navigateUp) {
+            IconButton(
+                onClick = {
+                    onAction(HeroAction.OnBackToChooseHero)
+                }
+            ) {
                 Icon(
                     imageVector = Icons.Filled.ArrowBack,
                     tint = MaterialTheme.colorScheme.onSecondary,

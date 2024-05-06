@@ -18,13 +18,18 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import com.example.marvel_app_project.R
 import com.example.marvel_app_project.models.ui.HeroUI
+import com.example.marvel_app_project.ui.HeroAction
 import com.example.marvel_app_project.ui.theme.Shapes
 import com.example.marvel_app_project.ui.theme.Sizes
 import com.example.marvel_app_project.ui.theme.Spaces
 import com.example.marvel_app_project.ui.theme.interFamily
 
 @Composable
-fun SingleHeroError(errorMessage: String, hero: HeroUI, navigateUp: () -> Unit){
+fun SingleHeroError(
+    errorMessage: String,
+    hero: HeroUI,
+    onAction: (HeroAction) -> Unit
+){
     Column {
         Column(
             modifier = Modifier
@@ -53,6 +58,6 @@ fun SingleHeroError(errorMessage: String, hero: HeroUI, navigateUp: () -> Unit){
                 color = MaterialTheme.colorScheme.onSecondary
             )
         }
-        SingleHeroResult(hero = hero, navigateUp = navigateUp)
+        SingleHeroResult(hero = hero, onAction = onAction)
     }
 }

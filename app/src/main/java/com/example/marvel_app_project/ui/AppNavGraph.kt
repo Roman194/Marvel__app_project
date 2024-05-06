@@ -9,7 +9,6 @@ import androidx.navigation.compose.rememberNavController
 import com.example.marvel_app_project.ui.pages.choosehero.ChooseHeroScreen
 import com.example.marvel_app_project.ui.pages.choosehero.ChooseHeroViewModel
 import com.example.marvel_app_project.ui.pages.singlehero.SingleHeroScreen
-import com.example.marvel_app_project.ui.pages.singlehero.SingleHeroUiState
 import com.example.marvel_app_project.ui.pages.singlehero.SingleHeroViewModel
 
 enum class HeroesScreen {
@@ -42,8 +41,8 @@ fun AppNavGraph(navController: NavHostController = rememberNavController()){
         composable(route = HeroesScreen.Start.name){
             ChooseHeroScreen(
                 heroesUiState = heroViewModel.heroesUiState,
-                onHeroImageTaped = {id, serverId ->
-                    singleHeroViewModel.updateHeroForSingleHero(id = id, serverId = serverId)
+                onAction = { action ->
+                    singleHeroViewModel.onAction(action)
                     navController.navigate(HeroesScreen.SingleHero.name)
                 }
             )
@@ -51,9 +50,9 @@ fun AppNavGraph(navController: NavHostController = rememberNavController()){
         composable(route = HeroesScreen.SingleHero.name){
             SingleHeroScreen(
                 singleHeroUiState = singleHeroViewModel.singleHeroUIState,
-                navigateUp = {
+                onAction = {action ->
                     navController.navigateUp()
-                    singleHeroViewModel.singleHeroUIState = SingleHeroUiState.Loading
+                    singleHeroViewModel.onAction(action)
                 }
             )
         }

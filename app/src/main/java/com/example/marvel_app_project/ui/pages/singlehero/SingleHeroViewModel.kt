@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.marvel_app_project.domain.HeroRepository
 import com.example.marvel_app_project.mappers.toSingleUI
 import com.example.marvel_app_project.network.Either.Either
+import com.example.marvel_app_project.ui.HeroAction
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -18,6 +19,19 @@ class SingleHeroViewModel @Inject constructor(
 ): ViewModel() {
 
     var singleHeroUIState: SingleHeroUiState by mutableStateOf(SingleHeroUiState.Loading)
+
+    fun onAction(action: HeroAction){
+        when(action){
+            is HeroAction.OnHeroImageTapped ->
+                updateHeroForSingleHero(
+                    id = action.heroId,
+                    serverId = action.heroSeverId
+                )
+
+            HeroAction.OnBackToChooseHero ->
+                singleHeroUIState = SingleHeroUiState.Loading
+        }
+    }
 
     fun updateHeroForSingleHero(id: Int, serverId: String) {
 

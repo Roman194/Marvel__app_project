@@ -24,6 +24,7 @@ import androidx.compose.ui.graphics.Path
 import com.example.marvel_app_project.models.ui.HeroUI
 import com.example.marvel_app_project.ui.components.ChooseHeroHeader
 import com.example.marvel_app_project.ui.components.HeroCard
+import com.example.marvel_app_project.ui.HeroAction
 import com.example.marvel_app_project.ui.theme.Sizes
 import com.example.marvel_app_project.ui.theme.Spaces
 
@@ -31,7 +32,7 @@ import com.example.marvel_app_project.ui.theme.Spaces
 @Composable
 fun ChooseHeroResult(
     heroValues: List<HeroUI>,
-    onHeroImageTaped:(Int, String) -> Unit){
+    onAction:(HeroAction) -> Unit){
 
     val lazyListState = rememberLazyListState()
     val snapBehavior = rememberSnapFlingBehavior(lazyListState = lazyListState)
@@ -104,7 +105,7 @@ fun ChooseHeroResult(
                 items(heroValues){ hero ->
                     HeroCard(
                         hero,
-                        onHeroImageTaped
+                        onAction
                     )
                 }
             }
