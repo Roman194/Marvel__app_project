@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "583208486524",
+    "project_id": "marvel-mobile-course",
+    "storage_bucket": "marvel-mobile-course.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:583208486524:android:561721aef13ced0deaabf9",
+        "android_client_info": {
+          "package_name": "com.example.marvel_app_project"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-tKPNeDqnjYOZ2HgDnZ_FjmWg2TMxFiE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
