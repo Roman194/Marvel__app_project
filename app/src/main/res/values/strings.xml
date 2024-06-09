@@ -10,4 +10,10 @@
     <string name="connection_error">Connection error</string>
     <string name="choosehero_error_message"> Can t reach data from the server</string>
     <string name="singlehero_error_message"> Can t reach a single hero</string>
+    <string name="hero_notification_name">Heroes are calling</string>
+    <string name="hero_notification_description">Used for informing you about hero</string>
+    <string name="fcm_tag">FCM Message</string>
+    <string name="fcm_token_tag">FCM Tag</string>
+    <string name="fcm_token_update">Refreshed token: </string>
+    <string name="fcm_error_message">Can t reach data or notification payload from FCM server</string>
 </resources>

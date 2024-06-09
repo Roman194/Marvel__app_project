@@ -20,12 +20,12 @@ class HeroesApp: Application() {
     private fun createNotificationChannel() {
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channel = NotificationChannel(
-                HeroesNotification.HEROES_CHANNEl_ID,
-                "counter",
+                HeroesNotification.HEROES_CHANNEL_ID,
+                getString(R.string.hero_notification_name),
                 NotificationManager.IMPORTANCE_DEFAULT
             )
 
-            channel.description = "Used for informing you about hero"
+            channel.description = getString(R.string.hero_notification_description)
 
             val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 

@@ -62,8 +62,10 @@ class HeroRepositoryImpl @Inject constructor(
     @SuppressLint("SuspiciousIndentation")
     override suspend fun singleHero(heroID: Int, heroServerID: String): Either<SingleHeroReserve, HeroEntity> {
         val databaseHeroValue = heroDao.getSingleHero(heroID)
+        val verifiedHeroServerID = if(heroServerID != "-1") heroServerID else databaseHeroValue.serverId
+
             if(databaseHeroValue.description == ""){
-                val response = heroApi.getSingleMarvelCharacter(id = heroServerID.toInt())
+                val response = heroApi.getSingleMarvelCharacter(id = verifiedHeroServerID.toInt())
                 when(response){
                     is Either.Fail ->
                         return Either.Fail(

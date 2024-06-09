@@ -31,10 +31,16 @@ class SingleHeroViewModel @Inject constructor(
             HeroAction.OnBackToChooseHero ->
                 singleHeroUIState = SingleHeroUiState.Loading
 
+            is HeroAction.OnHeroNotificationTapped ->
+                updateHeroForSingleHero(
+                    id = action.heroId,
+                    serverId = "-1"
+                )
+
         }
     }
 
-    fun updateHeroForSingleHero(id: Int, serverId: String) {
+    private fun updateHeroForSingleHero(id: Int, serverId: String) {
 
         viewModelScope.launch {
 

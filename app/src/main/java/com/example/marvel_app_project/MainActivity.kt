@@ -24,6 +24,8 @@ class MainActivity : ComponentActivity() {
         WindowCompat.setDecorFitsSystemWindows(window,false)
 
         //askNotificationPermission()
+        val heroId = intent.getIntExtra("heroId", -1)
+
 
         setContent {
             Marvel_app_projectTheme {
@@ -34,23 +36,19 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    AppNavGraph()
+                    AppNavGraph(heroId = heroId)
                 }
             }
         }
-        FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
+        FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task -> //delete this?
             if (!task.isSuccessful) {
-                Log.w("FCM token", "Fetching FCM registration token failed", task.exception)
+                Log.w(getString(R.string.fcm_token_tag), "Fetching FCM registration token failed", task.exception)
                 return@OnCompleteListener
             }
 
-            // Get new FCM registration token
             val token = task.result
+            Log.d(getString(R.string.fcm_token_tag), token)
 
-            // Log and toast
-            //val msg = getString(R.string.msg_token_fmt, token)
-            Log.d("FCM token", token)
-            //Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
         })
     }
 
