@@ -44,6 +44,9 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
+
+        <receiver android:name=".notification.receivers.CloseNotificationReceiver"/>
+        <receiver android:name=".notification.receivers.UpdateNotificationReceiver"/>
     </application>
 
 </manifest>

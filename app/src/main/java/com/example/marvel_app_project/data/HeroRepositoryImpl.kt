@@ -88,4 +88,8 @@ class HeroRepositoryImpl @Inject constructor(
             )
         }
     }
+
+    override suspend fun randSingleHero():HeroEntity {
+        return heroDao.getRandSingleHero()
+    }
 }

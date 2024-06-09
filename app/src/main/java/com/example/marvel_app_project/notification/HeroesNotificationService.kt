@@ -5,6 +5,7 @@ import com.example.marvel_app_project.R
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 
+
 class HeroesNotificationService: FirebaseMessagingService(){
 
     private lateinit var notification: HeroesNotification
@@ -20,11 +21,6 @@ class HeroesNotificationService: FirebaseMessagingService(){
             Log.d(getString(R.string.fcm_tag), getString(R.string.fcm_error_message))
         }
 
-//        message.notification?.let {
-//            Log.d("FCM message", "Message body: ${it.body}")
-//
-//        }
-
         notification.showNotification(
             message.notification?.title,
             message.notification?.body,
@@ -37,6 +33,6 @@ class HeroesNotificationService: FirebaseMessagingService(){
         Log.d(getString(R.string.fcm_token_tag), getString(R.string.fcm_token_update) + token)
 
 
-        //sendRegistrationToServer(token)
+        //TODO(Make send registration to a server with current token function)
     }
 }

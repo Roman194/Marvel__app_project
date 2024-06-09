@@ -23,9 +23,9 @@ class MainActivity : ComponentActivity() {
 
         WindowCompat.setDecorFitsSystemWindows(window,false)
 
-        //askNotificationPermission()
         val heroId = intent.getIntExtra("heroId", -1)
 
+        getFCMToken()
 
         setContent {
             Marvel_app_projectTheme {
@@ -40,9 +40,12 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
-        FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task -> //delete this?
+    }
+
+    private fun getFCMToken() {
+        FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
             if (!task.isSuccessful) {
-                Log.w(getString(R.string.fcm_token_tag), "Fetching FCM registration token failed", task.exception)
+                Log.w(getString(R.string.fcm_token_tag), getString(R.string.fcm_token_tag_fail), task.exception)
                 return@OnCompleteListener
             }
 
@@ -51,14 +54,5 @@ class MainActivity : ComponentActivity() {
 
         })
     }
-
-//    private fun askNotificationPermission() {
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-//            if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) ==
-//                PackageManager.PERMISSION_GRANTED
-//            ) {
-//            }
-//            }
-//    }
 }
 

@@ -13,5 +13,7 @@ interface HeroRepository {
 
     suspend fun allHeroes(): Either<HeroReserve, List<HeroEntity>>
 
+    suspend fun randSingleHero(): HeroEntity
+
     suspend fun singleHero(heroID: Int, heroServerID: String): Either<SingleHeroReserve, HeroEntity>
 }
