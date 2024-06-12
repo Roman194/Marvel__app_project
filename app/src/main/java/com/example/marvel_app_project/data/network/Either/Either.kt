@@ -1,4 +1,4 @@
-package com.example.marvel_app_project.network.Either
+package com.example.marvel_app_project.data.network.Either
 
 sealed class Either<out F, out S> {
 

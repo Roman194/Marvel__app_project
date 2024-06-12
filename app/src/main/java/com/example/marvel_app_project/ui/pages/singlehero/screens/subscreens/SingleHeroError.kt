@@ -1,4 +1,4 @@
-package com.example.marvel_app_project.ui.pages.choosehero.screens
+package com.example.marvel_app_project.ui.pages.singlehero.screens.subscreens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -18,13 +18,18 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import com.example.marvel_app_project.R
 import com.example.marvel_app_project.models.ui.HeroUI
+import com.example.marvel_app_project.ui.pages.HeroAction
 import com.example.marvel_app_project.ui.theme.Shapes
 import com.example.marvel_app_project.ui.theme.Sizes
 import com.example.marvel_app_project.ui.theme.Spaces
 import com.example.marvel_app_project.ui.theme.interFamily
 
 @Composable
-fun ChooseHeroError(errorMessage: String, heroValues: List<HeroUI>, onHeroImageTaped:(Int, String) -> Unit){
+fun SingleHeroError(
+    errorMessage: String,
+    hero: HeroUI,
+    onAction: (HeroAction) -> Unit
+){
     Column {
         Column(
             modifier = Modifier
@@ -33,7 +38,7 @@ fun ChooseHeroError(errorMessage: String, heroValues: List<HeroUI>, onHeroImageT
                 .clip(Shapes.medium)
                 .background(color = MaterialTheme.colorScheme.secondary),
             horizontalAlignment = Alignment.CenterHorizontally
-        ) {
+        ){
             Image(
                 modifier = Modifier.size(Sizes.noInternetLogo.size),
                 painter = painterResource(id = R.drawable.ic_connection_error),
@@ -46,14 +51,16 @@ fun ChooseHeroError(errorMessage: String, heroValues: List<HeroUI>, onHeroImageT
                 )
             )
             Text(
-                text = errorMessage + stringResource(R.string.choosehero_error_message),
+                text = errorMessage + stringResource(R.string.singlehero_error_message),
                 fontFamily = interFamily,
                 fontWeight = FontWeight.Bold,
                 fontSize = Sizes.fontSizes.responseError,
                 color = MaterialTheme.colorScheme.onSecondary
             )
         }
-
-        ChooseHeroResult(heroValues = heroValues, onHeroImageTaped = onHeroImageTaped)
+        SingleHeroResult(
+            hero = hero,
+            onAction = onAction
+        )
     }
 }

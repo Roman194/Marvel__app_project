@@ -6,15 +6,17 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.marvel_app_project.domain.HeroRepository
+import com.example.marvel_app_project.data.HeroRepository
+import com.example.marvel_app_project.data.network.Either.Either
 import com.example.marvel_app_project.mappers.toUI
-import com.example.marvel_app_project.network.Either.Either
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class ChooseHeroViewModel(val repository: HeroRepository): ViewModel() {
-
-//    private var _reserveHeroUIState = MutableStateFlow(listOf( HeroUI()))
-//    val reserveHeroUIState: StateFlow<List<HeroUI>> = _reserveHeroUIState.asStateFlow()
+@HiltViewModel
+class ChooseHeroViewModel @Inject constructor(
+    val repository: HeroRepository
+): ViewModel() {
 
     var heroesUiState: ChooseHeroesUiState by mutableStateOf(ChooseHeroesUiState.Loading)
 

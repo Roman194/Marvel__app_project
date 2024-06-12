@@ -1,4 +1,4 @@
-package com.example.marvel_app_project.data
+package com.example.marvel_app_project.data.database
 
 import androidx.room.Dao
 import androidx.room.Query
@@ -8,7 +8,6 @@ import com.example.marvel_app_project.models.data.HeroEntity
 
 @Dao
 interface HeroDao {
-
     @Upsert
     suspend fun upsertHero(hero: HeroEntity)
 
