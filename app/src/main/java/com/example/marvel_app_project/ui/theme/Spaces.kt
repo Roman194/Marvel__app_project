@@ -21,10 +21,14 @@ object Spaces {
         val horizontalPadding = 52.dp
         val horizontalArrangement = 38.dp
     }
+    object chooseHeroLazyRowLandscape{
+        val horizontalPadding = 325.dp
+        val horizontalArrangement = 114.dp
+    }
     object spacer{
-        val standartWidth = 1.dp
+        val standardWidth = 1.dp
          val smallerHeight = 5.dp
-        val standartHeight = 15.dp
+        val standardHeight = 15.dp
         val extendedHeight = 25.dp
         val theMostExtendedHeight = 40.dp
     }

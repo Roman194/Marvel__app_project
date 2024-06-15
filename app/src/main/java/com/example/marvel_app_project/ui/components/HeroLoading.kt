@@ -36,7 +36,7 @@ fun HeroLoading(){
         )
         Spacer(
             modifier = Modifier.size(
-                Spaces.spacer.standartWidth,
+                Spaces.spacer.standardWidth,
                 Spaces.spacer.smallerHeight
             )
         )

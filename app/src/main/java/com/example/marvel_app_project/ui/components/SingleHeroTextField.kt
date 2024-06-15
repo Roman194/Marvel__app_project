@@ -42,8 +42,8 @@ fun SingleHeroTextField(hero: HeroUI){
         )
         Spacer(
             modifier = Modifier.size(
-                width = Spaces.spacer.standartWidth,
-                height = Spaces.spacer.standartHeight
+                width = Spaces.spacer.standardWidth,
+                height = Spaces.spacer.standardHeight
             )
         )
         Text(
