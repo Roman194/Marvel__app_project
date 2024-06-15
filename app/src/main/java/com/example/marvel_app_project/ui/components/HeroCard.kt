@@ -4,6 +4,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -15,6 +16,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextDirection
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.marvel_app_project.R
@@ -66,6 +68,7 @@ fun HeroCard(hero: HeroUI, onAction:(HeroAction) -> Unit){
             fontWeight = FontWeight.ExtraBold,
             fontSize = Sizes.fontSizes.heroNameInCard,
             color = MaterialTheme.colorScheme.onPrimary,
+            style = LocalTextStyle.current.copy(textDirection = TextDirection.Content),
             modifier = Modifier
                 .align(Alignment.BottomStart)
                 .padding(
