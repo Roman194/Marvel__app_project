@@ -19,4 +19,5 @@
     <string name="fcm_error_message">Can t reach data or notification payload from FCM server</string>
     <string name="notification_button_close">Close</string>
     <string name="notification_button_update">I m lucky!</string>
+    <string name="notification_default_description">You re unlucky :(</string>
 </resources>
