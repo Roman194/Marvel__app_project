@@ -35,7 +35,7 @@ fun SingleHeroTextField(hero: HeroUI){
             fontFamily = interFamily,
             fontWeight = FontWeight.ExtraBold,
             fontSize = Sizes.fontSizes.heroNameInSingleScreen,
-            color = MaterialTheme.colorScheme.onSecondary
+            color = MaterialTheme.colorScheme.onPrimary
         )
         Spacer(
             modifier = Modifier.size(
@@ -48,7 +48,7 @@ fun SingleHeroTextField(hero: HeroUI){
             fontFamily = interFamily,
             fontWeight = FontWeight.Bold,
             fontSize = Sizes.fontSizes.heroDescription,
-            color = MaterialTheme.colorScheme.onSecondary
+            color = MaterialTheme.colorScheme.onPrimary
         )
     }
 }

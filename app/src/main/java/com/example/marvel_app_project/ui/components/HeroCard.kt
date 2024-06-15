@@ -65,7 +65,7 @@ fun HeroCard(hero: HeroUI, onAction:(HeroAction) -> Unit){
             fontFamily = interFamily,
             fontWeight = FontWeight.ExtraBold,
             fontSize = Sizes.fontSizes.heroNameInCard,
-            color = MaterialTheme.colorScheme.onSecondary,
+            color = MaterialTheme.colorScheme.onPrimary,
             modifier = Modifier
                 .align(Alignment.BottomStart)
                 .padding(

@@ -19,8 +19,8 @@ import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.marvel_app_project.R
 import com.example.marvel_app_project.models.ui.HeroUI
-import com.example.marvel_app_project.ui.pages.HeroAction
 import com.example.marvel_app_project.ui.components.SingleHeroTextField
+import com.example.marvel_app_project.ui.pages.HeroAction
 import com.example.marvel_app_project.ui.theme.Sizes
 import com.example.marvel_app_project.ui.theme.Spaces
 
@@ -50,7 +50,7 @@ fun SingleHeroResult(hero: HeroUI, onAction: (HeroAction) -> Unit){
             ) {
                 Icon(
                     imageVector = Icons.Filled.ArrowBack,
-                    tint = MaterialTheme.colorScheme.onSecondary,
+                    tint = MaterialTheme.colorScheme.onPrimary,
                     modifier = Modifier.size(
                         width = Sizes.backIcon.width,
                         height = Sizes.backIcon.height
