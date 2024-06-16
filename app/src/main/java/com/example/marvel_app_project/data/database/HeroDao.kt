@@ -17,6 +17,9 @@ interface HeroDao {
     @Query("SELECT * FROM HeroEntity WHERE HeroEntity.id == :heroID")
     suspend fun getSingleHero(heroID: Int): HeroEntity
 
+    @Query("SELECT * FROM HeroEntity order by random() limit 1")
+    suspend fun getRandSingleHero(): HeroEntity
+
     @Query("SELECT * FROM HeroEntity")
     suspend fun getAllHeroes(): List<HeroEntity>
 }

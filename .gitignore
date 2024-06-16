@@ -16,3 +16,4 @@ Thumbs.db
 .externalNativeBuild
 .cxx
 local.properties
+/app/google-services.json
