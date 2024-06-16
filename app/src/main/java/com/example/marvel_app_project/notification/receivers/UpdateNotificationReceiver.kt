@@ -23,5 +23,6 @@ class UpdateNotificationReceiver: BroadcastReceiver() {
                 context.getString(R.string.hero_notification_description)
 
         heroesNotification.showNotification(currentHero.name, heroDescription,"-1")
+
     }
 }

@@ -30,7 +30,8 @@ class HeroesNotification (private val context: Context) {
             context,
             1,
             activityIntent,
-            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) PendingIntent.FLAG_UPDATE_CURRENT else 0
+
+            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) PendingIntent.FLAG_IMMUTABLE else 0
         )
 
         val closePendingIntent = PendingIntent.getBroadcast(
