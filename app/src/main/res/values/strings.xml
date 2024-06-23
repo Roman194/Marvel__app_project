@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Marvel_app_project</string>
+    <string name="app_name" translatable="false">Marvel app</string>
     <string name="back_button">Back</string>
     <string name="choose_hero">Choose your hero</string>
     <string name="marvel">Marvel studios</string>
@@ -11,12 +11,8 @@
     <string name="choosehero_error_message"> Can t reach data from the server</string>
     <string name="singlehero_error_message"> Can t reach a single hero</string>
     <string name="hero_notification_name">Heroes are calling</string>
-    <string name="hero_notification_description">Used for informing you about hero</string>
-    <string name="fcm_tag">FCM Message</string>
-    <string name="fcm_token_tag">FCM Tag</string>
-    <string name="fcm_token_tag_fail">Fetching FCM registration token failed</string>
-    <string name="fcm_token_update">Refreshed token: </string>
-    <string name="fcm_error_message">Can t reach data or notification payload from FCM server</string>
+    <string name="hero_notification_description">Used for informing you about heroes calling for your help</string>
     <string name="notification_button_close">Close</string>
     <string name="notification_button_update">I m lucky!</string>
+    <string name="notification_default_description">You re unlucky :(</string>
 </resources>

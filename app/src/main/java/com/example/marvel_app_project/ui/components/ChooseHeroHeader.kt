@@ -14,6 +14,7 @@ import com.example.marvel_app_project.R
 import com.example.marvel_app_project.ui.theme.Sizes
 import com.example.marvel_app_project.ui.theme.Spaces
 import com.example.marvel_app_project.ui.theme.interFamily
+import com.example.marvel_app_project.ui.utils.isLandscape
 
 @Composable
 fun ChooseHeroHeader(){
@@ -27,8 +28,12 @@ fun ChooseHeroHeader(){
     )
     Spacer(
         modifier = Modifier.size(
-            width = Spaces.spacer.standartWidth,
-            height = Spaces.spacer.extendedHeight
+            width = Spaces.spacer.standardWidth,
+            height =
+            if(isLandscape())
+                Spaces.spacer.smallerHeight
+            else
+                Spaces.spacer.extendedHeight
         )
     )
     Text(
@@ -40,8 +45,12 @@ fun ChooseHeroHeader(){
     )
     Spacer(
         modifier = Modifier.size(
-            width = Spaces.spacer.standartWidth,
-            height = Spaces.spacer.theMostExtendedHeight
+            width = Spaces.spacer.standardWidth,
+            height =
+            if(isLandscape())
+                Spaces.spacer.standardHeight
+            else
+                Spaces.spacer.theMostExtendedHeight
         )
     )
 }

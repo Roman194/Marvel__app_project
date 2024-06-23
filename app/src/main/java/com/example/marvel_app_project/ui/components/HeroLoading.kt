@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
+import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -14,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextDirection
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.marvel_app_project.R
 import com.example.marvel_app_project.ui.theme.Sizes
@@ -34,7 +36,7 @@ fun HeroLoading(){
         )
         Spacer(
             modifier = Modifier.size(
-                Spaces.spacer.standartWidth,
+                Spaces.spacer.standardWidth,
                 Spaces.spacer.smallerHeight
             )
         )
@@ -43,7 +45,8 @@ fun HeroLoading(){
             fontFamily = interFamily,
             fontWeight = FontWeight.ExtraBold,
             fontSize = Sizes.fontSizes.underLogoText,
-            color = MaterialTheme.colorScheme.onSecondary
+            color = MaterialTheme.colorScheme.onSecondary,
+            style = LocalTextStyle.current.copy(textDirection = TextDirection.Content)
         )
     }
 }

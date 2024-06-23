@@ -17,7 +17,6 @@ enum class HeroesScreen {
     SingleHero
 }
 
-
 @Composable
 fun AppNavGraph(navController: NavHostController = rememberNavController(), heroId: Int){
 

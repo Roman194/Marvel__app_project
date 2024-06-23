@@ -2,8 +2,10 @@ package com.example.marvel_app_project.ui.components
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -15,6 +17,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextDirection
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.marvel_app_project.R
@@ -24,12 +27,13 @@ import com.example.marvel_app_project.ui.theme.Shapes
 import com.example.marvel_app_project.ui.theme.Sizes
 import com.example.marvel_app_project.ui.theme.Spaces
 import com.example.marvel_app_project.ui.theme.interFamily
+import com.example.marvel_app_project.ui.utils.isLandscape
 
 @Composable
 fun HeroCard(hero: HeroUI, onAction:(HeroAction) -> Unit){
     Box(
         modifier = Modifier
-            .clickable{
+            .clickable {
                 onAction(
                     HeroAction.OnHeroImageTapped(
                         hero.id,
@@ -37,6 +41,18 @@ fun HeroCard(hero: HeroUI, onAction:(HeroAction) -> Unit){
                     )
                 )
             }
+            .size(
+                width =
+                if (isLandscape())
+                    Sizes.heroCardLandscape.width
+                else
+                    Sizes.heroCard.width,
+                height =
+                if (isLandscape())
+                    Sizes.heroCardLandscape.height
+                else
+                    Sizes.heroCard.height
+            )
             .shadow(
                 elevation = Spaces.shadowElevation,
                 shape = Shapes.medium,
@@ -54,18 +70,20 @@ fun HeroCard(hero: HeroUI, onAction:(HeroAction) -> Unit){
             placeholder = painterResource(id = R.drawable.marvelcard_loading),
             error = painterResource(id = R.drawable.marvelcard_loadingerror),
             modifier = Modifier
-                .size(
-                    width = Sizes.heroCard.width,
-                    height = Sizes.heroCard.height
-                    )
+                .fillMaxSize()
                 .clip(Shapes.medium)
         )
         Text(
             text = hero.name,
             fontFamily = interFamily,
             fontWeight = FontWeight.ExtraBold,
-            fontSize = Sizes.fontSizes.heroNameInCard,
-            color = MaterialTheme.colorScheme.onSecondary,
+            fontSize =
+            if(isLandscape())
+                Sizes.fontSizes.heroNameInCardLandscape
+            else
+                Sizes.fontSizes.heroNameInCard,
+            color = MaterialTheme.colorScheme.onPrimary,
+            style = LocalTextStyle.current.copy(textDirection = TextDirection.Content),
             modifier = Modifier
                 .align(Alignment.BottomStart)
                 .padding(

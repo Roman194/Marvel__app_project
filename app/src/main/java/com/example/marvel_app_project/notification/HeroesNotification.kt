@@ -23,12 +23,14 @@ class HeroesNotification (private val context: Context) {
     fun showNotification(title:String?, text: String?, heroId: String?){
 
         val activityIntent = Intent(context, MainActivity::class.java)
+        activityIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         activityIntent.putExtra("heroId", heroId?.toInt())
 
         val activityPendingIntent = PendingIntent.getActivity(
             context,
             1,
             activityIntent,
+
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) PendingIntent.FLAG_IMMUTABLE else 0
         )
 

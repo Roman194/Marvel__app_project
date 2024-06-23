@@ -8,6 +8,10 @@ object Sizes{
         val width = 310.dp
         val height = 550.dp
     }
+    object heroCardLandscape{
+        val width = 206.dp
+        val height = 330.dp
+    }
     object rectanglesSizes{
         val width = 450.dp
         val height = 540.dp
@@ -22,6 +26,7 @@ object Sizes{
     }
     object fontSizes{
         val heroNameInCard = 32.sp
+        val heroNameInCardLandscape = 20.sp
         val heroNameInSingleScreen = 34.sp
         val heroDescription = 24.sp
         val underLogoText = 28.sp

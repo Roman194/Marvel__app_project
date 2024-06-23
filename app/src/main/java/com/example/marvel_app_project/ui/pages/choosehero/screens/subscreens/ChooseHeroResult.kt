@@ -27,6 +27,7 @@ import com.example.marvel_app_project.ui.components.HeroCard
 import com.example.marvel_app_project.ui.pages.HeroAction
 import com.example.marvel_app_project.ui.theme.Sizes
 import com.example.marvel_app_project.ui.theme.Spaces
+import com.example.marvel_app_project.ui.utils.isLandscape
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
@@ -94,10 +95,18 @@ fun ChooseHeroResult(
             LazyRow(
                 modifier = Modifier.fillMaxWidth(),
                 contentPadding = PaddingValues(
-                    horizontal = Spaces.chooseHeroLazyRow.horizontalPadding
+                    horizontal =
+                    if(isLandscape())
+                        Spaces.chooseHeroLazyRowLandscape.horizontalPadding
+                    else
+                        Spaces.chooseHeroLazyRow.horizontalPadding
                 ),
                 horizontalArrangement = Arrangement.spacedBy(
-                    space = Spaces.chooseHeroLazyRow.horizontalArrangement
+                    space =
+                    if(isLandscape())
+                        Spaces.chooseHeroLazyRowLandscape.horizontalArrangement
+                    else
+                        Spaces.chooseHeroLazyRow.horizontalArrangement
                 ),
                 state = lazyListState,
                 flingBehavior = snapBehavior
