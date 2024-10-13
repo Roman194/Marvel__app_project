@@ -1,16 +1,30 @@
 # Production of the Marvell app
 ## Note
-This branch is showing the result of 6th lab of 2nd term at the "Digital Department" of OmSTU (with IT-firm "Effective" directly involve). <br/>
-There are 6 labs in 2nd term. Each one is a part of making the Marvel app. <br/>
+This project is showing the result of 2nd term at the "Digital Department" of OmSTU (with IT-firm "Effective" directly involve). <br/>
+There were 6 labs in 2nd term. Each one was a part of the Marvel app. <br/>
 ## The result
-During two weeks the Marvell App has been modified to proper production state. As the result you can find release APK file in the app/release branch<br/>
+During more than two month the Marvell App has been made. This app consists all major aspects of modern Android development<br/>
 ## Supported features
-Since this lab The Marvel app supports:
-- Russian localization<br/>
-- Light theme (properly)<br/>
-- Landscape orientation<br/>
-- RTL interface<br/>
-Also i want to note, that Edge to edge approach was added with the 1st lab <br/>
+The Marvel app includes such techonlogies as:
+- Jetpack Compose<br/>
+- Retrofit<br/>
+- Moshi<br/>
+- Interceptors<br/>
+- Working with Marvel API<br/>
+- Either approach</br>
+- Room DB</br>
+- MVI design pattern</br>
+- Dagger Hilt</br>
+- FCM (Firebase)</br>
+- Services</br>
+- Broadcast Recievers</br>
+</br>
+Also The Marvel app supports:
+- Dark and light theme</br>
+- Russian localization</br>
+- Vertical / landscape orientation </br>
+- Edge to edge approach</br>
+- RTL</br>
 ## Screenshots
 Here you can see the result of the usage of app in different modes: <br/>
 
@@ -34,6 +48,11 @@ Here you can see the result of the usage of app in different modes: <br/>
 |:---------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------------------------------------------------------:|
 | <img src="https://github.com/Roman194/Marvel__app_project/assets/66479764/66d4953f-eb86-47b8-9033-2a9cf7dfcfdb" width=50% height=50%> | <img src="https://github.com/Roman194/Marvel__app_project/assets/66479764/1662eafe-5d9a-482b-ba2b-26edbaf5c1f0" width=50% height=50%> |
 | <img src="https://github.com/Roman194/Marvel__app_project/assets/66479764/98ac72d0-829f-4d92-9dc8-9fc02594e195" width=50% height=50%> | <img src="https://github.com/Roman194/Marvel__app_project/assets/66479764/24906d8e-8ba4-4fb2-8716-094d06a331bd" width=50% height=50%> |
+## Video
+Here you can see the video of working of the Marvel app:
+
+https://github.com/user-attachments/assets/a678de5e-e783-4459-9fa1-a87b1052acf3
+
 
 ## How to run
 * You need Android Studio (at least Koala) with Kotlin plugin (at least 1.9.0)
