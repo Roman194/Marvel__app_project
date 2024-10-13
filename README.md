@@ -19,13 +19,13 @@ The Marvel app includes such techonlogies as:
 - Services</br>
 - Broadcast Recievers</br>
 </br>
-Also The Marvel app supports:
+Also The Marvel app supports:</br>
 - Dark and light theme</br>
 - Russian localization</br>
 - Vertical / landscape orientation </br>
 - Edge to edge approach</br>
 - RTL</br>
-## Screenshots
+## Screenshots</br>
 Here you can see the result of the usage of app in different modes: <br/>
 
 ### Localization
