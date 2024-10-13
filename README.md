@@ -1,4 +1,4 @@
-# Production of the Marvell app
+# The Marvell app
 ## Note
 This project is showing the result of 2nd term at the "Digital Department" of OmSTU (with IT-firm "Effective" directly involve). <br/>
 There were 6 labs in 2nd term. Each one was a part of the Marvel app. <br/>
@@ -25,6 +25,7 @@ Also The Marvel app supports:</br>
 - Vertical / landscape orientation </br>
 - Edge to edge approach</br>
 - RTL</br>
+</br>
 ## Screenshots</br>
 Here you can see the result of the usage of app in different modes: <br/>
 
