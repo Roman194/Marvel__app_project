@@ -47,9 +47,11 @@ class EitherCall<R>(
             }
 
             override fun onFailure(call: Call<R>, throwable: Throwable) { //if connection to the server failed
+                val errorMessage = throwable.message.toString()
+                val errorCause = throwable.cause.toString()
                 val error = when (throwable) {
-                    is IOException -> ErrorResponse(700)
-                    else -> ErrorResponse(800)
+                    is IOException -> ErrorResponse(700, errorMessage, errorCause)
+                    else -> ErrorResponse(800, errorMessage, errorCause)
                 }
                 callback.onResponse(this@EitherCall, Response.success(Either.Fail(error)))
             }

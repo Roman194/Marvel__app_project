@@ -17,7 +17,7 @@ interface HeroApi{
     ): Either<ErrorResponse, HeroDTOResponse>
 
     companion object{
-        const val BASE_URL = "http://gateway.marvel.com/v1/public/"
+        const val BASE_URL = "https://gateway.marvel.com/v1/public/"
     }
 
 }

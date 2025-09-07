@@ -24,12 +24,11 @@ private val DarkColorScheme = darkColorScheme(
 )
 
 private val LightColorScheme = lightColorScheme(
-    onPrimary = LightGray,
+    onPrimary = White,
     secondary = Red,
     background = LightGray,
-    onSecondary = Black,
+    onSecondary = White,
     onBackground = Black,
-
 )
 
 @Composable
