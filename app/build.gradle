@@ -6,6 +6,8 @@ plugins {
     id 'com.google.dagger.hilt.android'
     id 'com.google.gms.google-services'
     id("org.jetbrains.kotlin.plugin.compose") version "2.0.0"
+    id 'org.jetbrains.dokka'
+
 }
 
 android {
@@ -14,7 +16,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.marvel_app_project"
-        minSdk 26
+        minSdk 30
         targetSdk 35
         versionCode 1
         versionName "1.0"
@@ -23,8 +25,6 @@ android {
         vectorDrawables {
             useSupportLibrary true
         }
-
-
     }
 
     buildTypes {
@@ -53,11 +53,16 @@ android {
     packagingOptions {
         resources {
             excludes += '/META-INF/{AL2.0,LGPL2.1}'
+            excludes += "META-INF/LICENSE.md"
+            excludes += "META-INF/NOTICE.md"
+
         }
     }
 }
 
 dependencies {
+    implementation("org.jetbrains.dokka:dokka-gradle-plugin:2.0.0")
+
     //Firebase
     implementation(platform("com.google.firebase:firebase-bom:34.2.0"))
     implementation("com.google.firebase:firebase-analytics")
