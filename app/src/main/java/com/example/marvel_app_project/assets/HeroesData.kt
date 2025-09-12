@@ -2,6 +2,15 @@ package com.example.marvel_app_project.assets
 
 import com.example.marvel_app_project.models.data.HeroEntity
 
+/**
+ * [SampleData] is an object that is used to store reserve [HeroEntity] values sample.
+ * It had been used as mock data before the data layer was added.
+ * Now it's used when there is no connection to Marvel API and no any data in the DB.
+ * This object should be used to store any mock data for this app
+ *
+ * @see HeroEntity
+ * @author Zyuzin Roman
+ */
 object SampleData{
     val heroEntitySamples = listOf(
         HeroEntity(

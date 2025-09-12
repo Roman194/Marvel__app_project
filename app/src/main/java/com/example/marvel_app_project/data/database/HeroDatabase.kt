@@ -4,6 +4,13 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import com.example.marvel_app_project.models.data.HeroEntity
 
+
+/**
+ * This abstract class is the implementation of [RoomDatabase] with the usage of functions from the [HeroDao] interface
+ *
+ * @see HeroDao for more info
+ * @author Zyuzin Roman
+ */
 @Database(
     entities = [HeroEntity::class],
     version = 1,
