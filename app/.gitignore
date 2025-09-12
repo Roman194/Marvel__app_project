@@ -1,12 +1,2 @@
-/build/dokka
-/build/dokka-module
-/build/generated
-/build/gmpAppId
-/build/intermadiates
-/build/kotlin
-/build/kotlinToolingMetadata
-/build/outputs
-/build/snapshot
-/build/tmp
-/build/gmpAppId.txt
+/build
 google-services.json
