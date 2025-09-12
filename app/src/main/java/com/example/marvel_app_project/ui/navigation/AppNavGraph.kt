@@ -6,12 +6,18 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.marvel_app_project.ui.navigation.HeroesScreen.SingleHero
+import com.example.marvel_app_project.ui.navigation.HeroesScreen.Start
 import com.example.marvel_app_project.ui.pages.HeroAction
 import com.example.marvel_app_project.ui.pages.choosehero.ChooseHeroViewModel
 import com.example.marvel_app_project.ui.pages.choosehero.screens.ChooseHeroScreen
 import com.example.marvel_app_project.ui.pages.singlehero.SingleHeroViewModel
 import com.example.marvel_app_project.ui.pages.singlehero.screens.SingleHeroScreen
 
+/**
+ * [HeroesScreen] is enum class that shows current navigation state between 2 possible ones: [Start] and [SingleHero].
+ * Start is connected with ChooseHeroScreen, SingleHero - with SingleHeroScreen
+ */
 enum class HeroesScreen {
     Start,
     SingleHero
@@ -20,8 +26,8 @@ enum class HeroesScreen {
 /**
  * [AppNavGraph] function creates the main navigation menu between screens.
  *
- * @property navController sets [NavHostController] to manage navigation between screens
- * @property heroId is used to choose startDestination
+ * @param navController sets [NavHostController] to manage navigation between screens
+ * @param heroId is used to choose startDestination
  *
  * @see ChooseHeroViewModel
  * @see SingleHeroViewModel
@@ -67,8 +73,8 @@ fun AppNavGraph(navController: NavHostController = rememberNavController(), hero
          * [ChooseHeroScreen] function creates ChooseHero UI for that screen.
          * As a route it uses Start from [HeroesScreen] enum class.
          *
-         * @property heroesUiState links [ChooseHeroViewModel] with UI of this screen to manage screen Ui state from its view model
-         * @property onAction describes which actions should be done in [ChooseHeroViewModel] when user triggers navigate to [SingleHeroScreen]
+         * @param heroesUiState links [ChooseHeroViewModel] with UI of this screen to manage screen Ui state from its view model
+         * @param onAction describes which actions should be done in [ChooseHeroViewModel] when user triggers navigate to [SingleHeroScreen]
          */
         composable(route = HeroesScreen.Start.name){
             ChooseHeroScreen(
@@ -84,8 +90,8 @@ fun AppNavGraph(navController: NavHostController = rememberNavController(), hero
          * [SingleHeroScreen] function creates SingleHero UI for that screen.
          * As a route it uses SingleHero from [HeroesScreen] enum class.
          *
-         * @property singleHeroUiState links [SingleHeroViewModel] with UI of this screen to manage screen Ui state from its view model
-         * @property onAction triggers actions that should be done onAction in [SingleHeroViewModel] when user triggers navigate back to [ChooseHeroScreen]
+         * @param singleHeroUiState links [SingleHeroViewModel] with UI of this screen to manage screen Ui state from its view model
+         * @param onAction triggers actions that should be done onAction in [SingleHeroViewModel] when user triggers navigate back to [ChooseHeroScreen]
          */
         composable(route = HeroesScreen.SingleHero.name){
             SingleHeroScreen(

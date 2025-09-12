@@ -10,7 +10,8 @@ import java.io.IOException
 import java.lang.reflect.Type
 
 /**
- * Custom [CallAdapter.Factory] to handle Retrofit [Response] through [Either] type
+ * Custom [CallAdapter.Factory] to handle Retrofit [Response] through [Either] type.
+ * If you want to track onFailure errors looks in details to [onFailure]
  *
  * Original idea taken from:
  * https://proandroiddev.com/retrofit-calladapter-for-either-type-2145781e1c20

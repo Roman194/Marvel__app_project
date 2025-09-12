@@ -21,7 +21,7 @@ interface HeroRepository {
     /**
      * fun [upsertHero] is used to add new hero to DB table.
      * This function is triggered by [singleHero] fun
-     * @property heroEntity is the Hero object that is going to be added
+     * @param heroEntity is the Hero object that is going to be added
      */
 
     suspend fun upsertHero(heroEntity: HeroEntity)
@@ -29,7 +29,7 @@ interface HeroRepository {
     /**
      * fun [updateHero] is used to update info about existing hero in DB table.
      * This function is triggered by [allHeroes] fun
-     * @property heroEntity is the Hero object that is going to be updated
+     * @param heroEntity is the Hero object that is going to be updated
      */
 
     suspend fun updateHero(heroEntity: HeroEntity)
@@ -53,8 +53,8 @@ interface HeroRepository {
     /**
      * fun [singleHero] is used to provide to UI the data about clicked hero. This fun is necessary to open singleHeroScreen with correct hero info.
      * The function is triggered by user UI interaction.
-     * @property heroServerID is the APIs hero ID to get updated data about it.
-     * @property heroID is the DB ID which is used when there is no connection with API or [heroServerID] wasn't found in API (case for heroes from [ObjectData] sample)
+     * @param heroServerID is the APIs hero ID to get updated data about it.
+     * @param heroID is the DB ID which is used when there is no connection with API or [heroServerID] wasn't found in API (case for heroes from [ObjectData] sample)
      */
 
     suspend fun singleHero(heroID: Int, heroServerID: String): Either<SingleHeroReserve, HeroEntity>

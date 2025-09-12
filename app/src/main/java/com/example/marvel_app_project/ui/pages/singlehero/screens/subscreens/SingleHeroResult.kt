@@ -24,6 +24,14 @@ import com.example.marvel_app_project.ui.pages.HeroAction
 import com.example.marvel_app_project.ui.theme.Sizes
 import com.example.marvel_app_project.ui.theme.Spaces
 
+/**
+ * [SingleHeroResult] is a [Composable] component function that draws [SingleHeroScreen] in success state.
+ * It shows a hero's image and details with a back button to return to the previous screen.
+ * See more about [Jetpack Compose](https://developer.android.com/compose)
+ * @see HeroAction
+ * @see HeroUI
+ * @author Zyuzin Roman
+ */
 @Composable
 fun SingleHeroResult(hero: HeroUI, onAction: (HeroAction) -> Unit){
     Box (modifier = Modifier.fillMaxSize()){

@@ -129,5 +129,15 @@ kapt {
 dokka {
     dokkaPublications.html {
         outputDirectory.set(layout.buildDirectory.dir("documentation/html"))
+
+        includes.from(project.layout.projectDirectory.file("Module.md"))
+        moduleName.set("Marvel_app_project")
+
+    }
+
+    dokkaSourceSets.main{
+        sourceLink {
+            remoteUrl("https://github.com/Roman194/Marvel__app_project")
+        }
     }
 }

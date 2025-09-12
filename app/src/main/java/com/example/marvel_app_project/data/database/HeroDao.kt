@@ -19,21 +19,21 @@ interface HeroDao {
 
     /**
      * fun [upsertHero] is used to add new hero to DB table
-     * @property hero is the Hero object that is going to be added
+     * @param hero is the Hero object that is going to be added
      */
     @Upsert
     suspend fun upsertHero(hero: HeroEntity)
 
     /**
      * fun [updateHero] is used to update info about existing hero in DB table
-     * @property hero is the Hero object that is going to be updated
+     * @param hero is the Hero object that is going to be updated
      */
     @Update
     suspend fun updateHero(hero: HeroEntity)
 
     /**
      * fun [getSingleHero] is used to provide to UI the data about clicked hero. This fun is necessary to open singleHeroScreen with correct hero info
-     * @property heroID is the DB ID which is used get updated data about it
+     * @param heroID is the DB ID which is used get updated data about it
      */
     @Query("SELECT * FROM HeroEntity WHERE HeroEntity.id == :heroID")
     suspend fun getSingleHero(heroID: Int): HeroEntity

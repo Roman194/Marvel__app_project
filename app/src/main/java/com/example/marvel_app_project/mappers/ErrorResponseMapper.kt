@@ -2,6 +2,12 @@ package com.example.marvel_app_project.mappers
 
 import com.example.marvel_app_project.models.data.network.ErrorResponse
 
+/**
+ * This fun converts errorNumber to ErrorUIString inside [ErrorResponse] data class
+ *
+ * @see ErrorResponse
+ * @author Zyuzin Roman
+ */
 fun ErrorResponse.toStringType()=
     when(errorNumber){
         404 -> "404: Character not found."

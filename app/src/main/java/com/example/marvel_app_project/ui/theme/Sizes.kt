@@ -3,6 +3,10 @@ package com.example.marvel_app_project.ui.theme
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
+/**
+ * Define various sizes used in the application.
+ * @author Zyuzin Roman
+ */
 object Sizes{
     object heroCard{
         val width = 310.dp

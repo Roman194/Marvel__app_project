@@ -5,6 +5,10 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import com.example.marvel_app_project.R
 
+/**
+ * Define the Inter font family with various font weights.
+ * This allows for consistent typography throughout the application.
+ */
 val interFamily = FontFamily(
     Font(R.font.inter_thin, FontWeight.Thin),
     Font(R.font.inter_extralight, FontWeight.ExtraLight),

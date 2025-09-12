@@ -13,6 +13,24 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+/**
+ * [ChooseHeroViewModel] is a class that manage ChooseHeroScreen state and transfer data and events
+ * between Repository and UI screen.
+ * To work with data layer it uses coroutines inside function [getHeroesInfo].
+ *
+ * @constructor uses Dagger Hilt DI [Inject] to match ViewModel entity with Repository ones.
+ *
+ * @param repository is used to work with data layer.
+ * @param heroesUiState is used to store current UI state of ChooseHeroScreen.
+ *
+ * @see ChooseHeroScreen
+ *
+ * About Dagger Hilt, see [this video](https://www.youtube.com/live/yGiCNunSVN8?si=2q-cqxnb3kFm4D50)
+ * About Kotlin Coroutines, see [this video](https://developer.android.com/kotlin/coroutines)
+ *
+ * @author Zyuzin Roman
+ */
+
 @HiltViewModel
 class ChooseHeroViewModel @Inject constructor(
     val repository: HeroRepository
@@ -23,6 +41,21 @@ class ChooseHeroViewModel @Inject constructor(
     init {
         getHeroesInfo()
     }
+
+    /**
+     * [getHeroesInfo] function is used to get all heroes from Repository layer with the usage of coroutines.
+     * It updates [heroesUiState] with 1 of 2 possible states: [ChooseHeroesUiState.Success] or [ChooseHeroesUiState.Error]
+     * depending on the result of the request to Repository layer.
+     * In case of [ChooseHeroesUiState.Error] it transfers heroes from DB to show them on UI.
+     * In case of [ChooseHeroesUiState.Success] it transfers all heroes from DB but with fresh update from Marvel API.
+     * It also determines background color and visible part of hero name for each hero.
+     * See functions [toDetermineBackgroundColor] and [toDetermineHeroNameVisiblePart].
+     * [getHeroesInfo] is called during initialization of this app as a manager for ChooseHeroScreen state (ChooseHeroScreen is the started screen of this app).
+     * @see ChooseHeroesUiState
+     * @see toDetermineBackgroundColor
+     * @see toDetermineHeroNameVisiblePart
+     * @author Zyuzin Roman
+     */
 
     fun getHeroesInfo() {
 

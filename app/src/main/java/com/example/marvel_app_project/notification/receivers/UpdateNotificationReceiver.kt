@@ -7,6 +7,14 @@ import com.example.marvel_app_project.R
 import com.example.marvel_app_project.assets.SampleData
 import com.example.marvel_app_project.notification.HeroesNotification
 
+/**
+ * [UpdateNotificationReceiver] is a [BroadcastReceiver] that handles command to show notification
+ * from the [FCM](https://firebase.google.com/docs/cloud-messaging?hl=ru)
+ *
+ * @see HeroesNotification
+ * @author Zyuzin Roman
+ */
+
 class UpdateNotificationReceiver: BroadcastReceiver() {
 
     //TODO(Solve problems with Hilt injection in a BroadcastReceiver to implement "I'm lucky button functionality with DB")

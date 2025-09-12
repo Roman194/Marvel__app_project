@@ -5,6 +5,11 @@ import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.graphics.Color
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
+/**
+ * Apply transparent system bar colors (status bar and navigation bar).
+ * This function uses the Accompanist library to control the system UI colors.
+ * It sets both the status bar and navigation bar colors to transparent.
+ */
 @Composable
 fun ApplySystemBarColors(){
     val systemUiContrller = rememberSystemUiController()

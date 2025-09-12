@@ -29,6 +29,14 @@ import com.example.marvel_app_project.ui.theme.Sizes
 import com.example.marvel_app_project.ui.theme.Spaces
 import com.example.marvel_app_project.ui.utils.isLandscape
 
+/**
+ * [ChooseHeroResult] is a [Composable] component function that draws [ChooseHeroScreen] in success state.
+ * It shows a list of heroes in a horizontally scrolling list with snapping behavior.
+ * See more about [Jetpack Compose](https://developer.android.com/compose)
+ * @see HeroAction
+ * @see HeroUI
+ * @author Zyuzin Roman
+ */
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun ChooseHeroResult(
