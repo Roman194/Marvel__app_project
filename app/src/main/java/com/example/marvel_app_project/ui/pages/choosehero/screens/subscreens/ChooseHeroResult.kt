@@ -33,6 +33,10 @@ import com.example.marvel_app_project.ui.utils.isLandscape
  * [ChooseHeroResult] is a [Composable] component function that draws [ChooseHeroScreen] in success state.
  * It shows a list of heroes in a horizontally scrolling list with snapping behavior.
  * See more about [Jetpack Compose](https://developer.android.com/compose)
+ *
+ * [Composable] компонент-функция [ChooseHeroResult], используется для отрисовки состояния успешной загрузки данных экрана [ChooseHeroScreen].
+ * Она выводит сообщение с листом героев из [ChooseHeroResult]
+ *
  * @see HeroAction
  * @see HeroUI
  * @author Zyuzin Roman

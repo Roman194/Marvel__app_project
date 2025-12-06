@@ -11,6 +11,9 @@ import com.example.marvel_app_project.notification.HeroesNotification
  * [UpdateNotificationReceiver] is a [BroadcastReceiver] that handles command to show notification
  * from the [FCM](https://firebase.google.com/docs/cloud-messaging?hl=ru)
  *
+ * [UpdateNotificationReceiver] это [BroadcastReceiver], который хранит команды для открытия нотификаций
+ * при использовании FCM console (Firebase service)
+ *
  * @see HeroesNotification
  * @author Zyuzin Roman
  */

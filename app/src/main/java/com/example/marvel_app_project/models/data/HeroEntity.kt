@@ -7,6 +7,9 @@ import androidx.room.PrimaryKey
  * [HeroEntity] it's a data class (model) that is used by RoomDB to create DBTable structure.
  * It's also a Model that is used to transfer data from HeroRepository to HeroDao (RoomDB)
  * See [about RoomDB](https://metanit.com/kotlin/jetpack/16.2.php?ysclid=mfgko80w4a948973988)
+ *
+ * Дата-класс [HeroEntity] испольузется либой RoomDB для создания структуры таблицы БД.
+ * Эта модель также используется для передачи данных из HeroRepository в HeroDao (RoomDB)
  * @author Zyuzin Roman
  */
 @Entity

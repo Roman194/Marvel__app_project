@@ -26,6 +26,8 @@ import com.example.marvel_app_project.ui.theme.interFamily
  * [HeroLoading] is a [Composable] component function that draws [ChooseHeroScreen] in loading state.
  * See more about [Jetpack Compose](https://developer.android.com/compose)
  *
+ * [Composable] компонент-функция [HeroLoading], используемая для вывода заграузочного состояния в [ChooseHeroScreen].
+ *
  * @see HeroAction
  * @author Zyuzin Roman
  */

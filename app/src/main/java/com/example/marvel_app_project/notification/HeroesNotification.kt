@@ -18,6 +18,9 @@ import com.example.marvel_app_project.notification.receivers.UpdateNotificationR
  * It's binds with [HeroesApp] createNotificationChannel fun by the [HEROES_CHANNEL_ID] property from
  * companion object.
  *
+ * Класс [HeroesNotification] используется для создания нотификаций в этом приложении.
+ * Он свзяывает [HeroesApp]-функцию createNotificationChannel со свойством [HEROES_CHANNEL_ID] объекта-компаньона
+ *
  * @author Zyuzin Roman
  */
 

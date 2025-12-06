@@ -5,6 +5,9 @@ package com.example.marvel_app_project.ui.pages
  * It transfers them from the UI to ViewModels inside 1 structure what is matches with the MVI pattern logic.
  * See about [MVI pattern](https://www.geeksforgeeks.org/software-engineering/model-view-intent-mvi-pattern-in-reactive-programming-a-comprehensive-overview/)
  *
+ * Сеалед-интерфейс [HeroAction] хранит все возможные события UI-слоя.
+ * Он передаёт их из UI во ViewModels в рамках единой структуры (MVI)
+ *
  * @author Zyuzin Roman
  */
 sealed interface HeroAction {

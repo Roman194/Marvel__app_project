@@ -13,6 +13,9 @@ import java.lang.reflect.Type
  * Custom [CallAdapter.Factory] to handle Retrofit [Response] through [Either] type.
  * If you want to track onFailure errors looks in details to [onFailure]
  *
+ * Кастомный [CallAdapter.Factory] для обработки Retrofit [Response] с использованием типа [Either].
+ * Если вы хотите отслеживать ошибки, то простматривайте детали через [onFailure] метод
+ *
  * Original idea taken from:
  * https://proandroiddev.com/retrofit-calladapter-for-either-type-2145781e1c20
  */

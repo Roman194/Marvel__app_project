@@ -4,7 +4,9 @@ import com.example.marvel_app_project.models.data.HeroEntity
 import com.example.marvel_app_project.models.data.network.HeroDTO
 
 /**
- * This fun converts [HeroDTO] to [HeroEntity] data class
+ * This fun converts [HeroDTO] to [HeroEntity] data class.
+ *
+ * Данная функция конвертирует [HeroDTO] в [HeroEntity] дата-класс.
  *
  * @see HeroDTO
  * @see HeroEntity

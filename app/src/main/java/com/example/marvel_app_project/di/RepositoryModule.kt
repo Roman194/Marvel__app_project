@@ -13,6 +13,9 @@ import javax.inject.Singleton
  * In this file binding with HeroRepository happens (with the usage of [bindsHeroRepository] fun)
  * See [video about Dagger Hilt DI lib](https://www.youtube.com/live/yGiCNunSVN8?si=2q-cqxnb3kFm4D50)
  *
+ * [RepositoryModule] это DI-модуль либы DaggerHilt.
+ * В этом файле происходит связь с HeroRepository.
+ *
  * @see AppModule
  * @author Zyuzin Roman
  */
@@ -28,6 +31,12 @@ abstract class RepositoryModule {
      *
      * @param heroRepositoryImpl The implementation of [HeroRepository] to be used.
      * @return The bound [HeroRepository] instance.
+     *
+     * Привязывает реализацию [HeroRepositoryImpl] к интерфейсу [HeroRepository].
+     *
+     * Эта функция говорит Dagger Hilt использовать [HeroRepositoryImpl] даже если требуется [HeroRepository].
+     * Связь заявлена как синглтон на уровне ЖЦ приложения.
+     *
      */
     @Binds
     @Singleton

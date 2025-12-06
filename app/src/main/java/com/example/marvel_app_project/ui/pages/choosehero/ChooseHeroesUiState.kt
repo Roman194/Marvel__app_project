@@ -7,6 +7,9 @@ import com.example.marvel_app_project.models.ui.HeroUI
  * It transfers them from the ViewModel to UI inside 1 structure what is matches with the MVI pattern logic.
  * See about [MVI pattern](https://www.geeksforgeeks.org/software-engineering/model-view-intent-mvi-pattern-in-reactive-programming-a-comprehensive-overview/)
  *
+ * Сеалед-интерфейс [ChooseHeroesUiState] хранит все данные о возможных UI-состояниях для [ChooseHeroScreen].
+ * Он передаёт эти данные из ViewModel в UI внутри единой структуры, которая совпадает с логикой MVI-паттерна
+ *
  * @author Zyuzin Roman
  */
 

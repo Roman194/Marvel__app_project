@@ -18,6 +18,10 @@ import dagger.hilt.android.AndroidEntryPoint
  * A place where edge to edge approach and intent for heroId notification adds.
  * Also it's a place where [AppNavGraph] is called
  *
+ * Основная ктивность данного приложения.
+ * Место, где происходит активация edge-to-edge подхода и задаётся интент для нотификаций.
+ * Также это место, где вызывается [AppNavGraph]
+ *
  * @see AppNavGraph
  * @author Zyuzin Roman
  */

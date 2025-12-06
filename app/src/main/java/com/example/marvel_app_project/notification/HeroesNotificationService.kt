@@ -7,6 +7,9 @@ import com.google.firebase.messaging.RemoteMessage
  * [HeroesNotificationService] class is used to manage requests on showing [HeroesNotification] from
  * the [FirebaseMessagingService]
  *
+ * Класс [HeroesNotificationService] используется для управления запросами на вывод [HeroesNotification] из
+ * [FirebaseMessagingService]
+ *
  * @see HeroesNotification
  * @author Zyuzin Roman
  */

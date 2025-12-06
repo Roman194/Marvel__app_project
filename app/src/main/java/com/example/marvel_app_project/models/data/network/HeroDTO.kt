@@ -5,6 +5,9 @@ package com.example.marvel_app_project.models.data.network
  * to Repository in cases when response is [Either.Success].
  * Later it will be converted in Repository to [HeroEntity]
  *
+ * Дата-класс [HeroDTO] используется для передачи ответа сервера с API ([Either.Success]).
+ * В дальнейшем его данные буду конвертированы в репозитории в [HeroEntity]
+ *
  * @author Zyuzin Roman
  */
 

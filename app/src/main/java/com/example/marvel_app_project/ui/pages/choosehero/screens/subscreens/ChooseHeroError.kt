@@ -28,6 +28,10 @@ import com.example.marvel_app_project.ui.theme.interFamily
  * [ChooseHeroError] is a [Composable] component function that draws [ChooseHeroScreen] in error state.
  * It shows an error message and a list of heroes from [ChooseHeroResult].
  * See more about [Jetpack Compose](https://developer.android.com/compose)
+ *
+ * [Composable] компонент-функция [ChooseHeroError], используется для отрисовки состояния ошибки экрана [ChooseHeroScreen].
+ * Она выводит сообщение с ошибкой и лист героев из [ChooseHeroResult]
+ *
  * @see HeroAction
  * @see ChooseHeroResult
  * @author Zyuzin Roman

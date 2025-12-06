@@ -14,9 +14,13 @@ import javax.inject.Inject
 
 /**
  * This class is the implementation of [HeroRepository] interface.
+ * Этот класс является реаализацией интерфейса [HeroRepository].
+ * Для русских комментариев к функциям обратитесь к этому интерфейсу.
  *
  * @see HeroRepository for more info
  * @constructor is uses Dagger Hilt [Inject] to get info about initialization of [HeroApi] and [HeroDao] interfaces.
+ *
+ * конструктор используется для Dagger Hilt [Inject] для получения информации об интерфейсах [HeroApi] и [HeroDao].
  *
  * @author Zyuzin Roman
  */

@@ -8,6 +8,11 @@ import com.example.marvel_app_project.models.data.HeroEntity
  * Now it's used when there is no connection to Marvel API and no any data in the DB.
  * This object should be used to store any mock data for this app
  *
+ * [SampleData] это объект, который используется для хранения резервных значений типа [HeroEntity].
+ * Эти значения использовались в качестве моковых данных до того как data-слой приложения был добавлен.
+ * Сейчас они используются в случае, когда нет подключения к MarvelAPI и в БД не сдержатся никакие данные.
+ * Этот объект должен использоватся для хранения любых моковых данных в этом проекте
+ *
  * @see HeroEntity
  * @author Zyuzin Roman
  */

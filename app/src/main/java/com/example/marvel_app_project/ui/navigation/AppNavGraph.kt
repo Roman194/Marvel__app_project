@@ -17,6 +17,10 @@ import com.example.marvel_app_project.ui.pages.singlehero.screens.SingleHeroScre
 /**
  * [HeroesScreen] is enum class that shows current navigation state between 2 possible ones: [Start] and [SingleHero].
  * Start is connected with ChooseHeroScreen, SingleHero - with SingleHeroScreen
+ *
+ * Enum-класс [HeroesScreen] показывает текущее состояние навигации между 2-мя возможными: [Start] and [SingleHero].
+ * Старт используется для подключения к ChooseHeroScreen, SingleHero - к SingleHeroScreen
+ *
  */
 enum class HeroesScreen {
     Start,
@@ -28,6 +32,11 @@ enum class HeroesScreen {
  *
  * @param navController sets [NavHostController] to manage navigation between screens
  * @param heroId is used to choose startDestination
+ *
+ * Функция [AppNavGraph] создаёт основное навигационное меню между экранами.
+ *
+ * параметр navController задаёт [NavHostController] для управления навигацией между экранами.
+ * параметр heroId испольузется для выбора startDestination
  *
  * @see ChooseHeroViewModel
  * @see SingleHeroViewModel
@@ -43,6 +52,9 @@ fun AppNavGraph(navController: NavHostController = rememberNavController(), hero
      * heroViewModel and singleHeroViewModel are used to create the instance of [ChooseHeroViewModel] and [SingleHeroViewModel]
      * with the usage of [hiltViewModel] from Dagger Hilt DI lib.
      * About Dagger Hilt, see [this video](https://www.youtube.com/live/yGiCNunSVN8?si=2q-cqxnb3kFm4D50)
+     *
+     * heroViewModel and singleHeroViewModel используется для создания объекта [ChooseHeroViewModel] and [SingleHeroViewModel]
+     * с использованием [hiltViewModel] из либы Dagger Hilt
      */
 
     val heroViewModel = hiltViewModel<ChooseHeroViewModel>()
@@ -63,6 +75,10 @@ fun AppNavGraph(navController: NavHostController = rememberNavController(), hero
      *
      * @property navController described higher
      * @property startDestination set the default screen when activity is loaded
+     *
+     * [NavHost]-функция управляет пунктами назначения межды композабл-экранами
+     *
+     * свойство startDestination по умолчанию задано в дефолтное состояние загрузки активности
      */
     NavHost(
         navController = navController,
@@ -75,6 +91,12 @@ fun AppNavGraph(navController: NavHostController = rememberNavController(), hero
          *
          * @param heroesUiState links [ChooseHeroViewModel] with UI of this screen to manage screen Ui state from its view model
          * @param onAction describes which actions should be done in [ChooseHeroViewModel] when user triggers navigate to [SingleHeroScreen]
+         *
+         * [ChooseHeroScreen]-функция создаёт ChooseHero UI для этих экранов.
+         * В качестве маршрута используется Start из [HeroesScreen] enum class.
+         *
+         * параметр heroUiState связывает [ChooseHeroViewModel] с UI данного экрана для управления состоянием экрана из его ViewModel.
+         * параметр onAction описывает какие действия необходимо совершить в [ChooseHeroViewModel] когда срабатывает триггер навиганции на [SingleHeroScreen]
          */
         composable(route = HeroesScreen.Start.name){
             ChooseHeroScreen(
@@ -92,6 +114,12 @@ fun AppNavGraph(navController: NavHostController = rememberNavController(), hero
          *
          * @param singleHeroUiState links [SingleHeroViewModel] with UI of this screen to manage screen Ui state from its view model
          * @param onAction triggers actions that should be done onAction in [SingleHeroViewModel] when user triggers navigate back to [ChooseHeroScreen]
+         *
+         * [SingleHeroScreen]-функция создаёт SingleHero UI для этих экранов.
+         * В качестве маршрута используется SingleHero из [HeroesScreen] enum class.
+         *
+         * параметр heroUiState связывает [SingleHeroViewModel] с UI данного экрана для управления состоянием экрана из его ViewModel.
+         * параметр onAction описывает какие действия необходимо совершить в [SingleHeroViewModel] когда срабатывает триггер навиганции на [ChooseHeroScreen]
          */
         composable(route = HeroesScreen.SingleHero.name){
             SingleHeroScreen(

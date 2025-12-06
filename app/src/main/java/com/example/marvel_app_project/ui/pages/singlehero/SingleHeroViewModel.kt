@@ -21,6 +21,16 @@ import javax.inject.Inject
  * @constructor uses Dagger Hilt DI [Inject] to match ViewModel entity with Repository ones.
  * @param repository is used to work with data layer.
  * @param singleHeroUIState is used to store current UI state of SingleHeroScreen.
+ *
+ * Класс [SingleHeroViewModel] управляет состоянием экрана SingleHeroScreen и передаёт данные и события
+ * между репозиторием и экраном.
+ * Для работы с дата-слоем оно используетс корутины внутри функции [updateHeroForSingleHero].
+ *
+ * конструктор использует Dagger Hilt DI [Inject] для соответствия ViewModel entity c Repositor-ным.
+ *
+ * параметр repository используется для работы с дата-слоем.
+ * параметр heroesUiState используется для хранения текущего состояни экрана SingleHeroScreen.
+ *
  * @see SingleHeroScreen
  * @see HeroAction
  * @see updateHeroForSingleHero
@@ -43,6 +53,12 @@ class SingleHeroViewModel @Inject constructor(
      * [onAction] function is used to transfer UI events from SingleHeroScreen to this ViewModel.
      * It uses [when] expression to determine which event it is and calls the corresponding function to handle it.
      * It is called when user taps on hero image on ChooseHeroScreen, on notification about hero or on back button on SingleHeroScreen
+     *
+     * [onAction]-функция используется для передачи UI-событий из SingleHeroScreen в этот VievModel.
+     * Оно использует [when] для объявления какое событие произошло и вызова соответствующей функции обработки этого события (MVI).
+     * Вызывается когда пользователь кликает на изображение героя на экране ChooseHeroScreen, на нотификацию о герое или на кнопку возвращения назад
+     * на экране SingleHeroScreen
+     *
      */
     fun onAction(action: HeroAction){
         when(action){
@@ -71,6 +87,13 @@ class SingleHeroViewModel @Inject constructor(
      * In case of [SingleHeroUiState.Error] it transfers hero from DB to show them on UI.
      * In case of [SingleHeroUiState.Success] it transfers hero from DB but with fresh update from Marvel API.
      * It is called from function [onAction] when user taps on hero image on ChooseHeroScreen or on notification about hero
+     *
+     * [updateHeroForSingleHero]-функция используется для получения данных о конкретном герое из репозитория с использованием корутин.
+     * В зависимости от результат запроса с data-слоя, она обновляет [singleHeroUIState] одним из двух возможных состояний: [SingleHeroUiState.Success] or [SingleHeroUiState.Error].
+     * В случае [SingleHeroUiState.Error] она передаёт героя из БД для вывода их в UI.
+     * В случае [SingleHeroUiState.Success] оно передаёт героя из БД, но с новым апдейтом данных с сервера.
+     * Вызывается из функции [onAction] когда пользователь кликает на изображение героя на экране ChooseHeroScreen или на натификацию о герое
+     *
      */
     private fun updateHeroForSingleHero(id: Int, serverId: String) {
 

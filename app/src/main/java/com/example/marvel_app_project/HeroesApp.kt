@@ -14,6 +14,9 @@ import dagger.hilt.android.HiltAndroidApp
  * It's used to declare this app for Dagger Hilt DI lib and to [createNotificationChannel].
  * About Dagger Hilt, see [this video](https://www.youtube.com/live/yGiCNunSVN8?si=2q-cqxnb3kFm4D50)
  *
+ * Класс-[Application] данного приложения.
+ * Используется для объявления данного приложения для Dagger Hilt DI lib и создания канала нотификации
+ *
  * @see HiltAndroidApp
  * @see NotificationChannel
  * @see NotificationManager

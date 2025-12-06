@@ -5,6 +5,8 @@ import com.example.marvel_app_project.models.data.network.ErrorResponse
 /**
  * This fun converts errorNumber to ErrorUIString inside [ErrorResponse] data class
  *
+ * Данная функция конвретирует errorNumber в ErrorUiString в рамках [ErrorResponse] дата-класса
+  *
  * @see ErrorResponse
  * @author Zyuzin Roman
  */
@@ -16,4 +18,4 @@ fun ErrorResponse.toStringType()=
         in 400..499 -> "4XX: Unknown client error."
         in 500..599 -> "5XX: Unknown server error."
         else -> "Unknown error."
-    } + errorMessage + errorCause
+    } + errorMessage //+ errorCause

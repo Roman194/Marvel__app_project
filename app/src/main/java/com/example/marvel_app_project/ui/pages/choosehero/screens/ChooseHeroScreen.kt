@@ -11,6 +11,10 @@ import com.example.marvel_app_project.ui.pages.choosehero.screens.subscreens.Cho
  * [ChooseHeroScreen] is a [Composable] component function that draws the main ChooseHeroScreen.
  * It uses [ChooseHeroesUiState] to show the current UI state: Loading, Error or Success.
  * See more about [Jetpack Compose](https://developer.android.com/compose)
+ *
+ * [Composable] компонент-функция [ChooseHeroScreen], используется для отрисовки основной части [ChooseHeroScreen].
+ * Использует [ChooseHeroesUiState] для вывода текущего UI-состояния: Loading, Error or Success.
+ *
  * @see ChooseHeroesUiState
  * @see HeroAction
  * @author Zyuzin Roman

@@ -6,6 +6,9 @@ import androidx.compose.ui.graphics.Color
  * [HeroUI] data class is used to transfer data from the HeroesRepository to UI (ChooseHeroScreen and SingleHeroScreen).
  * It also has its own default values to check the UI elements
  *
+ * Дата-класс [HeroUI] испольузется для передачи данных из репозитория на UI-слой для обоих экранов.
+ * Также имеет собственные дефолтные значения
+ *
  */
 
 data class HeroUI(
