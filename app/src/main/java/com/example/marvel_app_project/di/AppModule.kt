@@ -20,10 +20,30 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
 import javax.inject.Singleton
 
+/**
+ * [AppModule] is an object that handles Builders for Moshi, OkHttp, Retrofit libs.
+ * It's a place where the main magic of DI happens.
+ * It's hard to explain. Better see [video about Dagger Hilt DI lib](https://www.youtube.com/live/yGiCNunSVN8?si=2q-cqxnb3kFm4D50)
+ *
+ * [AppModule] это объект, хранящий в себе билдеры для либ Moshi, OkHttp, Retrofit.
+ * Это место, где происходит DI-магия
+ *
+ * @author Zyuzin Roman
+ */
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
 
+    /** Provides a singleton instance of [HeroDatabase] using Room.
+     *
+     * Передаёт [HeroDatabase] синглтон с использованием Room.
+     *
+     * @param app The application context used to build the database.
+     * @return A singleton instance of [HeroDatabase].
+     *
+     * параметр app это конктекст приложения, используемый для билдинга БД.
+     * возвращает синглтон типа [HeroDatabase].
+     */
     @Provides
     @Singleton
     fun provideHeroDatabase(app: Application): HeroDatabase {
@@ -34,12 +54,30 @@ object AppModule {
         ).build()
     }
 
+    /** Provides a singleton instance of [HeroDao] from the given [HeroDatabase].
+     *
+     * @param database The [HeroDatabase] instance from which to obtain the DAO.
+     * @return A singleton instance of [HeroDao].
+     *
+     * Передаёт синглтон типа [HeroDao] с использованием переданного [HeroDatabase] синглтона.
+     *
+     * параметр database это [HeroDatabase]-синглтон, который передаёт DAO.
+     * возвращает [HeroDao]-синглтон.
+     */
     @Provides
     @Singleton
     fun provideHeroDao(database: HeroDatabase): HeroDao {
         return database.heroDao()
     }
 
+    /** Provides a singleton instance of [OkHttpClient] with logging and authentication interceptors.
+     *
+     * Передаёт [OkHttpClient]-синглтон с логирующим и аутентификационным интерцепторами.
+     *
+     * @return A singleton instance of [OkHttpClient].
+     *
+     * возвращает [OkHttpClient]-синглтон.
+     */
     @Provides
     @Singleton
     fun provideOkHttpClient():OkHttpClient{
@@ -48,6 +86,13 @@ object AppModule {
             .addNetworkInterceptor(authInterceptor)
             .build()
     }
+
+    /** Provides a singleton instance of [Moshi] for JSON parsing.
+     *
+     * Передаёт [Moshi]-синглтон для парсинга JSON.
+     *
+     * @return A singleton instance of [Moshi].
+     */
     @Provides
     @Singleton
     fun provideMoshi(): Moshi{
@@ -56,6 +101,18 @@ object AppModule {
             .build()
     }
 
+    /** Provides a singleton instance of [HeroApi] using Retrofit with Moshi and Scalars converters.
+     *
+     * Передаёт [HeroApi]-синглтон для использовани либ Retrofit и Moshi, а также скалярных конвертеров.
+     *
+     * @param moshi The [Moshi] instance used for JSON conversion.
+     * @param client The [OkHttpClient] instance used for network requests.
+     * @return A singleton instance of [HeroApi].
+     *
+     * параметр moshi это [Moshi]-синглтон.
+     * параметр client это [OkHttpClient]-синглтон, используемый для отправки запросов к API.
+     *
+      */
     @Provides
     @Singleton
     fun provideHeroApi(moshi: Moshi, client: OkHttpClient): HeroApi {

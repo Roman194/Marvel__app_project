@@ -29,6 +29,15 @@ import com.example.marvel_app_project.ui.theme.Spaces
 import com.example.marvel_app_project.ui.theme.interFamily
 import com.example.marvel_app_project.ui.utils.isLandscape
 
+/**
+ * [HeroCard] is a [Composable] component function that draws hero card component for [ChooseHeroScreen].
+ * See more about [Jetpack Compose](https://developer.android.com/compose)
+ *
+ * [Composable] компонент-функция [HeroCard], используемая для рисования карточки героя в [ChooseHeroScreen].
+ *
+ * @author Zyuzin Roman
+ */
+
 @Composable
 fun HeroCard(hero: HeroUI, onAction:(HeroAction) -> Unit){
     Box(

@@ -13,6 +13,33 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+/**
+ * [ChooseHeroViewModel] is a class that manage ChooseHeroScreen state and transfer data and events
+ * between Repository and UI screen.
+ * To work with data layer it uses coroutines inside function [getHeroesInfo].
+ *
+ * @constructor uses Dagger Hilt DI [Inject] to match ViewModel entity with Repository ones.
+ *
+ * @param repository is used to work with data layer.
+ * @param heroesUiState is used to store current UI state of ChooseHeroScreen.
+ *
+ * Класс [ChooseHeroViewModel] управляет состоянием экрана СhooseHeroScreen и передаёт данные и события
+ * между репозиторием и экраном.
+ * Для работы с дата-слоем оно используетс корутины внутри функции [getHeroesInfo].
+ *
+ * конструктор использует Dagger Hilt DI [Inject] для соответствия ViewModel entity c Repositor-ным.
+ *
+ * параметр repository используется для работы с дата-слоем.
+ * параметр heroesUiState используется для хранения текущего состояни экрана ChooseHeroScreen.
+ *
+ * @see ChooseHeroScreen
+ *
+ * About Dagger Hilt, see [this video](https://www.youtube.com/live/yGiCNunSVN8?si=2q-cqxnb3kFm4D50)
+ * About Kotlin Coroutines, see [this video](https://developer.android.com/kotlin/coroutines)
+ *
+ * @author Zyuzin Roman
+ */
+
 @HiltViewModel
 class ChooseHeroViewModel @Inject constructor(
     val repository: HeroRepository
@@ -23,6 +50,29 @@ class ChooseHeroViewModel @Inject constructor(
     init {
         getHeroesInfo()
     }
+
+    /**
+     * [getHeroesInfo] function is used to get all heroes from Repository layer with the usage of coroutines.
+     * It updates [heroesUiState] with 1 of 2 possible states: [ChooseHeroesUiState.Success] or [ChooseHeroesUiState.Error]
+     * depending on the result of the request to Repository layer.
+     * In case of [ChooseHeroesUiState.Error] it transfers heroes from DB to show them on UI.
+     * In case of [ChooseHeroesUiState.Success] it transfers all heroes from DB but with fresh update from Marvel API.
+     * It also determines background color and visible part of hero name for each hero.
+     * See functions [toDetermineBackgroundColor] and [toDetermineHeroNameVisiblePart].
+     * [getHeroesInfo] is called during initialization of this app as a manager for ChooseHeroScreen state (ChooseHeroScreen is the started screen of this app).
+     *
+     * [getHeroesInfo]-функция используется для получения данных о всех героях из репозитория с использованием корутин.
+     * В зависимости от результата запроса с data-слоя, она обновляет [heroesUiState] одним из двух возможных состояний: [ChooseHeroUiState.Success] or [ChooseHeroUiState.Error].
+     * В случае [ChooseHeroUiState.Error] она передаёт всех героев из БД для вывода их в UI.
+     * В случае [ChooseHeroUiState.Success] оно передаёт всех героев из БД, но с новым апдейтом данных с сервера.
+     * Вызывается во время инициализации приложения или когда пользователь кликает на возврат на странице SingleHeroScreen.
+     * Также в этой функции задаётся цвет заднего фона и видимой части имени героев
+     *
+     * @see ChooseHeroesUiState
+     * @see toDetermineBackgroundColor
+     * @see toDetermineHeroNameVisiblePart
+     * @author Zyuzin Roman
+     */
 
     fun getHeroesInfo() {
 
@@ -52,7 +102,7 @@ class ChooseHeroViewModel @Inject constructor(
         }
     }
 
-    private fun toDetermineBackgroundColor(index: Int): Color{
+    private fun toDetermineBackgroundColor(index: Int): androidx.compose.ui.graphics.Color{
         val determinedColor =
             when(index % 7){
                 0 -> Color(119, 3,8)

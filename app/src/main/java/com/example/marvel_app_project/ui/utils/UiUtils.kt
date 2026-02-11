@@ -8,6 +8,7 @@ private const val DEVICE_MAX_WIDTH_COMPACT = 600
 private const val DEVICE_MAX_WIDTH_MEDIUM = 840
 private const val DEVICE_MAX_HEIGHT_COMPACT = 480
 private const val DEVICE_MAX_HEIGHT_MEDIUM = 900
+
 @Composable
 fun isLandscape() = LocalConfiguration.current.orientation == Configuration.ORIENTATION_LANDSCAPE
 

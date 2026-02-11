@@ -9,9 +9,20 @@ import android.os.Build
 import androidx.core.app.NotificationCompat
 import com.example.marvel_app_project.MainActivity
 import com.example.marvel_app_project.R
+import com.example.marvel_app_project.notification.HeroesNotification.Companion.HEROES_CHANNEL_ID
 import com.example.marvel_app_project.notification.receivers.CloseNotificationReceiver
 import com.example.marvel_app_project.notification.receivers.UpdateNotificationReceiver
 
+/**
+ * [HeroesNotification] class is used to create Marvel App notification.
+ * It's binds with [HeroesApp] createNotificationChannel fun by the [HEROES_CHANNEL_ID] property from
+ * companion object.
+ *
+ * Класс [HeroesNotification] используется для создания нотификаций в этом приложении.
+ * Он свзяывает [HeroesApp]-функцию createNotificationChannel со свойством [HEROES_CHANNEL_ID] объекта-компаньона
+ *
+ * @author Zyuzin Roman
+ */
 
 class HeroesNotification (private val context: Context) {
     companion object{
@@ -20,6 +31,11 @@ class HeroesNotification (private val context: Context) {
 
 
     private val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+
+    /**
+     * [showNotification] fun is used to show notification to the user when such command will be
+     * sent from [FB Notification console]().
+     */
     fun showNotification(title:String?, text: String?, heroId: String?){
 
         val activityIntent = Intent(context, MainActivity::class.java)
@@ -70,6 +86,10 @@ class HeroesNotification (private val context: Context) {
         notificationManager.notify(1, notification)
     }
 
+    /**
+     * [closeNotification] fun is used to close notification from the user when such command will be
+     * sent from [FCM](https://firebase.google.com/docs/cloud-messaging?hl=ru).
+     */
     fun closeNotification(notificationId: Int){
         notificationManager.cancel(notificationId)
     }

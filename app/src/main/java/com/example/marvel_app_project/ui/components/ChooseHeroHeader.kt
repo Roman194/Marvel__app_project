@@ -16,6 +16,14 @@ import com.example.marvel_app_project.ui.theme.Spaces
 import com.example.marvel_app_project.ui.theme.interFamily
 import com.example.marvel_app_project.ui.utils.isLandscape
 
+/**
+ * [ChooseHeroHeader] is a [Composable] component function that draws header for [ChooseHeroScreen].
+ * See more about [Jetpack Compose](https://developer.android.com/compose)
+ *
+ * [Composable] компонент-функция [ChooseHeroHeader], используемая для рисования заголовка в [ChooseHeroScreen].
+ *
+ * @author Zyuzin Roman
+ */
 @Composable
 fun ChooseHeroHeader(){
     Image(

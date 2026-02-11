@@ -24,6 +24,17 @@ import com.example.marvel_app_project.ui.theme.Sizes
 import com.example.marvel_app_project.ui.theme.Spaces
 import com.example.marvel_app_project.ui.theme.interFamily
 
+/**
+ * [SingleHeroError] is a [Composable] component function that draws [SingleHeroScreen] in error state.
+ * It shows an error message and a hero from [SingleHeroResultHeroResult].
+ * See more about [Jetpack Compose](https://developer.android.com/compose)
+ *
+ * [Composable] компонент-функция [SingleHeroError], используется для отрисовки состояния ошибки экрана [SingleHeroScreen].
+ * Она выводит сообщение с ошибкой и лист героев из [SingleHeroResult]
+ * @see HeroAction
+ * @see SingleHeroResult
+ * @author Zyuzin Roman
+ */
 @Composable
 fun SingleHeroError(
     errorMessage: String,

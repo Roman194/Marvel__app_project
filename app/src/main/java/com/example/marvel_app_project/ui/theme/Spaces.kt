@@ -2,6 +2,12 @@ package com.example.marvel_app_project.ui.theme
 
 import androidx.compose.ui.unit.dp
 
+/**
+ * Define standard spacing values for the application.
+ * These values can be used for padding, margins, and other layout purposes
+ * to ensure consistent spacing throughout the app.
+ * @author Zyuzin Roman
+ */
 object Spaces {
     val singleHeroColumn = 45.dp
     val shadowElevation = 6.dp

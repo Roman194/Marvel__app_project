@@ -10,7 +10,11 @@ import java.io.IOException
 import java.lang.reflect.Type
 
 /**
- * Custom [CallAdapter.Factory] to handle Retrofit [Response] through [Either] type
+ * Custom [CallAdapter.Factory] to handle Retrofit [Response] through [Either] type.
+ * If you want to track onFailure errors looks in details to [onFailure]
+ *
+ * Кастомный [CallAdapter.Factory] для обработки Retrofit [Response] с использованием типа [Either].
+ * Если вы хотите отслеживать ошибки, то простматривайте детали через [onFailure] метод
  *
  * Original idea taken from:
  * https://proandroiddev.com/retrofit-calladapter-for-either-type-2145781e1c20
@@ -47,9 +51,11 @@ class EitherCall<R>(
             }
 
             override fun onFailure(call: Call<R>, throwable: Throwable) { //if connection to the server failed
+                val errorMessage = throwable.message.toString()
+                val errorCause = throwable.cause.toString()
                 val error = when (throwable) {
-                    is IOException -> ErrorResponse(700)
-                    else -> ErrorResponse(800)
+                    is IOException -> ErrorResponse(700, errorMessage, errorCause)
+                    else -> ErrorResponse(800, errorMessage, errorCause)
                 }
                 callback.onResponse(this@EitherCall, Response.success(Either.Fail(error)))
             }

@@ -19,6 +19,14 @@ import com.example.marvel_app_project.ui.theme.Sizes
 import com.example.marvel_app_project.ui.theme.Spaces
 import com.example.marvel_app_project.ui.theme.interFamily
 
+/**
+ * [SingleHeroTextField] is a [Composable] component function that draws text info for [SingleHeroScreen].
+ * See more about [Jetpack Compose](https://developer.android.com/compose)
+ *
+ * [Composable] компонент-функция [SingleHeroTextField], используемая для вывода текстовой инфорамции в [SingleHeroScreen].
+ *
+ * @author Zyuzin Roman
+ */
 @Composable
 fun SingleHeroTextField(hero: HeroUI){
     Column(

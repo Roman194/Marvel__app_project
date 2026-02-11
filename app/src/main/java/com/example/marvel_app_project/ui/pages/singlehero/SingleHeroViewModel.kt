@@ -13,6 +13,35 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+/**
+ * [SingleHeroViewModel] is a class that manage SingleHeroScreen state and transfer data and events
+ * between Repository and UI screen.
+ * To work with data layer it uses coroutines inside function [updateHeroForSingleHero].
+ *
+ * @constructor uses Dagger Hilt DI [Inject] to match ViewModel entity with Repository ones.
+ * @param repository is used to work with data layer.
+ * @param singleHeroUIState is used to store current UI state of SingleHeroScreen.
+ *
+ * Класс [SingleHeroViewModel] управляет состоянием экрана SingleHeroScreen и передаёт данные и события
+ * между репозиторием и экраном.
+ * Для работы с дата-слоем оно используетс корутины внутри функции [updateHeroForSingleHero].
+ *
+ * конструктор использует Dagger Hilt DI [Inject] для соответствия ViewModel entity c Repositor-ным.
+ *
+ * параметр repository используется для работы с дата-слоем.
+ * параметр heroesUiState используется для хранения текущего состояни экрана SingleHeroScreen.
+ *
+ * @see SingleHeroScreen
+ * @see HeroAction
+ * @see updateHeroForSingleHero
+ * @see SingleHeroUiState
+ *
+ * About Dagger Hilt, see [this video](https://www.youtube.com/live/yGiCNunSVN8?si=2q-cqxnb3kFm4D50)
+ * About Kotlin Coroutines, see [this video](https://developer.android.com/kotlin/coroutines)
+ *
+ * @author Zyuzin Roman
+ */
+
 @HiltViewModel
 class SingleHeroViewModel @Inject constructor(
     val repository: HeroRepository
@@ -20,6 +49,17 @@ class SingleHeroViewModel @Inject constructor(
 
     var singleHeroUIState: SingleHeroUiState by mutableStateOf(SingleHeroUiState.Loading)
 
+    /**
+     * [onAction] function is used to transfer UI events from SingleHeroScreen to this ViewModel.
+     * It uses [when] expression to determine which event it is and calls the corresponding function to handle it.
+     * It is called when user taps on hero image on ChooseHeroScreen, on notification about hero or on back button on SingleHeroScreen
+     *
+     * [onAction]-функция используется для передачи UI-событий из SingleHeroScreen в этот VievModel.
+     * Оно использует [when] для объявления какое событие произошло и вызова соответствующей функции обработки этого события (MVI).
+     * Вызывается когда пользователь кликает на изображение героя на экране ChooseHeroScreen, на нотификацию о герое или на кнопку возвращения назад
+     * на экране SingleHeroScreen
+     *
+     */
     fun onAction(action: HeroAction){
         when(action){
             is HeroAction.OnHeroImageTapped ->
@@ -40,6 +80,21 @@ class SingleHeroViewModel @Inject constructor(
         }
     }
 
+    /**
+     * [updateHeroForSingleHero] function is used to get single hero from Repository layer with the usage of coroutines.
+     * It updates [singleHeroUIState] with 1 of 2 possible states: [SingleHeroUiState.Success] or [SingleHeroUiState.Error] depending on
+     * the result of the request to Repository layer.
+     * In case of [SingleHeroUiState.Error] it transfers hero from DB to show them on UI.
+     * In case of [SingleHeroUiState.Success] it transfers hero from DB but with fresh update from Marvel API.
+     * It is called from function [onAction] when user taps on hero image on ChooseHeroScreen or on notification about hero
+     *
+     * [updateHeroForSingleHero]-функция используется для получения данных о конкретном герое из репозитория с использованием корутин.
+     * В зависимости от результат запроса с data-слоя, она обновляет [singleHeroUIState] одним из двух возможных состояний: [SingleHeroUiState.Success] or [SingleHeroUiState.Error].
+     * В случае [SingleHeroUiState.Error] она передаёт героя из БД для вывода их в UI.
+     * В случае [SingleHeroUiState.Success] оно передаёт героя из БД, но с новым апдейтом данных с сервера.
+     * Вызывается из функции [onAction] когда пользователь кликает на изображение героя на экране ChooseHeroScreen или на натификацию о герое
+     *
+     */
     private fun updateHeroForSingleHero(id: Int, serverId: String) {
 
         viewModelScope.launch {

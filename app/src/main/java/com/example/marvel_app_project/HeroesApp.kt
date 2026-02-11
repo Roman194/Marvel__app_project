@@ -8,6 +8,21 @@ import android.os.Build
 import com.example.marvel_app_project.notification.HeroesNotification
 import dagger.hilt.android.HiltAndroidApp
 
+
+/**
+ * The [Application] class of Marvel app.
+ * It's used to declare this app for Dagger Hilt DI lib and to [createNotificationChannel].
+ * About Dagger Hilt, see [this video](https://www.youtube.com/live/yGiCNunSVN8?si=2q-cqxnb3kFm4D50)
+ *
+ * Класс-[Application] данного приложения.
+ * Используется для объявления данного приложения для Dagger Hilt DI lib и создания канала нотификации
+ *
+ * @see HiltAndroidApp
+ * @see NotificationChannel
+ * @see NotificationManager
+ *
+ * @author Zyuzin Roman
+ */
 @HiltAndroidApp
 class HeroesApp: Application() {
 
