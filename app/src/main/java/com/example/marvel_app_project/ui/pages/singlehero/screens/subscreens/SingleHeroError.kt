@@ -24,7 +24,9 @@ fun SingleHeroError(
     onAction: (HeroAction) -> Unit
 ){
     Column {
-        ErrorColumn(errorMessage = errorMessage)
+        ErrorColumn(
+            errorMessage = errorMessage
+        )
 
         SingleHeroResult(
             hero = hero,
