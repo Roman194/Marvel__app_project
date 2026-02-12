@@ -25,8 +25,13 @@ fun ChooseHeroError(
     onAction:(HeroAction) -> Unit
 ){
     Column {
-        ErrorColumn(errorMessage = errorMessage)
+        ErrorColumn(
+            errorMessage = errorMessage
+        )
 
-        ChooseHeroResult(heroValues = heroValues, onAction = onAction)
+        ChooseHeroResult(
+            heroValues = heroValues,
+            onAction = onAction
+        )
     }
 }
