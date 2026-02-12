@@ -2,6 +2,8 @@ package com.example.marvel_app_project.ui.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme
@@ -16,21 +18,23 @@ import com.example.marvel_app_project.ui.theme.Sizes
 import com.example.marvel_app_project.ui.theme.Spaces
 import com.example.marvel_app_project.ui.theme.interFamily
 
-//GitHub Copilot 2nd prompt 1st attempt
+//GitHub Copilot 2nd prompt 2nd attempt
+/**
+ * ErrorColumn должен занимать всю ширину экрана. В ChooseHeroHeader не хватает пространства между
+ * Image и Text. Добавь там Spacer. Также нужно сделать так, чтобы Column имел вертикальный паддинг
+ * в 20.dp вместо падинга на top. В HeroCard в AsyncImage во время загрузки должно выводиться
+ * изображение R.drawable.marvelcard_loading, а в случае ошибки загрузки изображения - R.drawable.marvelcard_loadingerror.
+ * В HeroLoading нужно уменьшить расстояние в Spacer до 8.dp
+ */
 
 /**
  * [ChooseHeroHeader] is a [Composable] component function that draws header for ChooseHeroScreen.
- * See more about [Jetpack Compose](https://developer.android.com/compose)
- *
- * [Composable] компонент-функция [ChooseHeroHeader], используемая для рисования заголовка в [ChooseHeroScreen].
- *
- * @author Zyuzin Roman
  */
 @Composable
 fun ChooseHeroHeader() {
     Column(
         modifier = Modifier
-            .padding(top = Spaces.chooseHeroColumn),
+            .padding(vertical = Spaces.chooseHeroHeaderVertical),
         horizontalAlignment = Alignment.CenterHorizontally
     ){
         Image(
@@ -41,6 +45,8 @@ fun ChooseHeroHeader() {
                 height = Sizes.marvelLogo.height
             )
         )
+
+        Spacer(modifier = Modifier.height(Spaces.spacer.standardHeight))
 
         androidx.compose.material3.Text(
             text = stringResource(id = R.string.choose_hero),

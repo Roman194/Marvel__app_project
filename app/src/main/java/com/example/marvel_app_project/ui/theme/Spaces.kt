@@ -12,6 +12,7 @@ object Spaces {
     val tiny = 8.dp
     val small = 12.dp
     val medium = 16.dp
+    val chooseHeroHeaderVertical = 20.dp
 
     val singleHeroColumn = 45.dp
     val shadowElevation = 6.dp

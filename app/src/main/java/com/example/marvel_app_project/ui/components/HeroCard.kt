@@ -2,18 +2,16 @@ package com.example.marvel_app_project.ui.components
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.marvel_app_project.models.ui.HeroUI
@@ -22,6 +20,7 @@ import com.example.marvel_app_project.ui.theme.Sizes
 import com.example.marvel_app_project.ui.theme.Spaces
 import com.example.marvel_app_project.ui.theme.Shapes
 import com.example.marvel_app_project.ui.theme.interFamily
+import com.example.marvel_app_project.R
 
 /**
  * [HeroCard] is a [Composable] component function that draws hero card component for [ChooseHeroScreen].
@@ -53,6 +52,8 @@ fun HeroCard(hero: HeroUI, onAction:(HeroAction) -> Unit){
                     .data(hero.image)
                     .crossfade(true)
                     .build(),
+                placeholder = painterResource(id = R.drawable.marvelcard_loading),
+                error = painterResource(id = R.drawable.marvelcard_loadingerror),
                 contentDescription = hero.name,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier.fillMaxSize()
