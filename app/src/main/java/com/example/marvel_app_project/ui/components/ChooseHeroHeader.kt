@@ -18,15 +18,12 @@ import com.example.marvel_app_project.ui.theme.Sizes
 import com.example.marvel_app_project.ui.theme.Spaces
 import com.example.marvel_app_project.ui.theme.interFamily
 
-//GitHub Copilot 2nd prompt 2nd attempt
+//Github Copilot 2nd prompt 3rd attempt
 /**
- * ErrorColumn должен занимать всю ширину экрана. В ChooseHeroHeader не хватает пространства между
- * Image и Text. Добавь там Spacer. Также нужно сделать так, чтобы Column имел вертикальный паддинг
- * в 20.dp вместо падинга на top. В HeroCard в AsyncImage во время загрузки должно выводиться
- * изображение R.drawable.marvelcard_loading, а в случае ошибки загрузки изображения - R.drawable.marvelcard_loadingerror.
- * В HeroLoading нужно уменьшить расстояние в Spacer до 8.dp
+ * ErrorColumn-компонент должен занимать всю ширину экрана
+ * !Ничего не исправил, хотя заявил, что исправил: галлюцинация!
+ * На второй попытке по той же причине это не исправил
  */
-
 /**
  * [ChooseHeroHeader] is a [Composable] component function that draws header for ChooseHeroScreen.
  */
