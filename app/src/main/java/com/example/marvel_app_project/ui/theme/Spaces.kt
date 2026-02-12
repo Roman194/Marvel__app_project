@@ -9,6 +9,10 @@ import androidx.compose.ui.unit.dp
  * @author Zyuzin Roman
  */
 object Spaces {
+    val tiny = 8.dp
+    val small = 12.dp
+    val medium = 16.dp
+
     val singleHeroColumn = 45.dp
     val shadowElevation = 6.dp
     val chooseHeroColumn = 50.dp
