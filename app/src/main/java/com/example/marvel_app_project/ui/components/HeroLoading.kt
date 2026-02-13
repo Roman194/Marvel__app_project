@@ -12,16 +12,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
-import coil.compose.AsyncImage
-import coil.request.ImageRequest
 import com.example.marvel_app_project.R
 import com.example.marvel_app_project.ui.theme.Sizes
 import com.example.marvel_app_project.ui.theme.Spaces
 import com.example.marvel_app_project.ui.theme.interFamily
+import androidx.compose.foundation.Image
 
 /**
  * [HeroLoading] is a [Composable] component function that draws [ChooseHeroScreen] in loading state.
@@ -40,11 +39,8 @@ fun HeroLoading(){
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        AsyncImage(
-            model = ImageRequest
-                .Builder(LocalContext.current)
-                .data(R.drawable.loading_img)
-                .build(),
+        Image(
+            painter = painterResource(R.drawable.loading_img),
             contentDescription = stringResource(R.string.loading),
             contentScale = ContentScale.Fit,
             modifier = Modifier.size(Sizes.loadingLogo.size)

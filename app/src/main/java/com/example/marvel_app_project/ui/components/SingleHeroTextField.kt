@@ -14,6 +14,14 @@ import com.example.marvel_app_project.ui.theme.Sizes
 import com.example.marvel_app_project.ui.theme.Spaces
 import com.example.marvel_app_project.ui.theme.interFamily
 
+//GitHub Copilot CL 2nd prompt 3rd attempt
+/**
+ * Отлично! Но ещё не хватает отступа после ChooseHeroHeader, из-за чего он сливается с идущими ниже
+ * него элементами. Также Весь текст SingleHeroTextField должен быть с такими же паддингами, но в
+ * левом нижнем углу. Также в ErrorColumn нужен верхний паддинг, при этом расстояние между самими
+ * элементами Column и после них нужно сократить. Также реализация в HeroLoading компонента загрузки
+ * через AsymcImage избыточна. Достаточно просто использовать Image
+ */
 /**
  * [SingleHeroTextField] is a [Composable] component function that draws text info for [SingleHeroScreen].
  * See more about [Jetpack Compose](https://developer.android.com/compose)
@@ -26,9 +34,9 @@ import com.example.marvel_app_project.ui.theme.interFamily
 fun SingleHeroTextField(hero: HeroUI){
     Column(
         modifier = Modifier.padding(
-            start = Spaces.singleHeroTextColumn.start,
-            bottom = Spaces.singleHeroTextColumn.bottom,
-            end = Spaces.singleHeroTextColumn.end
+            start = Spaces.heroCardText.start,
+            bottom = Spaces.heroCardText.bottom,
+            end = Spaces.heroCardText.end
         )
     ) {
         Text(
@@ -38,7 +46,7 @@ fun SingleHeroTextField(hero: HeroUI){
             fontWeight = FontWeight.ExtraBold,
             color = MaterialTheme.colorScheme.onPrimary
         )
-        Spacer(modifier = Modifier.height(Spaces.spacer.standardHeight))
+        Spacer(modifier = Modifier.height(Spaces.spacer.smallerHeight))
         Text(
             text = hero.description,
             fontSize = Sizes.fontSizes.heroDescription,

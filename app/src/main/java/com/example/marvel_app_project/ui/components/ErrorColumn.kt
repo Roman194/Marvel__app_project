@@ -28,7 +28,8 @@ fun ErrorColumn(errorMessage: String){
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .background(MaterialTheme.colorScheme.secondary),
+            .background(MaterialTheme.colorScheme.secondary)
+            .padding(top = Spaces.spacer.standardHeight),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
@@ -41,14 +42,14 @@ fun ErrorColumn(errorMessage: String){
             contentScale = ContentScale.Fit,
             modifier = Modifier.size(Sizes.noInternetLogo.size)
         )
-        Spacer(modifier = Modifier.height(Spaces.spacer.standardHeight))
+        Spacer(modifier = Modifier.height(Spaces.spacer.smallerHeight))
         Text(
             text = errorMessage,
             fontSize = Sizes.fontSizes.responseError,
             fontFamily = interFamily,
             fontWeight = FontWeight.ExtraBold,
             color = MaterialTheme.colorScheme.onPrimary,
-            modifier = Modifier.padding(Spaces.errorColumn)
+            modifier = Modifier.padding(horizontal = Spaces.errorColumn)
         )
     }
 }
