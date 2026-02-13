@@ -19,11 +19,11 @@ import com.example.marvel_app_project.ui.theme.Sizes
 import com.example.marvel_app_project.ui.theme.Spaces
 import com.example.marvel_app_project.ui.theme.interFamily
 
-//Gemini 2nd prompt 2nd attempt
+//Gemini 2nd prompt 3rd attempt
 /**
- * ErrorColumn не должен занимать весь экран - это лишь небольшое вложение сверху
- * над основным экраном (ChooseHerpResult / SingleHeroResult). Однако он должен занимать максимальную
- * отводимую для него ширину
+ * Отлично! Но ещё не хватает отступа после ChooseHeroHeader, из-за чего он сливается с идущими ниже
+ * него элементами. Также Весь текст SingleHeroTextField должен быть с такими же паддингами, но в
+ * левом нижнем углу
  */
 
 /**
@@ -56,5 +56,6 @@ fun ChooseHeroHeader() {
             fontSize = Sizes.fontSizes.underLogoText,
             color = MaterialTheme.colorScheme.onPrimary
         )
+        Spacer(modifier = Modifier.height(Spaces.spacer.theMostExtendedHeight))
     }
 }

@@ -1,12 +1,15 @@
 package com.example.marvel_app_project.ui.components
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import com.example.marvel_app_project.models.ui.HeroUI
@@ -24,28 +27,33 @@ import com.example.marvel_app_project.ui.theme.interFamily
  */
 @Composable
 fun SingleHeroTextField(hero: HeroUI){
-    Column(
-        modifier = Modifier
-            .padding(
-                start = Spaces.singleHeroTextColumn.start,
-                bottom = Spaces.singleHeroTextColumn.bottom,
-                end = Spaces.singleHeroTextColumn.end
-            )
+    Box(
+        modifier = Modifier.fillMaxSize(),
+        contentAlignment = Alignment.BottomStart
     ) {
-        Text(
-            text = hero.name,
-            fontFamily = interFamily,
-            fontWeight = FontWeight.ExtraBold,
-            fontSize = Sizes.fontSizes.heroNameInSingleScreen,
-            color = MaterialTheme.colorScheme.onPrimary
-        )
-        Spacer(modifier = Modifier.height(Spaces.spacer.standardHeight))
-        Text(
-            text = hero.description,
-            fontFamily = interFamily,
-            fontWeight = FontWeight.Bold,
-            fontSize = Sizes.fontSizes.heroDescription,
-            color = MaterialTheme.colorScheme.onPrimary
-        )
+        Column(
+            modifier = Modifier
+                .padding(
+                    start = Spaces.singleHeroTextColumn.start,
+                    bottom = Spaces.singleHeroTextColumn.bottom,
+                    end = Spaces.singleHeroTextColumn.end
+                )
+        ) {
+            Text(
+                text = hero.name,
+                fontFamily = interFamily,
+                fontWeight = FontWeight.ExtraBold,
+                fontSize = Sizes.fontSizes.heroNameInSingleScreen,
+                color = MaterialTheme.colorScheme.onPrimary
+            )
+            Spacer(modifier = Modifier.height(Spaces.spacer.standardHeight))
+            Text(
+                text = hero.description,
+                fontFamily = interFamily,
+                fontWeight = FontWeight.Bold,
+                fontSize = Sizes.fontSizes.heroDescription,
+                color = MaterialTheme.colorScheme.onPrimary
+            )
+        }
     }
 }
