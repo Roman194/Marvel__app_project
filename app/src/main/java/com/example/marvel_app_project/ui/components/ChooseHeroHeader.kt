@@ -4,6 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -18,10 +19,11 @@ import com.example.marvel_app_project.ui.theme.Sizes
 import com.example.marvel_app_project.ui.theme.Spaces
 import com.example.marvel_app_project.ui.theme.interFamily
 
-//Koda 2nd prompt 2nd attempt
+//Koda 2nd prompt 3rd attempt
 /**
- * ErrorColumn представляет собой лишь небольшой компонент над основным Result-экраном и не должен
- * закрывать собой весь экран. Но при этом он должен занимать всю отведённую ему ширину
+ * Содержимое SingleHeroTextField должно отображаться в левом нижнему углу. ChooseHeroHeader должен
+ * иметь некоторое "пространство" после себя, чтобы не сливаться с элементами, идущими ниже него.
+ * Также в HeroCard нужно увеличить размер имени героев
  */
 /**
  * [ChooseHeroHeader] is a [Composable] component function that draws header for ChooseHeroScreen.
@@ -34,6 +36,7 @@ import com.example.marvel_app_project.ui.theme.interFamily
 @Composable
 fun ChooseHeroHeader() {
     Column(
+        modifier = Modifier.padding(bottom = Spaces.chooseHeroHeader.bottomPadding),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Image(

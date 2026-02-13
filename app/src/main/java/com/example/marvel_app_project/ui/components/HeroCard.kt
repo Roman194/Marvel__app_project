@@ -17,7 +17,6 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.example.marvel_app_project.R
 import com.example.marvel_app_project.models.ui.HeroUI
@@ -61,7 +60,7 @@ fun HeroCard(hero: HeroUI, onAction:(HeroAction) -> Unit){
         )
         Text(
             text = hero.name,
-            style = MaterialTheme.typography.titleLarge,
+            style = MaterialTheme.typography.headlineMedium,
             fontFamily = interFamily,
             fontWeight = FontWeight.ExtraBold,
             color = MaterialTheme.colorScheme.onPrimary,

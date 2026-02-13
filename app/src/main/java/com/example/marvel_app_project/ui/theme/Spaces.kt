@@ -39,6 +39,7 @@ object Spaces {
     }
     object chooseHeroHeader{
         val logoToTextPadding = 20.dp
+        val bottomPadding = 30.dp
     }
     object heroLoading{
         val logoToTextPadding = 20.dp

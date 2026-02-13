@@ -1,5 +1,7 @@
 package com.example.marvel_app_project.ui.components
 
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -8,10 +10,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import com.example.marvel_app_project.models.ui.HeroUI
-import com.example.marvel_app_project.ui.theme.Sizes
 import com.example.marvel_app_project.ui.theme.Spaces
 import com.example.marvel_app_project.ui.theme.interFamily
 
@@ -25,29 +27,34 @@ import com.example.marvel_app_project.ui.theme.interFamily
  */
 @Composable
 fun SingleHeroTextField(hero: HeroUI){
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(
-                start = Spaces.singleHeroTextColumn.start,
-                bottom = Spaces.singleHeroTextColumn.bottom,
-                end = Spaces.singleHeroTextColumn.end
-            )
+    Box(
+        modifier = Modifier.fillMaxSize()
     ) {
-        Text(
-            text = hero.name,
-            style = MaterialTheme.typography.headlineMedium,
-            fontFamily = interFamily,
-            fontWeight = FontWeight.ExtraBold,
-            color = MaterialTheme.colorScheme.onPrimary
-        )
-        Spacer(modifier = Modifier.height(Spaces.singleHeroTextField.nameToDescriptionPadding))
-        Text(
-            text = hero.description,
-            style = MaterialTheme.typography.bodyLarge,
-            fontFamily = interFamily,
-            fontWeight = FontWeight.Bold,
-            color = MaterialTheme.colorScheme.onPrimary
-        )
+        Column(
+            modifier = Modifier
+                .align(Alignment.BottomStart)
+                .padding(
+                    start = Spaces.singleHeroTextColumn.start,
+                    bottom = Spaces.singleHeroTextColumn.bottom,
+                    end = Spaces.singleHeroTextColumn.end
+                ),
+            verticalArrangement = Arrangement.Bottom
+        ) {
+            Text(
+                text = hero.name,
+                style = MaterialTheme.typography.headlineMedium,
+                fontFamily = interFamily,
+                fontWeight = FontWeight.ExtraBold,
+                color = MaterialTheme.colorScheme.onPrimary
+            )
+            Spacer(modifier = Modifier.height(Spaces.singleHeroTextField.nameToDescriptionPadding))
+            Text(
+                text = hero.description,
+                style = MaterialTheme.typography.bodyLarge,
+                fontFamily = interFamily,
+                fontWeight = FontWeight.Bold,
+                color = MaterialTheme.colorScheme.onPrimary
+            )
+        }
     }
 }
