@@ -13,6 +13,12 @@ object Spaces {
     val shadowElevation = 6.dp
     val chooseHeroColumn = 50.dp
     val errorColumn = 40.dp
+    object header{
+        val top = 32.dp
+        val bottom = 24.dp
+        val horizontalPadding = 24.dp
+        val spacerBetweenLogoAndText = 16.dp
+    }
     object singleHeroTextColumn{
         val start = 15.dp
         val bottom = 55.dp
