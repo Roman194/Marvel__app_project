@@ -12,7 +12,6 @@ object Spaces {
     val singleHeroColumn = 45.dp
     val shadowElevation = 6.dp
     val chooseHeroColumn = 50.dp
-    val errorColumn = 40.dp
     object singleHeroTextColumn{
         val start = 15.dp
         val bottom = 55.dp
@@ -37,6 +36,19 @@ object Spaces {
         val standardHeight = 15.dp
         val extendedHeight = 25.dp
         val theMostExtendedHeight = 40.dp
+    }
+    object chooseHeroHeader{
+        val logoToTextPadding = 20.dp
+    }
+    object heroLoading{
+        val logoToTextPadding = 20.dp
+    }
+    object singleHeroTextField{
+        val nameToDescriptionPadding = 10.dp
+    }
+    object errorColumn{
+        val padding = 40.dp
+        val logoToTextPadding = 15.dp
     }
 
 }
