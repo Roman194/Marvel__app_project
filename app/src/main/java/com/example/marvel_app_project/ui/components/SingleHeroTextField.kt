@@ -13,5 +13,25 @@ import com.example.marvel_app_project.models.ui.HeroUI
  */
 @Composable
 fun SingleHeroTextField(hero: HeroUI){
-
+    Column(
+        modifier = Modifier
+            .padding(
+                start = Spaces.singleHeroTextColumn.start,
+                bottom = Spaces.singleHeroTextColumn.bottom,
+                end = Spaces.singleHeroTextColumn.end
+            )
+    ) {
+        Text(
+            text = hero.name,
+            fontFamily = interFamily,
+            fontWeight = FontWeight.ExtraBold,
+            color = MaterialTheme.colorScheme.onPrimary
+        )
+        Text(
+            text = hero.description,
+            fontFamily = interFamily,
+            fontWeight = FontWeight.Bold,
+            color = MaterialTheme.colorScheme.onPrimary
+        )
+    }
 }
