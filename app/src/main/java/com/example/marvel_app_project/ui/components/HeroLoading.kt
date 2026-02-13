@@ -1,7 +1,27 @@
 package com.example.marvel_app_project.ui.components
 
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.size
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import coil.compose.AsyncImage
+import coil.request.ImageRequest
+import com.example.marvel_app_project.R
+import com.example.marvel_app_project.ui.theme.Sizes
+import com.example.marvel_app_project.ui.theme.Spaces
+import com.example.marvel_app_project.ui.theme.interFamily
 
 /**
  * [HeroLoading] is a [Composable] component function that draws [ChooseHeroScreen] in loading state.
@@ -15,7 +35,29 @@ import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
 fun HeroLoading(){
-
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        AsyncImage(
+            model = ImageRequest
+                .Builder(LocalContext.current)
+                .data(R.drawable.loading_img)
+                .build(),
+            contentDescription = stringResource(R.string.loading),
+            contentScale = ContentScale.Fit,
+            modifier = Modifier.size(Sizes.loadingLogo.size)
+        )
+        Spacer(modifier = Modifier.height(Spaces.spacer.standardHeight))
+        Text(
+            text = stringResource(R.string.loading_text),
+            fontSize = Sizes.fontSizes.underLogoText,
+            fontFamily = interFamily,
+            fontWeight = FontWeight.ExtraBold,
+            color = MaterialTheme.colorScheme.onPrimary
+        )
+    }
 }
 
 @Preview
