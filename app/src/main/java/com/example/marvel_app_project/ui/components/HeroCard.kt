@@ -37,7 +37,7 @@ fun HeroCard(hero: HeroUI, onAction:(HeroAction) -> Unit){
     Card(
         modifier = Modifier
             .size(Sizes.heroCard.width, Sizes.heroCard.height)
-            .clickable { onAction(HeroAction.OnHeroImageTapped(hero)) },
+            .clickable { onAction(HeroAction.OnHeroImageTapped(hero.id, hero.severId)) },
         shape = MaterialTheme.shapes.large,
         elevation = CardDefaults.cardElevation(Spaces.shadowElevation)
     ) {
