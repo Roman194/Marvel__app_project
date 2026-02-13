@@ -21,7 +21,12 @@ import com.example.marvel_app_project.ui.theme.Sizes
 import com.example.marvel_app_project.ui.theme.Spaces
 import com.example.marvel_app_project.ui.theme.interFamily
 
-//Github Copilot CL 2nd prompt 1st attempt
+//Github Copilot CL 2nd prompt 2nd attempt
+/**
+ * Работает! Но ErrorColumn не должен занимать весь экран. Эта лишь небольшая табличка над основным
+ * функицоналом (Result). Однако она должна занимать всю выделяемую ей ширину. Исправь это. Также
+ * удали ComponentPreviews, он не нужен по заданию
+ */
 
 /**
  * [ChooseHeroHeader] is a [Composable] component function that draws header for ChooseHeroScreen.
