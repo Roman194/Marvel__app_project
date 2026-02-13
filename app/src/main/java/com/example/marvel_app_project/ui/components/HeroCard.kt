@@ -43,7 +43,7 @@ fun HeroCard(hero: HeroUI, onAction:(HeroAction) -> Unit){
     ) {
         Box(modifier = Modifier.fillMaxSize()) {
             AsyncImage(
-                model = hero.imageUrl,
+                model = hero.image,
                 contentDescription = null,
                 placeholder = Drawables.marvelCardLoading,
                 error = Drawables.marvelCardLoadingError,

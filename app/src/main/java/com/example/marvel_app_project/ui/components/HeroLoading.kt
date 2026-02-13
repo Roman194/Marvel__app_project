@@ -1,5 +1,6 @@
 package com.example.marvel_app_project.ui.components
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -8,6 +9,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.marvel_app_project.R
@@ -31,9 +33,12 @@ fun HeroLoading(){
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        Drawables.loadingImg.resourceAt()
+        Image(
+            painter = Drawables.loadingImg,
+            contentDescription = null
+        )
         Text(
-            text = R.string.loading_text.resource(),
+            text = stringResource(R.string.loading_text),
             fontFamily = interFamily,
             fontWeight = FontWeight.ExtraBold,
             color = MaterialTheme.colorScheme.onPrimary

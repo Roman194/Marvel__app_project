@@ -1,5 +1,6 @@
 package com.example.marvel_app_project.ui.components
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -23,7 +24,10 @@ fun ErrorColumn(errorMessage: String){
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(Spaces.spacer.standardHeight)
     ) {
-        Drawables.connectionError.resourceAt()
+        Image(
+            painter = Drawables.connectionError,
+            contentDescription = null
+        )
         Text(
             text = errorMessage,
             fontFamily = interFamily,
