@@ -1,6 +1,23 @@
 package com.example.marvel_app_project.ui.components
 
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.size
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
+import com.example.marvel_app_project.R
+import com.example.marvel_app_project.ui.theme.Sizes
+import com.example.marvel_app_project.ui.theme.Spaces
+import com.example.marvel_app_project.ui.theme.interFamily
 
 /**
  * [ChooseHeroHeader] is a [Composable] component function that draws header for ChooseHeroScreen.
@@ -12,5 +29,22 @@ import androidx.compose.runtime.Composable
  */
 @Composable
 fun ChooseHeroHeader() {
-
+    Column(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Image(
+            painter = painterResource(R.drawable.marvel_logo),
+            contentDescription = null,
+            modifier = Modifier.size(width = Sizes.marvelLogo.width, height = Sizes.marvelLogo.height)
+        )
+        Spacer(modifier = Modifier.height(Spaces.spacer.standardHeight))
+        Text(
+            text = stringResource(R.string.choose_hero),
+            fontFamily = interFamily,
+            fontWeight = FontWeight.ExtraBold,
+            fontSize = Sizes.fontSizes.underLogoText,
+            color = MaterialTheme.colorScheme.onPrimary
+        )
+    }
 }
