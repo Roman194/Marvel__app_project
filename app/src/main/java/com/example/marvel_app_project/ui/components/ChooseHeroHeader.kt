@@ -21,13 +21,10 @@ import com.example.marvel_app_project.R
 import com.example.marvel_app_project.ui.theme.Sizes
 import com.example.marvel_app_project.ui.theme.Spaces
 import com.example.marvel_app_project.ui.theme.interFamily
-
-//Qodo 2nd prompt 1st attempt
+//Qodo GPT 2nd prompt 2nd attempt
 /**
- * Во время выполнения промпта закончились кредиты бесплатного плана, поэтому генерация не была завершена.
- * Принял решение не учитывать эти изменения и не портить оценку Qodo за недоделанные изменения, так как
- * это нетехнический косяк а бизнес-задачный. :)
- * В заданиях 2 и 3 AI_агент Qoda не будет рассматриваться
+ * Неплохо, но в HeroCard есть вызов несуществующего свойства объекта "hero". Исправь пожалуйста
+ * значение его свойства на существующее
  */
 /**
  * [ChooseHeroHeader] is a [Composable] component function that draws header for ChooseHeroScreen.

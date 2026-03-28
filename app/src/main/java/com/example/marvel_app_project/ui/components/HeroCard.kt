@@ -13,8 +13,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.marvel_app_project.R
@@ -23,9 +25,6 @@ import com.example.marvel_app_project.ui.pages.HeroAction
 import com.example.marvel_app_project.ui.theme.Sizes
 import com.example.marvel_app_project.ui.theme.Spaces
 import com.example.marvel_app_project.ui.theme.interFamily
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.graphics.Color
 
 /**
  * [HeroCard] is a [Composable] component function that draws hero card component for [ChooseHeroScreen].
@@ -51,7 +50,7 @@ fun HeroCard(hero: HeroUI, onAction:(HeroAction) -> Unit){
         Box(modifier = Modifier.fillMaxSize()){
             AsyncImage(
                 model = ImageRequest.Builder(context)
-                    .data(hero.imageUrl)
+                    .data(hero.image)
                     .crossfade(true)
                     .build(),
                 contentDescription = hero.name,
