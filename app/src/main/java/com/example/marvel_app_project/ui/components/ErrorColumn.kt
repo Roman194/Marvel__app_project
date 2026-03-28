@@ -4,7 +4,8 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -15,17 +16,19 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import com.example.marvel_app_project.R
 import com.example.marvel_app_project.ui.theme.Sizes
+import com.example.marvel_app_project.ui.theme.Spaces
 import com.example.marvel_app_project.ui.theme.interFamily
 
 @Composable
 fun ErrorColumn(errorMessage: String){
     Column(
         modifier = Modifier
-            .fillMaxSize()
-            .background(color = MaterialTheme.colorScheme.secondary),
+            .fillMaxWidth()
+            .background(color = MaterialTheme.colorScheme.secondary)
+            .padding(vertical = Spaces.errorColumn),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
-    ){
+    ) {
         Image(
             painter = painterResource(id = R.drawable.ic_connection_error),
             contentDescription = errorMessage,

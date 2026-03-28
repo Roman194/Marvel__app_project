@@ -25,7 +25,11 @@ import com.example.marvel_app_project.ui.pages.HeroAction
 import com.example.marvel_app_project.ui.theme.Sizes
 import com.example.marvel_app_project.ui.theme.Spaces
 import com.example.marvel_app_project.ui.theme.interFamily
-
+//Qodo GPT 2nd prompt 3rd attempt
+/**
+ * Теперь код запустился, однако ErrorColumn занимает весь экран, а должен занимать лишь всю
+ * допустимую ширину, оставаясь при этом невысокой полоской над основным экраном
+ */
 /**
  * [HeroCard] is a [Composable] component function that draws hero card component for [ChooseHeroScreen].
  * See more about [Jetpack Compose](https://developer.android.com/compose)

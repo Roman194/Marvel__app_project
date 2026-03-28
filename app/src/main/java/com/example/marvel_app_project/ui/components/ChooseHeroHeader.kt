@@ -21,11 +21,7 @@ import com.example.marvel_app_project.R
 import com.example.marvel_app_project.ui.theme.Sizes
 import com.example.marvel_app_project.ui.theme.Spaces
 import com.example.marvel_app_project.ui.theme.interFamily
-//Qodo GPT 2nd prompt 2nd attempt
-/**
- * Неплохо, но в HeroCard есть вызов несуществующего свойства объекта "hero". Исправь пожалуйста
- * значение его свойства на существующее
- */
+
 /**
  * [ChooseHeroHeader] is a [Composable] component function that draws header for ChooseHeroScreen.
  * See more about [Jetpack Compose](https://developer.android.com/compose)
