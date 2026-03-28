@@ -21,13 +21,7 @@ import com.example.marvel_app_project.ui.theme.Sizes
 import com.example.marvel_app_project.ui.theme.Spaces
 import com.example.marvel_app_project.ui.theme.interFamily
 
-//Amazon q 2nd prompt 2nd attempt
-/**
- * Круто! Но есть ряд недочётов. В HeroLoading есть "зашитый" в коде текст. Возьми текст из string
- * ресурсов как ты делал в других функциях. Также обрати внимание на ErrorColumn. Он не должен
- * занимать весь экран, а должен быть лишь полоской сверху над экраном, занимающей всю ширину экрана.
- * Текст в SingleHeroTextField должен быть выровнен по левому нижнему краю.
- */
+
 /**
  * [HeroLoading] is a [Composable] component function that draws [ChooseHeroScreen] in loading state.
  * See more about [Jetpack Compose](https://developer.android.com/compose)

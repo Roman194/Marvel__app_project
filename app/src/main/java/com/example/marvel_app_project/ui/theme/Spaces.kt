@@ -31,6 +31,7 @@ object Spaces {
         val horizontalPadding = 325.dp
         val horizontalArrangement = 114.dp
     }
+    val headerToHeroCards = 30.dp
     object spacer{
         val standardWidth = 1.dp
          val smallerHeight = 5.dp

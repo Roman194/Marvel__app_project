@@ -19,6 +19,11 @@ import com.example.marvel_app_project.ui.theme.Sizes
 import com.example.marvel_app_project.ui.theme.Spaces
 import com.example.marvel_app_project.ui.theme.interFamily
 
+//Amazon q 2nd prompt 3rd attempt
+/**
+ * Всё ещё есть ряд недочётов. Текст в SingleHeroTextField так и не был выровнен по левому нижнему
+ * краю. Также добавь чуть больше отступа между ChooseHeroHeader и компонентами HeroCard
+ */
 /**
  * [ChooseHeroHeader] is a [Composable] component function that draws header for ChooseHeroScreen.
  * See more about [Jetpack Compose](https://developer.android.com/compose)

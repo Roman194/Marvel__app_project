@@ -1,11 +1,11 @@
 package com.example.marvel_app_project.ui.components
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.ui.Alignment
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -29,13 +29,13 @@ import com.example.marvel_app_project.ui.theme.interFamily
 fun SingleHeroTextField(hero: HeroUI) {
     Column(
         modifier = Modifier
-            .fillMaxWidth()
-            .wrapContentHeight()
+            .fillMaxSize()
             .padding(
                 start = Spaces.singleHeroTextColumn.start,
                 bottom = Spaces.singleHeroTextColumn.bottom,
                 end = Spaces.singleHeroTextColumn.end
             ),
+        verticalArrangement = Arrangement.Bottom,
         horizontalAlignment = Alignment.Start
     ) {
         Text(
