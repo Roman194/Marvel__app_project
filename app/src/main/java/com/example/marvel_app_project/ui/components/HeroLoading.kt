@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.marvel_app_project.R
@@ -20,7 +21,13 @@ import com.example.marvel_app_project.ui.theme.Sizes
 import com.example.marvel_app_project.ui.theme.Spaces
 import com.example.marvel_app_project.ui.theme.interFamily
 
-//Amazon q 2nd prompt 1st attempt
+//Amazon q 2nd prompt 2nd attempt
+/**
+ * Круто! Но есть ряд недочётов. В HeroLoading есть "зашитый" в коде текст. Возьми текст из string
+ * ресурсов как ты делал в других функциях. Также обрати внимание на ErrorColumn. Он не должен
+ * занимать весь экран, а должен быть лишь полоской сверху над экраном, занимающей всю ширину экрана.
+ * Текст в SingleHeroTextField должен быть выровнен по левому нижнему краю.
+ */
 /**
  * [HeroLoading] is a [Composable] component function that draws [ChooseHeroScreen] in loading state.
  * See more about [Jetpack Compose](https://developer.android.com/compose)
@@ -45,7 +52,7 @@ fun HeroLoading() {
         )
         Spacer(modifier = Modifier.height(Spaces.spacer.standardHeight))
         Text(
-            text = "Loading...",
+            text = stringResource(R.string.loading_text),
             fontFamily = interFamily,
             fontWeight = FontWeight.ExtraBold,
             color = MaterialTheme.colorScheme.onPrimary
