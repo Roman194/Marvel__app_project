@@ -19,12 +19,12 @@ import com.example.marvel_app_project.ui.theme.Sizes
 import com.example.marvel_app_project.ui.theme.Spaces
 import com.example.marvel_app_project.ui.theme.interFamily
 
-//Junie 2nd prompt 2nd attempt
+//Junie 2nd prompt 3rd attempt
 /**
- * Круто! Но есть ряд недочётов. В HeroLoading есть "зашитый" в коде текст. Возьми текст из string
- * ресурсов как ты делал в других функциях. Также обрати внимание на ErrorColumn. Он не должен
- * занимать весь экран, а должен быть лишь полоской сверху над экраном, занимающей всю ширину экрана
+ * Всё ещё есть ряд недочётов. Текст в SingleHeroTextField должен быть выровнен по левому нижнему
+ * краю. Также добавь чуть больше отступа между ChooseHeroHeader и компонентами HeroCard
  */
+
 /**
  * [ChooseHeroHeader] is a [Composable] component function that draws header for ChooseHeroScreen.
  * See more about [Jetpack Compose](https://developer.android.com/compose)
