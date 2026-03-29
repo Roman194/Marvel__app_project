@@ -16,7 +16,11 @@ import androidx.compose.foundation.Image
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.ui.res.painterResource
 
-//Lingma 2nd prompt 1st attempt
+//Lingma 2nd prompt 2nd attempt
+/**
+ * Код не запускается. Используй пожалуйста числовые данные, соответствующие реальным объектам из
+ * папки theme. Также ты всё езё не реализовал SingleHeroTextField
+ */
 /**
  * [ChooseHeroHeader] is a [Composable] component function that draws header for ChooseHeroScreen.
  * See more about [Jetpack Compose](https://developer.android.com/compose)
