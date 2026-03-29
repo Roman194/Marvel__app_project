@@ -26,10 +26,9 @@ import com.example.marvel_app_project.ui.theme.interFamily
 fun ErrorColumn(errorMessage: String){
     Column(
         modifier = Modifier
-            .fillMaxSize()
+            .fillMaxWidth()
             .background(MaterialTheme.colorScheme.secondary)
             .padding(Spaces.errorColumn),
-        verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Image(
