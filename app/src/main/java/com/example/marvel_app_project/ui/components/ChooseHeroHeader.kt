@@ -13,11 +13,19 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
 import com.example.marvel_app_project.R
 import com.example.marvel_app_project.ui.theme.Sizes
+import com.example.marvel_app_project.ui.theme.Spaces
 
-//Cline 2nd prompt 1st attempt
+//Cline 2nd prompt 2nd attempt
+/**
+ * Есть ряд недочётов. В HeroLoading есть "зашитый" в коде текст. Возьми текст из string ресурсов
+ * как ты делал в других функциях.  Текст в SingleHeroTextField должен быть выровнен по левому
+ * нижнему краю. Также обрати внимание на HeroCard.kt. В нём в AsyncImage заявлена такая комбинация
+ * параметров, которая не подходит ни к одной его реализации: либо каких-то не хватает, либо
+ * Argument type mismatch: actual type is 'ImageRequest', but 'Painter?' was expected. Из-за этого
+ * код не запускается. Исправь пожалуйста
+ */
 /**
  * [ChooseHeroHeader] is a [Composable] component function that draws header for ChooseHeroScreen.
  * See more about [Jetpack Compose](https://developer.android.com/compose)

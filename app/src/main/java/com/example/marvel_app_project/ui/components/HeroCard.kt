@@ -13,10 +13,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
-import com.example.marvel_app_project.R
 import com.example.marvel_app_project.models.ui.HeroUI
 import com.example.marvel_app_project.ui.pages.HeroAction
 import com.example.marvel_app_project.ui.theme.HeroCardShape
@@ -58,13 +56,7 @@ fun HeroCard(
                 .build(),
             contentDescription = hero.name,
             contentScale = ContentScale.Crop,
-            modifier = Modifier.fillMaxSize(),
-            loading = coil.request.ImageRequest.Builder(LocalContext.current)
-                .data(R.drawable.marvelcard_loading)
-                .build(),
-            error = coil.request.ImageRequest.Builder(LocalContext.current)
-                .data(R.drawable.marvelcard_loadingerror)
-                .build()
+            modifier = Modifier.fillMaxSize()
         )
         Text(
             text = hero.name,
