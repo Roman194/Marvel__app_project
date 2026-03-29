@@ -33,8 +33,9 @@ object Spaces {
     }
     object spacer{
         val standardWidth = 1.dp
-         val smallerHeight = 5.dp
+        val smallerHeight = 5.dp
         val standardHeight = 15.dp
+        val underLogoHeight = 20.dp
         val extendedHeight = 25.dp
         val theMostExtendedHeight = 40.dp
     }
