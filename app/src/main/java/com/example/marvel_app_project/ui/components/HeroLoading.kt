@@ -4,6 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -36,7 +37,7 @@ fun HeroLoading(){
         Image(
             painter = painterResource(id = R.drawable.loading_img),
             contentDescription = null,
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier.height(Sizes.loadingLogo.size)
         )
         Text(
             text = stringResource(id = R.string.loading_text),

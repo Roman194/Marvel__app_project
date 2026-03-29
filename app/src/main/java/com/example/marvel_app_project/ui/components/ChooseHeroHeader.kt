@@ -17,7 +17,12 @@ import com.example.marvel_app_project.ui.theme.Sizes
 import com.example.marvel_app_project.ui.theme.Spaces
 import com.example.marvel_app_project.ui.theme.interFamily
 
-//Cilo code 2nd prompt 1st attempt
+//Cilo code 2nd prompt 2nd attempt
+/**
+ * Круто! Но обрати внимание на ErrorColumn. Он не должен занимать весь экран, а должен быть лишь
+ * полоской сверху над экраном, занимающей всю ширину экрана. Текст в SingleHeroTextField должен
+ * быть выровнен по левому нижнему краю, но на текущий момент он сверху слева. Исправь пожалуйста
+ */
 /**
  * [ChooseHeroHeader] is a [Composable] component function that draws header for ChooseHeroScreen.
  * See more about [Jetpack Compose](https://developer.android.com/compose)
