@@ -3,11 +3,12 @@ package com.example.marvel_app_project.ui.components
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -21,7 +22,6 @@ import com.example.marvel_app_project.ui.theme.Sizes
 import com.example.marvel_app_project.ui.theme.Spaces
 import com.example.marvel_app_project.ui.theme.interFamily
 
-//Sweep 2nd prompt 1st attempt
 /**
  * [ErrorColumn] is a [Composable] component function that draws error state for screens.
  * See more about [Jetpack Compose](https://developer.android.com/compose)
@@ -32,19 +32,20 @@ import com.example.marvel_app_project.ui.theme.interFamily
  */
 @Composable
 fun ErrorColumn(errorMessage: String) {
-    Column(
+    Row(
         modifier = Modifier
-            .fillMaxSize()
-            .background(MaterialTheme.colorScheme.secondary),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
+            .fillMaxWidth()
+            .background(MaterialTheme.colorScheme.secondary)
+            .padding(Spaces.errorColumn),
+        horizontalArrangement = Arrangement.Center,
+        verticalAlignment = Alignment.CenterVertically
     ) {
         Image(
             painter = painterResource(id = R.drawable.ic_connection_error),
             contentDescription = stringResource(id = R.string.connection_error),
             modifier = Modifier.size(Sizes.noInternetLogo.size)
         )
-        Spacer(modifier = Modifier.height(Spaces.spacer.standardHeight))
+        Spacer(modifier = Modifier.width(Spaces.spacer.standardHeight))
         Text(
             text = errorMessage,
             fontFamily = interFamily,
