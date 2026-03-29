@@ -16,10 +16,11 @@ import androidx.compose.foundation.Image
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.ui.res.painterResource
 
-//Lingma 2nd prompt 2nd attempt
+//Lingma 2nd prompt 3rd attempt
 /**
- * Код не запускается. Используй пожалуйста числовые данные, соответствующие реальным объектам из
- * папки theme. Также ты всё езё не реализовал SingleHeroTextField
+ * Ещё раз прошу отнестись внимательно к названию объектов из прикреплённых файлов и их свойств и
+ * переименовать данные в изменённых файлах согласно существующим свойствам и объектам. Также в
+ * HeroCard в padding есть следующая ошибка: None of the following candidates is applicable
  */
 /**
  * [ChooseHeroHeader] is a [Composable] component function that draws header for ChooseHeroScreen.

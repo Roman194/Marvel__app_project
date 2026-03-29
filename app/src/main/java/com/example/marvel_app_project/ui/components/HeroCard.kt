@@ -9,7 +9,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Shapes
+import com.example.marvel_app_project.ui.theme.Shapes // Import Shapes from theme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -61,11 +61,15 @@ fun HeroCard(hero: HeroUI, onAction: (HeroAction) -> Unit) {
                 text = hero.name,
                 fontFamily = interFamily,
                 fontWeight = FontWeight.ExtraBold,
-                fontSize = MaterialTheme.typography.titleMedium.fontSize,
+                fontSize = MaterialTheme.typography.titleLarge.fontSize, // Using titleLarge as per requirements
                 color = MaterialTheme.colorScheme.onPrimary,
                 modifier = Modifier
                     .align(Alignment.BottomStart)
-                    .padding(Spaces.heroCardText)
+                    .padding(
+                        start = Spaces.heroCardText.start,
+                        bottom = Spaces.heroCardText.bottom,
+                        end = Spaces.heroCardText.end
+                    )
             )
         }
     }

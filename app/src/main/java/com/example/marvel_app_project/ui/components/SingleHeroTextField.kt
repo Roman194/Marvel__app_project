@@ -1,16 +1,17 @@
 package com.example.marvel_app_project.ui.components
 
+import androidx.compose.runtime.Composable
+import com.example.marvel_app_project.models.ui.HeroUI
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
-import com.example.marvel_app_project.models.ui.HeroUI
 import com.example.marvel_app_project.ui.theme.Spaces
 import com.example.marvel_app_project.ui.theme.interFamily
+import com.example.marvel_app_project.ui.theme.Sizes
 
 @Composable
 fun SingleHeroTextField(hero: HeroUI) {
@@ -23,7 +24,7 @@ fun SingleHeroTextField(hero: HeroUI) {
             text = hero.name,
             fontFamily = interFamily,
             fontWeight = FontWeight.ExtraBold,
-            fontSize =MaterialTheme.typography.titleLarge.fontSize,
+            fontSize = MaterialTheme.typography.titleLarge.fontSize,
             color = MaterialTheme.colorScheme.onPrimary
         )
         Text(

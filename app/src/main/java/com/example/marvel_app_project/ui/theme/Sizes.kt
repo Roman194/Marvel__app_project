@@ -8,6 +8,8 @@ import androidx.compose.ui.unit.sp
  * @author Zyuzin Roman
  */
 object Sizes{
+    val heroCardElevation = 8.dp // Added elevation for hero card
+    val heroCardSize = 150.dp // Added size for hero card
     object heroCard{
         val width = 310.dp
         val height = 550.dp
