@@ -38,5 +38,8 @@ object Spaces {
         val extendedHeight = 25.dp
         val theMostExtendedHeight = 40.dp
     }
+    object chooseHeroHeader{
+        val logoToTextPadding = 35.dp
+    }
 
 }
