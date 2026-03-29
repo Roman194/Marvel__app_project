@@ -14,3 +14,5 @@ internal val Shapes = Shapes(
     medium = RoundedCornerShape(12.dp),
     large = RoundedCornerShape(24.dp)
 )
+
+val HeroCardShape = RoundedCornerShape(Sizes.heroCardCorner.cornerRadius)

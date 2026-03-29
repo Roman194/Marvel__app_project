@@ -2,7 +2,6 @@ package com.example.marvel_app_project.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 
@@ -14,26 +13,31 @@ import androidx.compose.ui.unit.sp
 // Set of Material typography styles to start with
 val Typography = Typography(
     bodyLarge = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Normal,
-        fontSize = 16.sp,
-        //lineHeight = 24.sp,
-        //letterSpacing = 0.5.sp
-    )
-    /* Other default text styles to override
-    titleLarge = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Normal,
-        fontSize = 22.sp,
-        lineHeight = 28.sp,
+        fontFamily = interFamily,
+        fontWeight = FontWeight.Bold,
+        fontSize = Sizes.fontSizes.heroDescription,
+        lineHeight = Sizes.fontSizes.heroDescription,
         letterSpacing = 0.sp
     ),
-    labelSmall = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Medium,
-        fontSize = 11.sp,
-        lineHeight = 16.sp,
-        letterSpacing = 0.5.sp
+    titleLarge = TextStyle(
+        fontFamily = interFamily,
+        fontWeight = FontWeight.ExtraBold,
+        fontSize = Sizes.fontSizes.heroNameInCard,
+        lineHeight = Sizes.fontSizes.heroNameInCard,
+        letterSpacing = 0.sp
+    ),
+    titleMedium = TextStyle(
+        fontFamily = interFamily,
+        fontWeight = FontWeight.ExtraBold,
+        fontSize = Sizes.fontSizes.underLogoText,
+        lineHeight = Sizes.fontSizes.underLogoText,
+        letterSpacing = 0.sp
+    ),
+    labelLarge = TextStyle(
+        fontFamily = interFamily,
+        fontWeight = FontWeight.ExtraBold,
+        fontSize = Sizes.fontSizes.responseError,
+        lineHeight = Sizes.fontSizes.responseError,
+        letterSpacing = 0.sp
     )
-    */
 )

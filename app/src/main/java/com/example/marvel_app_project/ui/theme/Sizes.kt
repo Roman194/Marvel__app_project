@@ -35,6 +35,27 @@ object Sizes{
         val heroDescription = 24.sp
         val underLogoText = 28.sp
         val responseError = 18.sp
+        val loadingText = 16.sp
+    }
+    object heroCardCorner{
+        val cornerRadius = 24.dp
+    }
+    object heroLoadingLogoSize{
+        val size = 200.dp
+    }
+    object heroCardImageSize{
+        val width = 310.dp
+        val height = 550.dp
+    }
+    object errorImageSize{
+        val size = 50.dp
+    }
+    object logoSize{
+        val width = 192.dp
+        val height = 41.dp
+    }
+    object textFieldSpacing{
+        val vertical = 8.dp
     }
     object loadingLogo{
         val size = 200.dp
