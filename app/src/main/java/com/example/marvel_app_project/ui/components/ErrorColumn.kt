@@ -1,8 +1,10 @@
 package com.example.marvel_app_project.ui.components
 
+import androidx.compose.foundation.Background
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -25,7 +27,9 @@ import com.example.marvel_app_project.ui.theme.Sizes
 @Composable
 fun ErrorColumn(errorMessage: String) {
     Column(
-        modifier = Modifier,
+        modifier = Modifier
+            .fillMaxSize()
+            .Background(MaterialTheme.colorScheme.secondary),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(Sizes.textFieldSpacing.vertical)
     ) {

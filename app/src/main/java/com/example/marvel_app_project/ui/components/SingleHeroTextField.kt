@@ -1,7 +1,7 @@
 package com.example.marvel_app_project.ui.components
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -21,15 +21,15 @@ import com.example.marvel_app_project.ui.theme.Spaces
  */
 @Composable
 fun SingleHeroTextField(hero: HeroUI) {
-    Column(
+    Box(
         modifier = Modifier
-            .fillMaxWidth()
+            .fillMaxSize()
             .padding(
                 start = Spaces.singleHeroTextColumn.start,
                 bottom = Spaces.singleHeroTextColumn.bottom,
                 end = Spaces.singleHeroTextColumn.end
             ),
-        horizontalAlignment = Alignment.Start
+        contentAlignment = Alignment.BottomStart
     ) {
         Text(
             text = hero.name,

@@ -2,7 +2,9 @@ package com.example.marvel_app_project.ui.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -26,20 +28,24 @@ import com.example.marvel_app_project.ui.theme.Sizes
 
 @Composable
 fun HeroLoading() {
-    Column(
-        modifier = Modifier,
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.spacedBy(Sizes.textFieldSpacing.vertical)
+    Box(
+        modifier = Modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center
     ) {
-        Image(
-            painter = painterResource(id = R.drawable.loading_img),
-            contentDescription = stringResource(id = R.string.loading),
-            modifier = Modifier.size(Sizes.loadingLogo.size)
-        )
-        Text(
-            text = stringResource(id = R.string.loading_text),
-            style = MaterialTheme.typography.labelLarge,
-            color = MaterialTheme.colorScheme.onPrimary
-        )
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.spacedBy(Sizes.textFieldSpacing.vertical)
+        ) {
+            Image(
+                painter = painterResource(id = R.drawable.loading_img),
+                contentDescription = stringResource(id = R.string.loading),
+                modifier = Modifier.size(Sizes.loadingLogo.size)
+            )
+            Text(
+                text = stringResource(id = R.string.loading_text),
+                style = MaterialTheme.typography.labelLarge,
+                color = MaterialTheme.colorScheme.onPrimary
+            )
+        }
     }
 }

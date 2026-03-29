@@ -17,14 +17,13 @@ import com.example.marvel_app_project.R
 import com.example.marvel_app_project.ui.theme.Sizes
 import com.example.marvel_app_project.ui.theme.Spaces
 
-//Cline 2nd prompt 2nd attempt
+//Cline 2nd prompt 3rd attempt
 /**
- * Есть ряд недочётов. В HeroLoading есть "зашитый" в коде текст. Возьми текст из string ресурсов
- * как ты делал в других функциях.  Текст в SingleHeroTextField должен быть выровнен по левому
- * нижнему краю. Также обрати внимание на HeroCard.kt. В нём в AsyncImage заявлена такая комбинация
- * параметров, которая не подходит ни к одной его реализации: либо каких-то не хватает, либо
- * Argument type mismatch: actual type is 'ImageRequest', but 'Painter?' was expected. Из-за этого
- * код не запускается. Исправь пожалуйста
+ * Код запустился, но всё ещё есть ряд недочётов. Во-первых, SingleHeroTextField всё ещё выводится в
+ * левом верхнем углу, а не нижнем. Также компонент HeroLoading выводится сверху по центру, а должен
+ * по центру вертикали и горизонтали. ErrorColumn имеет ьесцветный фон, а должен иметь фон
+ * MaterialTheme.colorScheme.secondary. В HeroCard в AsyncImage отсутствуют изображения на время
+ * загрузки и на случай ошибки: R.drawable.marvelcard_loading и R.drawable.marvelcard_loadingerror
  */
 /**
  * [ChooseHeroHeader] is a [Composable] component function that draws header for ChooseHeroScreen.
