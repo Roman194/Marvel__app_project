@@ -1,6 +1,6 @@
 package com.example.marvel_app_project.ui.components
 
-import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -25,7 +25,7 @@ import com.example.marvel_app_project.ui.theme.interFamily
  */
 @Composable
 fun SingleHeroTextField(hero: HeroUI){
-    Column(
+    Box(
         modifier = Modifier
             .fillMaxSize()
             .padding(
@@ -33,23 +33,26 @@ fun SingleHeroTextField(hero: HeroUI){
                 bottom = Spaces.singleHeroTextColumn.bottom,
                 end = Spaces.singleHeroTextColumn.end
             ),
-        horizontalAlignment = Alignment.Start,
-        verticalArrangement = Arrangement.Bottom
+        contentAlignment = Alignment.BottomStart
     ) {
-        Text(
-            text = hero.name,
-            color = MaterialTheme.colorScheme.onPrimary,
-            fontSize = Sizes.fontSizes.heroNameInSingleScreen,
-            fontFamily = interFamily,
-            fontWeight = FontWeight.ExtraBold
-        )
+        Column(
+            horizontalAlignment = Alignment.Start
+        ) {
+            Text(
+                text = hero.name,
+                color = MaterialTheme.colorScheme.onPrimary,
+                fontSize = Sizes.fontSizes.heroNameInSingleScreen,
+                fontFamily = interFamily,
+                fontWeight = FontWeight.ExtraBold
+            )
 
-        Text(
-            text = hero.description,
-            color = MaterialTheme.colorScheme.onPrimary,
-            fontSize = Sizes.fontSizes.heroDescription,
-            fontFamily = interFamily,
-            fontWeight = FontWeight.Bold
-        )
+            Text(
+                text = hero.description,
+                color = MaterialTheme.colorScheme.onPrimary,
+                fontSize = Sizes.fontSizes.heroDescription,
+                fontFamily = interFamily,
+                fontWeight = FontWeight.Bold
+            )
+        }
     }
 }
